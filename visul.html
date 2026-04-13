@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>语言结晶：唐诗意象的时空语义可视化系统（课程版 MVP）</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root {
+      --bg: #0f1320;
+      --panel: #171d2d;
+      --panel-2: #1f2840;
+      --text: #ecf0f8;
+      --muted: #9ba6c2;
+      --accent: #c39a57;
+      --line: rgba(255,255,255,0.08);
+      --highlight: #f5d08a;
+      --danger: #e48f8f;
+      --ok: #8bc5a3;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #182039 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+
+    .app {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: 100vh;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .header, .toolbar, .panel {
+      background: rgba(23, 29, 45, 0.95);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+
+    .header {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .header h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 900px;
+      font-size: 14px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(195, 154, 87, 0.14);
+      color: var(--highlight);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .toolbar {
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .tool-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-group label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    select, button {
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button:hover, select:hover { border-color: rgba(255,255,255,0.18); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    #network-panel { grid-row: 1 / span 2; }
+
+    .panel {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 12px 16px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-header h2 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+
+    .panel-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .chart {
+      position: relative;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .panel-footer {
+      border-top: 1px solid var(--line);
+      padding: 10px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    svg { display: block; width: 100%; height: 100%; }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(10, 12, 20, 0.92);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+      opacity: 0;
+      transition: opacity 120ms ease;
+      max-width: 280px;
+      z-index: 5;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .node-label {
+      font-size: 11px;
+      fill: #dfe7f6;
+      pointer-events: none;
+      paint-order: stroke;
+      stroke: rgba(15,19,32,0.9);
+      stroke-width: 3px;
+      stroke-linejoin: round;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .brush .selection {
+      fill: rgba(195,154,87,0.25);
+      stroke: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <div>
+        <h1>语言结晶：唐诗意象的时空语义可视化系统</h1>
+        <p>
+          课程作业可实现版本：保留“关系视角 + 层次视角 + 演进视角”的三视口联动，
+          采用 D3.js 实现语义关系网络、Voronoi 风格层次分区与时空流图。
+          这是一版适合课程答辩的 MVP：前端专注交互与联动，NLP 结果以离线 JSON 形式输入。
+        </p>
+      </div>
+      <div class="badge">D3.js / 多视图联动 / 课程可落地</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="tool-group">
+        <label for="dynasty-filter">时段预设</label>
+        <select id="dynasty-filter">
+          <option value="all">全唐</option>
+          <option value="early">初盛唐</option>
+          <option value="midlate">中晚唐</option>
+          <option value="war">安史之乱前后</option>
+        </select>
+      </div>
+      <div class="tool-group">
+        <label for="category-filter">意象类别</label>
+        <select id="category-filter">
+          <option value="all">全部类别</option>
+          <option value="自然">自然</option>
+          <option value="地理">地理</option>
+          <option value="社会">社会</option>
+          <option value="情感">情感</option>
+        </select>
+      </div>
+      <div class="tool-group">
+        <button id="reset-btn">重置筛选</button>
+        <span id="state-indicator" class="status-tag">当前状态：全局概览</span>
+      </div>
+    </div>
+
+    <div class="layout">
+      <section class="panel" id="network-panel">
+        <div class="panel-header">
+          <h2>① 语义关系视口：意象—诗人捆绑网络</h2>
+          <p>课程版采用“力导向网络 + 分组曲线捆绑近似”。点击节点或悬停高亮相关路径，模拟意象社交圈。</p>
+        </div>
+        <div class="chart" id="network-chart">
+          <div class="tooltip" id="network-tooltip"></div>
+        </div>
+        <div class="panel-footer">
+          <div class="legend" id="network-legend"></div>
+          <div class="hint">交互：拖拽节点 / 点击意象 / 点击诗人 / 与其他视口联动</div>
+        </div>
+      </section>
+
+      <section class="panel" id="voronoi-panel">
+        <div class="panel-header">
+          <h2>② 意象层次视口：Voronoi 风格层次分区</h2>
+          <p>课程版采用“圆域 Voronoi 分区 + 权重近似”。双击顶级类目可下钻，悬停触发全局高亮。</p>
+        </div>
+        <div class="chart" id="voronoi-chart">
+          <div class="tooltip" id="voronoi-tooltip"></div>
+        </div>
+        <div class="panel-footer">
+          <div class="small">说明：此处是 Weighted Voronoi Treemap 的可实现近似版，适合课程项目。</div>
+          <div class="hint">交互：悬停高亮 / 单击锁定 / 双击下钻 / 面积随权重变化</div>
+        </div>
+      </section>
+
+      <section class="panel" id="stream-panel">
+        <div class="panel-header">
+          <h2>③ 时空演进视口：流图 + 地理迁移</h2>
+          <p>左侧是按年代聚合的意象流图；右侧是诗人创作重心的地理迁移示意。拖拽笔刷改变全局时段。</p>
+        </div>
+        <div class="chart" id="stream-chart">
+          <div class="tooltip" id="stream-tooltip"></div>
+        </div>
+        <div class="panel-footer">
+          <div class="small">课程版地理面板使用抽象平面坐标模拟地域迁移，后续可替换为 GeoJSON 地图。</div>
+          <div class="hint">交互：笔刷选时段 / 悬停查看各类趋势 / 联动网络与分区</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------------
+    // 1. 示例数据（课程版）
+    // ---------------------------
+    // 真实项目中，请把这段替换为 fetch('./data/processed_tang.json').then(r => r.json())
+    const rawData = {
+      poets: [
+        { id: 'p1', name: '李白', school: '浪漫', x: 340, y: 180, period: 'early', years: [742, 762], region: '关中-蜀地', geo: [[42,28],[36,34],[30,24]] },
+        { id: 'p2', name: '杜甫', school: '现实', x: 300, y: 280, period: 'war', years: [750, 770], region: '长安-夔州', geo: [[40,31],[32,22],[28,20]] },
+        { id: 'p3', name: '王维', school: '山水', x: 240, y: 180, period: 'early', years: [720, 761], region: '关中', geo: [[39,32],[40,31],[38,30]] },
+        { id: 'p4', name: '岑参', school: '边塞', x: 210, y: 320, period: 'early', years: [744, 770], region: '西域-长安', geo: [[20,22],[40,32],[36,30]] },
+        { id: 'p5', name: '白居易', school: '新乐府', x: 460, y: 270, period: 'midlate', years: [790, 845], region: '江南', geo: [[34,30],[44,18],[46,16]] },
+        { id: 'p6', name: '李商隐', school: '晚唐', x: 520, y: 170, period: 'midlate', years: [830, 858], region: '长安-巴蜀', geo: [[40,31],[36,24],[30,21]] }
+      ],
+      images: [
+        { id: 'i1', name: '月', category: '自然', sub: '天象', weight: 90, sentiment: 0.1, period: 'all' },
+        { id: 'i2', name: '酒', category: '社会', sub: '宴饮', weight: 65, sentiment: 0.5, period: 'early' },
+        { id: 'i3', name: '霜', category: '自然', sub: '气象', weight: 42, sentiment: -0.5, period: 'midlate' },
+        { id: 'i4', name: '长安', category: '地理', sub: '城市', weight: 75, sentiment: 0.2, period: 'early' },
+        { id: 'i5', name: '孤舟', category: '地理', sub: '水域', weight: 38, sentiment: -0.4, period: 'war' },
+        { id: 'i6', name: '边关', category: '社会', sub: '军旅', weight: 58, sentiment: -0.2, period: 'early' },
+        { id: 'i7', name: '柳', category: '自然', sub: '植物', weight: 44, sentiment: -0.1, period: 'all' },
+        { id: 'i8', name: '乱', category: '情感', sub: '战争', weight: 50, sentiment: -0.9, period: 'war' },
+        { id: 'i9', name: '离愁', category: '情感', sub: '离别', weight: 47, sentiment: -0.7, period: 'midlate' },
+        { id: 'i10', name: '江南', category: '地理', sub: '地域', weight: 68, sentiment: 0.15, period: 'midlate' },
+        { id: 'i11', name: '残蝉', category: '自然', sub: '物候', weight: 30, sentiment: -0.65, period: 'midlate' },
+        { id: 'i12', name: '宫阙', category: '社会', sub: '宫廷', weight: 52, sentiment: 0.08, period: 'early' }
+      ],
+      // poet-image edges with strength and decade distribution
+      links: [
+        { source: 'p1', target: 'i1', strength: 9, years: [742, 744, 748, 752, 760] },
+        { source: 'p1', target: 'i2', strength: 8, years: [744, 748, 751, 756] },
+        { source: 'p1', target: 'i4', strength: 5, years: [742, 744, 745] },
+        { source: 'p1', target: 'i7', strength: 4, years: [746, 748] },
+        { source: 'p2', target: 'i1', strength: 6, years: [752, 758, 763, 768] },
+        { source: 'p2', target: 'i8', strength: 9, years: [756, 757, 758, 759, 761, 763] },
+        { source: 'p2', target: 'i5', strength: 8, years: [759, 761, 765, 768] },
+        { source: 'p2', target: 'i9', strength: 5, years: [762, 768, 770] },
+        { source: 'p3', target: 'i1', strength: 5, years: [728, 731, 735] },
+        { source: 'p3', target: 'i7', strength: 7, years: [729, 733, 736, 741] },
+        { source: 'p3', target: 'i4', strength: 4, years: [730, 733] },
+        { source: 'p4', target: 'i6', strength: 9, years: [748, 750, 752, 754] },
+        { source: 'p4', target: 'i4', strength: 3, years: [749, 754] },
+        { source: 'p4', target: 'i8', strength: 4, years: [756, 758] },
+        { source: 'p5', target: 'i10', strength: 8, years: [804, 808, 812, 818] },
+        { source: 'p5', target: 'i9', strength: 6, years: [805, 811, 820] },
+        { source: 'p5', target: 'i3', strength: 4, years: [802, 810] },
+        { source: 'p5', target: 'i11', strength: 3, years: [814, 819] },
+        { source: 'p6', target: 'i11', strength: 8, years: [838, 842, 846, 850] },
+        { source: 'p6', target: 'i3', strength: 7, years: [836, 840, 848, 853] },
+        { source: 'p6', target: 'i9', strength: 8, years: [839, 845, 850] },
+        { source: 'p6', target: 'i12', strength: 5, years: [835, 839, 842] }
+      ],
+      timeline: [
+        { year: 720, 自然: 11, 地理: 8, 社会: 7, 情感: 5 },
+        { year: 730, 自然: 16, 地理: 10, 社会: 8, 情感: 6 },
+        { year: 740, 自然: 20, 地理: 13, 社会: 12, 情感: 8 },
+        { year: 750, 自然: 22, 地理: 15, 社会: 17, 情感: 9 },
+        { year: 760, 自然: 18, 地理: 14, 社会: 11, 情感: 21 },
+        { year: 770, 自然: 14, 地理: 16, 社会: 9, 情感: 19 },
+        { year: 790, 自然: 12, 地理: 15, 社会: 10, 情感: 13 },
+        { year: 810, 自然: 15, 地理: 18, 社会: 12, 情感: 12 },
+        { year: 830, 自然: 17, 地理: 16, 社会: 9, 情感: 14 },
+        { year: 850, 自然: 13, 地理: 12, 社会: 8, 情感: 16 }
+      ],
+      hierarchy: {
+        name: '意象总类',
+        children: [
+          {
+            name: '自然',
+            children: [
+              { name: '月', value: 90 },
+              { name: '霜', value: 42 },
+              { name: '柳', value: 44 },
+              { name: '残蝉', value: 30 }
+            ]
+          },
+          {
+            name: '地理',
+            children: [
+              { name: '长安', value: 75 },
+              { name: '孤舟', value: 38 },
+              { name: '江南', value: 68 }
+            ]
+          },
+          {
+            name: '社会',
+            children: [
+              { name: '酒', value: 65 },
+              { name: '边关', value: 58 },
+              { name: '宫阙', value: 52 }
+            ]
+          },
+          {
+            name: '情感',
+            children: [
+              { name: '乱', value: 50 },
+              { name: '离愁', value: 47 }
+            ]
+          }
+        ]
+      }
+    };
+
+    // ---------------------------
+    // 2. 全局状态与调度器
+    // ---------------------------
+    const state = {
+      selectedImage: null,
+      selectedPoet: null,
+      selectedCategory: 'all',
+      timeRange: [720, 850],
+      preset: 'all',
+      hierarchyDepth: 0,
+      hierarchyFocus: null
+    };
+
+    const dispatch = d3.dispatch(
+      'imageHover',
+      'imageSelect',
+      'poetSelect',
+      'timeRangeChange',
+      'categoryChange',
+      'reset'
+    );
+
+    const categoryColors = {
+      自然: '#6fb1ff',
+      地理: '#7ed9a5',
+      社会: '#f0b46a',
+      情感: '#e58cb7'
+    };
+
+    const schoolColors = {
+      浪漫: '#e6b55f',
+      现实: '#7ab0e6',
+      山水: '#7fc7a4',
+      边塞: '#d18b6d',
+      新乐府: '#b4a0f3',
+      晚唐: '#d98fb6'
+    };
+
+    // ---------------------------
+    // 3. 数据过滤
+    // ---------------------------
+    function matchesPreset(year) {
+      if (state.preset === 'all') return true;
+      if (state.preset === 'early') return year >= 720 && year <= 755;
+      if (state.preset === 'midlate') return year >= 756 && year <= 850;
+      if (state.preset === 'war') return year >= 755 && year <= 763;
+      return true;
+    }
+
+    function filteredData() {
+      const [minYear, maxYear] = state.timeRange;
+
+      const poets = rawData.poets.filter(p => {
+        const overlap = !(p.years[1] < minYear || p.years[0] > maxYear);
+        return overlap;
+      });
+
+      const poetIds = new Set(poets.map(d => d.id));
+
+      const images = rawData.images.filter(img => {
+        const categoryOk = state.selectedCategory === 'all' || img.category === state.selectedCategory;
+        return categoryOk;
+      });
+      const imageIds = new Set(images.map(d => d.id));
+
+      const links = rawData.links
+        .filter(l => poetIds.has(l.source) && imageIds.has(l.target))
+        .map(l => {
+          const yearHits = l.years.filter(y => y >= minYear && y <= maxYear && matchesPreset(y));
+          return { ...l, activeYears: yearHits, activeStrength: yearHits.length };
+        })
+        .filter(l => l.activeStrength > 0);
+
+      const activePoets = new Set(links.map(d => d.source));
+      const activeImages = new Set(links.map(d => d.target));
+
+      return {
+        poets: poets.filter(d => activePoets.has(d.id)),
+        images: images.filter(d => activeImages.has(d.id)),
+        links
+      };
+    }
+
+    // ---------------------------
+    // 4. 公共工具
+    // ---------------------------
+    function mountSVG(containerId) {
+      const el = document.getElementById(containerId);
+      const { width, height } = el.getBoundingClientRect();
+      const svg = d3.select(el).append('svg').attr('viewBox', [0, 0, width, height]);
+      return { svg, width, height, el };
+    }
+
+    function updateStateIndicator(text) {
+      document.getElementById('state-indicator').textContent = `当前状态：${text}`;
+    }
+
+    function showTooltip(id, html, event) {
+      const tt = document.getElementById(id);
+      tt.innerHTML = html;
+      tt.style.opacity = 1;
+      const parent = tt.parentElement.getBoundingClientRect();
+      tt.style.left = `${event.clientX - parent.left + 12}px`;
+      tt.style.top = `${event.clientY - parent.top + 12}px`;
+    }
+
+    function hideTooltip(id) {
+      const tt = document.getElementById(id);
+      tt.style.opacity = 0;
+    }
+
+    function buildLegend(containerId, items) {
+      const wrap = d3.select(`#${containerId}`);
+      wrap.selectAll('*').remove();
+      items.forEach(item => {
+        const row = wrap.append('div').attr('class', 'legend-item');
+        row.append('span').attr('class', 'legend-swatch').style('background', item.color);
+        row.append('span').text(item.label);
+      });
+    }
+
+    // ---------------------------
+    // 5. 关系网络视图
+    // ---------------------------
+    const network = (() => {
+      const { svg, width, height } = mountSVG('network-chart');
+      const g = svg.append('g');
+      const linkLayer = g.append('g');
+      const nodeLayer = g.append('g');
+      const labelLayer = g.append('g');
+
+      const simulation = d3.forceSimulation()
+        .force('link', d3.forceLink().id(d => d.id).distance(d => d.type === 'poet' ? 130 : 90).strength(0.35))
+        .force('charge', d3.forceManyBody().strength(-190))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collide', d3.forceCollide().radius(d => d.type === 'poet' ? 28 : 18));
+
+      const zoom = d3.zoom().scaleExtent([0.6, 2.5]).on('zoom', e => g.attr('transform', e.transform));
+      svg.call(zoom);
+
+      function drag(sim) {
+        function dragstarted(event, d) {
+          if (!event.active) sim.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        }
+        function dragged(event, d) {
+          d.fx = event.x;
+          d.fy = event.y;
+        }
+        function dragended(event, d) {
+          if (!event.active) sim.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        }
+        return d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended);
+      }
+
+      function bundlePath(d) {
+        const sx = d.source.x, sy = d.source.y;
+        const tx = d.target.x, ty = d.target.y;
+        const mx = (sx + tx) / 2;
+        const my = (sy + ty) / 2;
+        const cat = d.target.category || '自然';
+        const shift = cat === '自然' ? [-26, -18]
+          : cat === '地理' ? [18, -24]
+          : cat === '社会' ? [24, 18]
+          : [-20, 20];
+        return `M${sx},${sy} Q${mx + shift[0]},${my + shift[1]} ${tx},${ty}`;
+      }
+
+      function render() {
+        const data = filteredData();
+        const poetNodes = data.poets.map(d => ({ ...d, type: 'poet' }));
+        const imageNodes = data.images.map(d => ({ ...d, type: 'image' }));
+        const nodes = [...poetNodes, ...imageNodes];
+        const nodeMap = new Map(nodes.map(d => [d.id, d]));
+        const links = data.links.map(d => ({ ...d, source: nodeMap.get(d.source), target: nodeMap.get(d.target) }));
+
+        poetNodes.forEach((d, i) => {
+          d.x ??= 180 + i * 60;
+          d.y ??= 140 + (i % 3) * 110;
+        });
+        imageNodes.forEach((d, i) => {
+          d.x ??= width - 220 + (i % 3) * 40;
+          d.y ??= 110 + Math.floor(i / 3) * 90;
+        });
+
+        const linkSel = linkLayer.selectAll('path').data(links, d => `${d.source.id}-${d.target.id}`);
+        linkSel.join(
+          enter => enter.append('path')
+            .attr('fill', 'none')
+            .attr('stroke-width', d => Math.max(1, d.activeStrength * 0.65))
+            .attr('stroke', d => categoryColors[d.target.category])
+            .attr('stroke-opacity', 0.22),
+          update => update,
+          exit => exit.remove()
+        );
+
+        const nodeSel = nodeLayer.selectAll('circle').data(nodes, d => d.id);
+        nodeSel.join(
+          enter => enter.append('circle')
+            .attr('r', d => d.type === 'poet' ? 13 : 9 + d.weight / 25)
+            .attr('fill', d => d.type === 'poet' ? schoolColors[d.school] : categoryColors[d.category])
+            .attr('stroke', 'rgba(255,255,255,0.9)')
+            .attr('stroke-width', d => d.type === 'poet' ? 1.4 : 0.9)
+            .style('cursor', 'pointer')
+            .call(drag(simulation))
+            .on('mouseover', (event, d) => {
+              if (d.type === 'image') dispatch.call('imageHover', null, d.name);
+              showTooltip('network-tooltip', d.type === 'poet'
+                ? `<strong>${d.name}</strong><br>诗风：${d.school}<br>创作区间：${d.years[0]}–${d.years[1]}`
+                : `<strong>${d.name}</strong><br>类别：${d.category}/${d.sub}<br>权重：${d.weight}`
+              , event);
+            })
+            .on('mousemove', (event, d) => {
+              showTooltip('network-tooltip', d.type === 'poet'
+                ? `<strong>${d.name}</strong><br>诗风：${d.school}<br>创作区间：${d.years[0]}–${d.years[1]}`
+                : `<strong>${d.name}</strong><br>类别：${d.category}/${d.sub}<br>权重：${d.weight}`
+              , event);
+            })
+            .on('mouseout', () => {
+              hideTooltip('network-tooltip');
+              dispatch.call('imageHover', null, null);
+            })
+            .on('click', (event, d) => {
+              if (d.type === 'poet') {
+                dispatch.call('poetSelect', null, d.name);
+              } else {
+                dispatch.call('imageSelect', null, d.name);
+              }
+            }),
+          update => update,
+          exit => exit.remove()
+        );
+
+        const labelSel = labelLayer.selectAll('text').data(nodes, d => d.id);
+        labelSel.join(
+          enter => enter.append('text').attr('class', 'node-label').text(d => d.name),
+          update => update.text(d => d.name),
+          exit => exit.remove()
+        );
+
+        simulation.nodes(nodes).on('tick', () => {
+          linkLayer.selectAll('path').attr('d', bundlePath);
+          nodeLayer.selectAll('circle').attr('cx', d => d.x).attr('cy', d => d.y);
+          labelLayer.selectAll('text').attr('x', d => d.x + 12).attr('y', d => d.y - 12);
+        });
+        simulation.force('link').links(links);
+        simulation.alpha(0.9).restart();
+
+        applyHighlight();
+      }
+
+      function applyHighlight() {
+        const focusImage = state.selectedImage;
+        const focusPoet = state.selectedPoet;
+
+        linkLayer.selectAll('path')
+          .attr('stroke-opacity', d => {
+            const hitImage = focusImage ? d.target.name === focusImage : true;
+            const hitPoet = focusPoet ? d.source.name === focusPoet : true;
+            return hitImage && hitPoet ? 0.85 : 0.08;
+          })
+          .attr('stroke-width', d => {
+            const hitImage = focusImage ? d.target.name === focusImage : true;
+            const hitPoet = focusPoet ? d.source.name === focusPoet : true;
+            return hitImage && hitPoet ? Math.max(2, d.activeStrength) : 1;
+          });
+
+        nodeLayer.selectAll('circle')
+          .attr('opacity', d => {
+            if (!focusImage && !focusPoet) return 1;
+            if (d.type === 'image' && focusImage) return d.name === focusImage ? 1 : 0.25;
+            if (d.type === 'poet' && focusPoet) return d.name === focusPoet ? 1 : 0.25;
+
+            const links = filteredData().links;
+            if (focusImage && d.type === 'poet') {
+              return links.some(l => rawData.poets.find(p => p.id === l.source)?.name === d.name && rawData.images.find(i => i.id === l.target)?.name === focusImage) ? 1 : 0.25;
+            }
+            if (focusPoet && d.type === 'image') {
+              return links.some(l => rawData.poets.find(p => p.id === l.source)?.name === focusPoet && rawData.images.find(i => i.id === l.target)?.name === d.name) ? 1 : 0.25;
+            }
+            return 1;
+          })
+          .attr('stroke-width', d => {
+            if (focusImage && d.type === 'image' && d.name === focusImage) return 3;
+            if (focusPoet && d.type === 'poet' && d.name === focusPoet) return 3;
+            return d.type === 'poet' ? 1.4 : 0.9;
+          });
+      }
+
+      buildLegend('network-legend', [
+        ...Object.entries(categoryColors).map(([label, color]) => ({ label: `意象·${label}`, color })),
+        { label: '诗人节点', color: '#d8d8d8' }
+      ]);
+
+      return { render, applyHighlight };
+    })();
+
+    // ---------------------------
+    // 6. Voronoi 风格层次视图
+    // ---------------------------
+    const voronoiView = (() => {
+      const { svg, width, height } = mountSVG('voronoi-chart');
+      const g = svg.append('g');
+      const center = [width / 2, height / 2];
+      const radius = Math.min(width, height) * 0.38;
+
+      function getCurrentHierarchy() {
+        if (!state.hierarchyFocus) return rawData.hierarchy;
+        const hit = rawData.hierarchy.children.find(d => d.name === state.hierarchyFocus);
+        return hit ? { name: hit.name, children: hit.children } : rawData.hierarchy;
+      }
+
+      function weightedCells(items) {
+        const points = items.map((d, i) => {
+          const a = (Math.PI * 2 * i) / items.length - Math.PI / 2;
+          const r = radius * 0.55;
+          return {
+            ...d,
+            x: center[0] + Math.cos(a) * r,
+            y: center[1] + Math.sin(a) * r,
+            desired: d.value ?? d3.sum(d.children ?? [], c => c.value)
+          };
+        });
+
+        // 课程版的“权重近似”：通过多轮质心回拉 + 按权重调整半径的方式，
+        // 在圆域内得到相对稳定且面积接近权重的 Voronoi 风格布局。
+        for (let iter = 0; iter < 14; iter++) {
+          const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+          const vor = delaunay.voronoi([center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius]);
+          points.forEach((p, i) => {
+            const poly = vor.cellPolygon(i);
+            if (!poly) return;
+            const clipped = poly.filter(q => (q[0] - center[0]) ** 2 + (q[1] - center[1]) ** 2 <= (radius + 40) ** 2);
+            if (clipped.length < 3) return;
+            const cx = d3.mean(clipped, d => d[0]);
+            const cy = d3.mean(clipped, d => d[1]);
+            const total = d3.sum(points, d => d.desired);
+            const targetR = radius * (0.16 + (p.desired / total) * 1.25);
+            const dx = cx - center[0];
+            const dy = cy - center[1];
+            const angle = Math.atan2(dy, dx);
+            p.x = center[0] + Math.cos(angle) * Math.min(targetR, radius * 0.8);
+            p.y = center[1] + Math.sin(angle) * Math.min(targetR, radius * 0.8);
+          });
+        }
+
+        const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+        const vor = delaunay.voronoi([center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius]);
+        return points.map((p, i) => ({ ...p, polygon: vor.cellPolygon(i) }));
+      }
+
+      function render() {
+        g.selectAll('*').remove();
+        const rootData = getCurrentHierarchy();
+        const items = (rootData.children || []).map(d => ({
+          ...d,
+          value: d.value ?? d3.sum(d.children || [], c => c.value)
+        }));
+
+        const cells = weightedCells(items);
+        const circlePath = d3.arc()({
+          innerRadius: 0,
+          outerRadius: radius,
+          startAngle: 0,
+          endAngle: Math.PI * 2
+        });
+
+        g.append('g')
+          .attr('transform', `translate(${center[0]},${center[1]})`)
+          .append('path')
+          .attr('d', circlePath)
+          .attr('fill', '#0d1120')
+          .attr('stroke', 'rgba(255,255,255,0.14)');
+
+        const clipId = 'voronoi-circle-clip';
+        svg.selectAll(`#${clipId}`).remove();
+        svg.append('clipPath').attr('id', clipId)
+          .append('circle').attr('cx', center[0]).attr('cy', center[1]).attr('r', radius);
+
+        const cellG = g.append('g').attr('clip-path', `url(#${clipId})`);
+
+        const group = cellG.selectAll('g.cell').data(cells, d => d.name).join('g').attr('class', 'cell');
+        group.append('path')
+          .attr('d', d => `M${d.polygon.join('L')}Z`)
+          .attr('fill', d => categoryColors[d.name] || categoryColors[rawData.images.find(i => i.name === d.name)?.category] || '#8892b0')
+          .attr('fill-opacity', 0.88)
+          .attr('stroke', 'rgba(255,255,255,0.9)')
+          .attr('stroke-width', 1)
+          .style('cursor', 'pointer')
+          .on('mouseover', (event, d) => {
+            const isLeaf = !d.children;
+            const name = d.name;
+            if (isLeaf) dispatch.call('imageHover', null, name);
+            showTooltip('voronoi-tooltip', isLeaf
+              ? `<strong>${name}</strong><br>权重：${d.value}<br>类别：${rawData.images.find(i => i.name === name)?.category || state.hierarchyFocus}`
+              : `<strong>${name}</strong><br>当前聚合权重：${d.value}<br>双击进入下一级`
+            , event);
+          })
+          .on('mousemove', (event, d) => {
+            showTooltip('voronoi-tooltip', !d.children
+              ? `<strong>${d.name}</strong><br>权重：${d.value}<br>类别：${rawData.images.find(i => i.name === d.name)?.category || state.hierarchyFocus}`
+              : `<strong>${d.name}</strong><br>当前聚合权重：${d.value}<br>双击进入下一级`
+            , event);
+          })
+          .on('mouseout', () => {
+            hideTooltip('voronoi-tooltip');
+            dispatch.call('imageHover', null, null);
+          })
+          .on('click', (event, d) => {
+            if (!d.children) dispatch.call('imageSelect', null, d.name);
+          })
+          .on('dblclick', (event, d) => {
+            if (d.children) {
+              state.hierarchyFocus = d.name;
+              updateStateIndicator(`下钻至 ${d.name} 意象层次`);
+              render();
+            } else if (state.hierarchyFocus) {
+              state.hierarchyFocus = null;
+              updateStateIndicator('返回顶层意象层次');
+              render();
+            }
+          });
+
+        group.append('text')
+          .attr('x', d => d.x)
+          .attr('y', d => d.y)
+          .attr('text-anchor', 'middle')
+          .attr('dy', '0.35em')
+          .style('font-size', d => Math.max(11, Math.min(18, d.value / 6)) + 'px')
+          .style('font-weight', 600)
+          .style('fill', '#fff')
+          .style('pointer-events', 'none')
+          .text(d => d.name);
+
+        g.append('circle')
+          .attr('cx', center[0])
+          .attr('cy', center[1])
+          .attr('r', radius)
+          .attr('fill', 'none')
+          .attr('stroke', 'rgba(255,255,255,0.14)')
+          .attr('stroke-width', 1.2);
+
+        applyHighlight();
+      }
+
+      function applyHighlight() {
+        const focusImage = state.selectedImage;
+        g.selectAll('g.cell path')
+          .attr('stroke-width', d => focusImage && d.name === focusImage ? 3 : 1)
+          .attr('opacity', d => {
+            if (!focusImage) return 1;
+            if (d.children) return 0.65;
+            return d.name === focusImage ? 1 : 0.22;
+          });
+      }
+
+      return { render, applyHighlight };
+    })();
+
+    // ---------------------------
+    // 7. 流图 + 地理迁移视图
+    // ---------------------------
+    const streamView = (() => {
+      const { svg, width, height } = mountSVG('stream-chart');
+      const pad = { top: 18, right: 18, bottom: 44, left: 42 };
+      const gap = 16;
+      const leftW = Math.floor(width * 0.64);
+      const rightW = width - leftW - gap;
+      const leftH = height - pad.top - pad.bottom;
+      const rightX = leftW + gap;
+
+      const streamG = svg.append('g').attr('transform', `translate(${pad.left},${pad.top})`);
+      const mapG = svg.append('g').attr('transform', `translate(${rightX},${pad.top})`);
+
+      function render() {
+        streamG.selectAll('*').remove();
+        mapG.selectAll('*').remove();
+
+        const timeline = rawData.timeline.filter(d => d.year >= state.timeRange[0] && d.year <= state.timeRange[1] && matchesPreset(d.year));
+        const keys = ['自然', '地理', '社会', '情感'].filter(k => state.selectedCategory === 'all' || k === state.selectedCategory);
+        const stack = d3.stack().keys(keys).offset(d3.stackOffsetWiggle);
+        const series = stack(timeline);
+
+        const x = d3.scaleLinear().domain(d3.extent(rawData.timeline, d => d.year)).range([0, leftW - pad.left]);
+        const y = d3.scaleLinear()
+          .domain([
+            d3.min(series, s => d3.min(s, d => d[0])) || -10,
+            d3.max(series, s => d3.max(s, d => d[1])) || 10
+          ])
+          .range([leftH, 0]);
+
+        const area = d3.area()
+          .x(d => x(d.data.year))
+          .y0(d => y(d[0]))
+          .y1(d => y(d[1]))
+          .curve(d3.curveCatmullRom.alpha(0.5));
+
+        streamG.append('g')
+          .attr('transform', `translate(0,${leftH})`)
+          .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(7))
+          .call(g => g.selectAll('path,line').attr('stroke', 'rgba(255,255,255,0.18)'))
+          .call(g => g.selectAll('text').attr('fill', '#c8d2ea').attr('font-size', 11));
+
+        streamG.append('g')
+          .call(d3.axisLeft(y).ticks(5))
+          .call(g => g.selectAll('path,line').attr('stroke', 'rgba(255,255,255,0.18)'))
+          .call(g => g.selectAll('text').attr('fill', '#c8d2ea').attr('font-size', 11));
+
+        const areaSel = streamG.selectAll('path.stream').data(series, d => d.key).join('path')
+          .attr('class', 'stream')
+          .attr('d', area)
+          .attr('fill', d => categoryColors[d.key])
+          .attr('fill-opacity', 0.85)
+          .attr('stroke', 'rgba(255,255,255,0.22)')
+          .style('cursor', 'pointer')
+          .on('mouseover', (event, d) => {
+            showTooltip('stream-tooltip', `<strong>${d.key}</strong><br>该色带表示该类意象在时间上的频率波动。`, event);
+          })
+          .on('mousemove', (event, d) => {
+            showTooltip('stream-tooltip', `<strong>${d.key}</strong><br>该色带表示该类意象在时间上的频率波动。`, event);
+          })
+          .on('mouseout', () => hideTooltip('stream-tooltip'))
+          .on('click', (event, d) => {
+            state.selectedCategory = d.key;
+            document.getElementById('category-filter').value = d.key;
+            dispatch.call('categoryChange', null, d.key);
+          });
+
+        const brush = d3.brushX()
+          .extent([[0, 0], [leftW - pad.left, leftH]])
+          .on('end', (event) => {
+            if (!event.selection) return;
+            const [x0, x1] = event.selection.map(x.invert);
+            dispatch.call('timeRangeChange', null, [Math.round(x0), Math.round(x1)]);
+          });
+        streamG.append('g').attr('class', 'brush').call(brush);
+
+        // 右侧抽象地理迁移面板
+        const mapW = rightW - pad.right;
+        const mapH = leftH;
+        mapG.append('rect')
+          .attr('width', mapW)
+          .attr('height', mapH)
+          .attr('fill', '#0d1120')
+          .attr('stroke', 'rgba(255,255,255,0.14)')
+          .attr('rx', 14);
+
+        mapG.append('text')
+          .attr('x', 12)
+          .attr('y', 20)
+          .attr('fill', '#c8d2ea')
+          .attr('font-size', 12)
+          .text('创作重心迁移（抽象平面坐标）');
+
+        const activePoets = filteredData().poets;
+        const lineGen = d3.line().curve(d3.curveCatmullRom.alpha(0.6));
+
+        mapG.selectAll('path.route').data(activePoets, d => d.id).join('path')
+          .attr('class', 'route')
+          .attr('d', d => lineGen(d.geo.map(([gx, gy]) => [gx / 50 * mapW, gy / 40 * mapH])))
+          .attr('fill', 'none')
+          .attr('stroke', d => schoolColors[d.school])
+          .attr('stroke-width', d => state.selectedPoet === d.name ? 3.5 : 1.7)
+          .attr('stroke-opacity', d => state.selectedPoet && state.selectedPoet !== d.name ? 0.18 : 0.8)
+          .style('cursor', 'pointer')
+          .on('mouseover', (event, d) => showTooltip('stream-tooltip', `<strong>${d.name}</strong><br>地域路径：${d.region}`, event))
+          .on('mousemove', (event, d) => showTooltip('stream-tooltip', `<strong>${d.name}</strong><br>地域路径：${d.region}`, event))
+          .on('mouseout', () => hideTooltip('stream-tooltip'))
+          .on('click', (event, d) => dispatch.call('poetSelect', null, d.name));
+
+        mapG.selectAll('text.route-label').data(activePoets, d => d.id).join('text')
+          .attr('class', 'route-label')
+          .attr('x', d => (d.geo.at(-1)[0] / 50 * mapW) + 4)
+          .attr('y', d => (d.geo.at(-1)[1] / 40 * mapH) - 4)
+          .attr('fill', '#dfe7f6')
+          .attr('font-size', 11)
+          .attr('opacity', d => state.selectedPoet && state.selectedPoet !== d.name ? 0.22 : 0.92)
+          .text(d => d.name);
+
+        applyHighlight();
+      }
+
+      function applyHighlight() {
+        streamG.selectAll('path.stream')
+          .attr('opacity', d => {
+            if (state.selectedCategory === 'all') return 0.9;
+            return d.key === state.selectedCategory ? 1 : 0.2;
+          });
+      }
+
+      return { render, applyHighlight };
+    })();
+
+    // ---------------------------
+    // 8. 事件联动
+    // ---------------------------
+    dispatch.on('imageHover.ui', (name) => {
+      if (!state.selectedImage) {
+        state.selectedImage = name;
+        network.applyHighlight();
+        voronoiView.applyHighlight();
+      }
+    });
+
+    dispatch.on('imageSelect.ui', (name) => {
+      state.selectedImage = state.selectedImage === name ? null : name;
+      state.selectedPoet = null;
+      updateStateIndicator(state.selectedImage ? `锁定意象：${state.selectedImage}` : '取消意象锁定');
+      rerender();
+    });
+
+    dispatch.on('poetSelect.ui', (name) => {
+      state.selectedPoet = state.selectedPoet === name ? null : name;
+      state.selectedImage = null;
+      updateStateIndicator(state.selectedPoet ? `锁定诗人：${state.selectedPoet}` : '取消诗人锁定');
+      rerender();
+    });
+
+    dispatch.on('timeRangeChange.ui', (range) => {
+      state.timeRange = range;
+      updateStateIndicator(`时间筛选：${range[0]}–${range[1]}`);
+      rerender();
+    });
+
+    dispatch.on('categoryChange.ui', (category) => {
+      state.selectedCategory = category;
+      updateStateIndicator(category === 'all' ? '类别：全部' : `类别筛选：${category}`);
+      rerender();
+    });
+
+    dispatch.on('reset.ui', () => {
+      state.selectedImage = null;
+      state.selectedPoet = null;
+      state.selectedCategory = 'all';
+      state.timeRange = [720, 850];
+      state.preset = 'all';
+      state.hierarchyFocus = null;
+      document.getElementById('dynasty-filter').value = 'all';
+      document.getElementById('category-filter').value = 'all';
+      updateStateIndicator('全局概览');
+      rerender();
+    });
+
+    // ---------------------------
+    // 9. 控件绑定
+    // ---------------------------
+    document.getElementById('dynasty-filter').addEventListener('change', (e) => {
+      state.preset = e.target.value;
+      updateStateIndicator(`时段预设：${e.target.options[e.target.selectedIndex].text}`);
+      rerender();
+    });
+
+    document.getElementById('category-filter').addEventListener('change', (e) => {
+      dispatch.call('categoryChange', null, e.target.value);
+    });
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      dispatch.call('reset');
+    });
+
+    // ---------------------------
+    // 10. 首次渲染
+    // ---------------------------
+    function rerender() {
+      network.render();
+      voronoiView.render();
+      streamView.render();
+    }
+
+    rerender();
+  </script>
+</body>
+</html>
