@@ -81,23 +81,23 @@
       padding:36px 42px 30px 42px;
       display:grid;
       grid-template-columns: 40% 30% 30%;
-      grid-template-rows: 20% 45% 35%;
-      gap:10px 22px;
+      grid-template-rows: 14% 39% 47%;
+      gap:8px 22px;
     }
 
     .title-block{grid-column:1;grid-row:1;position:relative;padding-left:4px;}
     .title-block h1{margin:0;font-size:30px;letter-spacing:5px;font-weight:600;line-height:1.52;}
     .title-block p{max-width:640px;font-size:12px;line-height:1.72;color:#4d493d;margin:18px 0 0;}
 
-    .mini-intro{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding-top:10px;}
+    .mini-intro{display:none;}
     .mini-card{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;min-width:0;}
     .mini-icon{font-size:30px;filter:saturate(.86);}
     .mini-card b{font-size:12px;font-weight:600;display:block;margin-bottom:3px;}
     .mini-card span{font-size:10px;color:var(--muted);line-height:1.35;display:block;}
 
-    .right-title{grid-column:3;grid-row:1;padding-top:16px;}
-    .right-title h2{margin:0;font-size:18px;letter-spacing:3px;font-weight:600;text-align:center;}
-    .right-title p{font-size:11px;line-height:1.7;color:var(--muted);margin:20px 8px 0;}
+    .right-title{grid-column:2 / 4;grid-row:1;padding-top:6px;text-align:right;}
+    .right-title h2{margin:0;font-size:18px;letter-spacing:3px;font-weight:600;text-align:right;}
+    .right-title p{font-size:10.5px;line-height:1.55;color:var(--muted);margin:8px 0 0 auto;max-width:610px;}
 
     #chordPanel{grid-column:1;grid-row:2 / 4;position:relative;}
     #seasonPanel{
@@ -107,7 +107,7 @@
       display:block;
       overflow:visible;
     }
-    #bubblePanel{grid-column:2;grid-row:3;position:relative;}
+    #bubblePanel{grid-column:2;grid-row:3;position:relative;overflow:hidden;padding-top:28px;}
     #timelinePanel{grid-column:3;grid-row:3;position:relative;}
 
     .panel-title{position:absolute;left:8px;top:0;font-size:14px;letter-spacing:3px;color:#2f2d26;z-index:5;}
@@ -219,17 +219,22 @@
       position:fixed;
       z-index:20;
       pointer-events:none;
-      background:rgba(255,252,240,.96);
-      border:1px solid rgba(90,78,55,.2);
-      box-shadow:0 8px 24px rgba(40,32,18,.14);
-      padding:10px 12px;
-      border-radius:10px;
-      font-size:12px;
-      line-height:1.65;
-      max-width:280px;
+      /* 半透明提示框：不再用纯白底遮挡图形 */
+      background:rgba(255,252,240,.54);
+      border:1px solid rgba(90,78,55,.13);
+      box-shadow:0 4px 12px rgba(40,32,18,.08);
+      padding:6px 8px;
+      border-radius:8px;
+      font-size:10px;
+      line-height:1.42;
+      max-width:210px;
+      color:rgba(36,32,26,.78);
       opacity:0;
-      transform:translate(-50%,-110%);
+      transform:translate(-50%,-118%);
+      backdrop-filter:blur(2px);
+      -webkit-backdrop-filter:blur(2px);
     }
+    .tooltip b{font-size:10.5px;font-weight:600;}
 
     .legend{position:absolute;left:12px;bottom:18px;display:flex;gap:12px;flex-wrap:wrap;max-width:80%;font-size:10px;color:#4e493d;}
     .legend-item{display:flex;align-items:center;gap:5px;}
@@ -253,15 +258,47 @@
     .node-label { font-size: 8px; fill: rgba(38,34,28,.75); dominant-baseline: middle; pointer-events: none; }
     .center-title { text-anchor: middle; dominant-baseline: middle; fill: rgba(37,33,27,.84); font-size: 22px; letter-spacing: 5px; }
     .center-subtitle { text-anchor: middle; dominant-baseline: middle; fill: rgba(57,51,40,.58); font-size: 9px; letter-spacing: 1px; }
-    .rank-note{position:absolute;left:12px;bottom:4px;width:84%;font-size:9px;line-height:1.55;color:var(--muted);z-index:5;pointer-events:none;}
+    .rank-note{
+      position:absolute;
+      left:auto;
+      right:126px;
+      top:24px;
+      bottom:auto;
+      width:min(300px, calc(100% - 145px));
+      text-align:right;
+      font-size:8.2px;
+      line-height:1.4;
+      color:rgba(82,75,62,.58);
+      z-index:5;
+      pointer-events:none;
+      background:rgba(246,239,221,.16);
+      border-radius:8px;
+      padding:2px 5px;
+    }
     .rank-legend{position:absolute;right:0;bottom:28px;z-index:7;width:118px;display:grid;grid-template-columns:1fr;gap:4px;font-size:9px;color:rgba(48,43,34,.72);}
     .rank-legend-item{display:flex;align-items:center;gap:5px;min-width:0;cursor:pointer;}
     .rank-legend-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(70,60,42,.18);flex:0 0 auto;}
     .rank-legend-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
+
+
+    /* 相关诗句词云 */
+    .poem-cloud-panel{
+      position:absolute;left:8px;right:8px;top:28px;bottom:6px;
+      padding:8px 10px 10px;border:1px solid rgba(122,104,72,.12);border-radius:16px;
+      background:rgba(250,245,228,.18);overflow:hidden;
+    }
+    .poem-cloud-head{position:relative;z-index:2;display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px;color:rgba(45,40,32,.78);}
+    .poem-cloud-head b{font-size:12px;letter-spacing:2px;font-weight:600;}
+    .poem-cloud-head span{font-size:9px;color:rgba(92,83,67,.64);white-space:nowrap;}
+    .poem-cloud-words{position:relative;z-index:1;height:calc(100% - 20px);display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 9px;padding:2px 2px 6px;}
+    .poem-cloud-word{display:inline-block;max-width:95%;color:rgba(49,45,36,.78);line-height:1.2;white-space:nowrap;text-shadow:0 1px 0 rgba(255,252,240,.82);transition:opacity .18s ease, transform .18s ease;}
+    .poem-cloud-word:hover{opacity:1!important;transform:scale(1.08) rotate(0deg)!important;}
+    .poem-cloud-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.8;color:rgba(92,83,67,.62);padding:18px;}
+
     .axis text{font-size:9px;fill:#605a4d}.axis path,.axis line{stroke:rgba(70,62,45,.28)}
     .muted-text{font-size:10px;fill:#746f61}.label{font-size:10px;fill:#292722}.tiny{font-size:8px;fill:#605a4d}
-    .fade{opacity:.12!important}.highlight{opacity:1!important;stroke-opacity:1!important;fill-opacity:1!important}
+    .fade{opacity:.34!important}.highlight{opacity:1!important;stroke-opacity:1!important;fill-opacity:1!important}
     .poet-arc{cursor:pointer;transition:opacity .18s ease;}
     .poet-label{font-size:8px;fill:rgba(70,62,48,.78);dominant-baseline:middle;pointer-events:none;}
     .poet-imagery-link{fill:none;stroke-linecap:round;stroke-linejoin:round;mix-blend-mode:multiply;pointer-events:stroke;transition:opacity .16s ease, stroke-width .16s ease, filter .16s ease;}
@@ -269,45 +306,149 @@
     .poet-imagery-link.active{opacity:.96!important;stroke-width:3.2!important;filter:drop-shadow(0 2px 3px rgba(42,32,18,.22));}
     .poet-imagery-hit{fill:none;stroke:transparent;stroke-width:12;pointer-events:stroke;}
 
+    .cross-view-imagery{transition:opacity .16s ease, stroke-width .16s ease, fill-opacity .16s ease, stroke-opacity .16s ease;}
+    /* 跨视图联动时只“压低”其他意象，不再隐藏到只剩一种 */
+    .global-imagery-muted{opacity:.42!important;fill-opacity:.34!important;stroke-opacity:.34!important;}
+    .global-imagery-active{opacity:1!important;fill-opacity:.96!important;stroke-opacity:1!important;}
+    .flow-line.global-imagery-active{stroke-width:4.2!important;}
+    .semantic-track-active.global-imagery-active{stroke-width:8!important;}
+    .chord-imagery-arc.global-imagery-active{stroke:#3b3328!important;stroke-width:1.8!important;}
+    .cross-view-ribbon{transition:opacity .16s ease, fill-opacity .16s ease, stroke-opacity .16s ease;}
+    .cross-view-ribbon.global-imagery-active{fill-opacity:.38!important;stroke-opacity:.65!important;}
+
     .semantic-flow-desc-compact{
       left:auto !important;
-      right:10px !important;
-      bottom:18px !important;
-      width:285px !important;
+      right:2px !important;
+      top:0 !important;
+      bottom:auto !important;
+      width:360px !important;
       display:block !important;
       grid-template-columns:none !important;
-      padding:8px 10px;
+      padding:7px 10px;
       border-radius:10px;
-      background:rgba(246,239,221,.68);
-      border:1px solid rgba(110,96,70,.12);
-      box-shadow:0 4px 14px rgba(70,55,32,.06);
-      font-size:10px !important;
-      line-height:1.65 !important;
-      color:rgba(72,65,54,.76) !important;
+      background:rgba(246,239,221,.66);
+      border:1px solid rgba(110,96,70,.10);
+      box-shadow:0 3px 10px rgba(70,55,32,.045);
+      font-size:9.5px !important;
+      line-height:1.55 !important;
+      color:rgba(72,65,54,.70) !important;
+      pointer-events:none;
     }
+  
+
+    /* =========================
+       文人化视觉重塑：宣纸肌理、水墨过渡、书法层级
+       ========================= */
+    html,body{
+      background:
+        radial-gradient(circle at 15% 8%, rgba(255,252,236,.72), transparent 28%),
+        radial-gradient(circle at 85% 92%, rgba(136,107,65,.12), transparent 32%),
+        #e4ddca;
+    }
+    body::before{
+      opacity:.62;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,.58), transparent 26%),
+        radial-gradient(circle at 82% 78%, rgba(110,82,44,.12), transparent 35%),
+        radial-gradient(rgba(80,64,42,.08) .55px, transparent .75px),
+        radial-gradient(rgba(255,255,255,.42) .65px, transparent .9px),
+        repeating-linear-gradient(96deg, rgba(102,86,58,.025) 0 1px, transparent 1px 12px),
+        repeating-linear-gradient(6deg, rgba(255,255,255,.03) 0 1px, transparent 1px 10px);
+      background-size:auto, auto, 11px 11px, 17px 17px, auto, auto;
+      background-position:0 0,0 0,1px 2px,6px 8px,0 0,0 0;
+      mix-blend-mode:multiply;
+    }
+    .paper{
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,253,238,.82), transparent 34%),
+        radial-gradient(circle at 76% 72%, rgba(185,158,100,.10), transparent 40%),
+        linear-gradient(115deg, rgba(255,250,232,.72), rgba(239,229,202,.78)),
+        rgba(244,238,221,.92);
+      box-shadow:0 22px 58px rgba(70,55,31,.19), inset 0 0 48px rgba(139,110,62,.045);
+    }
+    .paper::before{
+      opacity:.34;
+      background-image:
+        radial-gradient(rgba(92,72,45,.20) .55px, transparent .75px),
+        radial-gradient(rgba(255,255,255,.55) .75px, transparent .95px),
+        repeating-linear-gradient(88deg, rgba(94,78,49,.028) 0 1px, transparent 1px 9px),
+        repeating-linear-gradient(2deg, rgba(120,96,55,.018) 0 1px, transparent 1px 13px);
+      background-size:20px 20px, 34px 34px, auto, auto;
+      background-position:0 0, 12px 9px, 0 0, 0 0;
+    }
+    .paper::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background:
+        radial-gradient(ellipse at 42% 48%, rgba(91,128,109,.10), transparent 30%),
+        radial-gradient(ellipse at 58% 36%, rgba(174,118,74,.075), transparent 22%),
+        radial-gradient(circle at 69% 58%, rgba(150,54,62,.045) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 55%, rgba(189,137,70,.050) 0 1.6px, transparent 2.8px),
+        radial-gradient(circle at 48% 61%, rgba(110,137,112,.052) 0 1.8px, transparent 3px);
+      mix-blend-mode:multiply;
+    }
+    .title-block h1,
+    .semantic-flow-title,
+    .panel-title,
+    .right-title h2{
+      font-family:"STKaiti","KaiTi","FangSong","Noto Serif SC",serif;
+    }
+    .title-block h1{font-size:31px;color:rgba(31,31,25,.92);text-shadow:0 1px 0 rgba(255,252,235,.72);}
+    .panel-title{color:rgba(42,38,30,.84);font-weight:500;}
+    .right-title p,.title-block p,.small-note,.rank-note{color:rgba(90,82,66,.64);}
+    .flow-bridge{position:absolute;z-index:0;pointer-events:none;opacity:.26;filter:blur(.05px);}
+    .flow-bridge svg{width:100%;height:100%;overflow:visible;}
+    .flow-bridge path{fill:none;stroke:rgba(99,129,110,.46);stroke-width:1.1;stroke-linecap:round;stroke-dasharray:1 7;}
+    .flow-bridge .petal{fill:rgba(181,119,83,.32);stroke:rgba(255,248,230,.55);stroke-width:.4;}
+    .bridge-1{left:37%;top:48%;width:18%;height:18%;}
+    .bridge-2{left:55%;top:58%;width:16%;height:14%;opacity:.22;}
+    .semantic-icon-mark{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;font-size:22px;dominant-baseline:middle;text-anchor:middle;opacity:.54;pointer-events:none;}
+    .semantic-flow-title{filter:drop-shadow(0 1px 0 rgba(255,250,235,.7));}
+    .semantic-track-active{opacity:.72;}
+    .semantic-track-bg{stroke:rgba(116,104,76,.075);}
+    .semantic-track-dot{stroke-width:1.1;}
+    .poem-cloud-panel{
+      border:1px solid rgba(122,104,72,.105);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,252,237,.38), transparent 34%),
+        radial-gradient(circle at 86% 70%, rgba(113,142,119,.055), transparent 30%),
+        rgba(250,245,228,.14);
+      box-shadow:inset 0 0 24px rgba(132,106,64,.035);
+    }
+    .poem-cloud-words{display:block!important;position:relative!important;height:calc(100% - 22px)!important;padding:0!important;}
+    .poem-cloud-word{
+      position:absolute;max-width:none;white-space:nowrap;transform-origin:center center;
+      font-family:"FangSong","STKaiti","KaiTi","Noto Serif SC",serif;letter-spacing:.5px;
+      text-shadow:0 1px 0 rgba(255,253,241,.58);
+      transition:opacity .18s ease, transform .18s ease, filter .18s ease;
+    }
+    .poem-cloud-word:hover{filter:drop-shadow(0 2px 3px rgba(72,54,30,.16));}
+    .chord-imagery-arc{fill-opacity:.78!important;}
+    .cross-view-ribbon{fill-opacity:.16!important;stroke-opacity:.25!important;}
+    .poet-arc{opacity:.78!important;}
+    .poet-imagery-link{opacity:.34;}
+    .ring-bg{stroke:rgba(89,79,59,.085)!important;}
+    .flow-line{opacity:.72;}
+
   </style>
 </head>
 <body>
 <div id="app">
   <div class="paper">
+    <div class="flow-bridge bridge-1"><svg viewBox="0 0 200 120"><path d="M4,96 C54,18 126,104 196,20"/><circle class="petal" cx="44" cy="46" r="2.6"/><circle class="petal" cx="112" cy="76" r="2.1"/><circle class="petal" cx="162" cy="42" r="2.4"/></svg></div>
+    <div class="flow-bridge bridge-2"><svg viewBox="0 0 180 110"><path d="M6,88 C58,8 114,104 174,26"/><circle class="petal" cx="61" cy="35" r="2.2"/><circle class="petal" cx="132" cy="73" r="2"/></svg></div>
     <div class="grid">
       <section class="title-block">
         <h1>唐代诗词中的<br/>意象统计</h1>
         <p>以一千首唐诗为样本，统计诗歌中的自然、空间、人为与情感意象，并展示它们在诗作中的共现关系、语义母题与时间演化。</p>
       </section>
 
-      <section class="mini-intro">
-        <div class="mini-card"><div class="mini-icon">🌙</div><div><b>天象水文</b><span>月、云、风、雨、水、雪</span></div></div>
-        <div class="mini-card"><div class="mini-icon">🌿</div><div><b>草木鸟兽</b><span>草、柳、梅、竹、雁、猿</span></div></div>
-        <div class="mini-card"><div class="mini-icon">🏯</div><div><b>空间行旅</b><span>长亭、关山、江南、天涯</span></div></div>
-        <div class="mini-card"><div class="mini-icon">🍶</div><div><b>器物雅事</b><span>酒、琴、剑、亭台</span></div></div>
-        <div class="mini-card"><div class="mini-icon">💭</div><div><b>情感典故</b><span>愁、相思、思乡、青鸟</span></div></div>
-        <div class="mini-card"><div class="mini-icon">🧭</div><div><b>峰值时期</b><span>弧末色点表示初盛中晚唐</span></div></div>
-      </section>
-
       <section class="right-title">
         <h2>诗词中意象方式的统计</h2>
-        <p>右侧以气泡图呈现不同类别意象的出现规模，并以时间流线展示意象从初唐到晚唐的变化。</p>
+        <p>上方以四段半圆展示“天、物、境、情”的语义流变；下方以气泡与环形排名补充呈现意象规模和时间变化。</p>
       </section>
 
       <section id="chordPanel">
@@ -319,7 +460,8 @@
       <section id="seasonPanel"></section>
 
       <section id="bubblePanel">
-        <svg id="bubbleSvg"></svg>
+        <div class="panel-title">相关诗句词云</div>
+        <div id="poemCloudPanel" class="poem-cloud-panel"></div>
       </section>
 
       <section id="timelinePanel">
@@ -337,18 +479,20 @@ const FILES = {
   poems: "poem_time_visual.json",
   co: "co_occurrence.json",
   category: "yixiang.csv",
-  rank: "timeline_year_imagery_long.json"
+  rank: "timeline_year_imagery_long.json",
+  poemCloud: "sampled_1000_imagery_poems.json"
 };
 
 const categoryColor = new Map([
-  ["自然意象", "#6f9e8b"],
-  ["空间意象", "#c39a48"],
-  ["人为意象", "#b77d58"],
-  ["情感意象", "#bd6a74"],
-  ["品格象征", "#8c7ab8"],
-  ["战争边塞", "#8a7761"],
-  ["典故文化", "#6f9eaa"],
-  ["未分类", "#9a988c"]
+  // 传统颜料倾向：石绿、藤黄、赭石、朱砂、石青，整体降低饱和度
+  ["自然意象", "#6f9b83"],
+  ["空间意象", "#c09a47"],
+  ["人为意象", "#a86f4e"],
+  ["情感意象", "#b96a72"],
+  ["品格象征", "#8070a7"],
+  ["战争边塞", "#7c6b55"],
+  ["典故文化", "#5f93a0"],
+  ["未分类", "#94907f"]
 ]);
 
 // 诗人外环：value 是你给出的 1000 首样本中各诗人的诗歌数量
@@ -438,9 +582,218 @@ const periodOrder = ["初唐", "盛唐", "中唐", "晚唐", "未知"];
 const $tip = d3.select("#tooltip");
 
 function showTip(event, html){
-  $tip.html(html).style("left", event.clientX + "px").style("top", event.clientY + "px").transition().duration(120).style("opacity", 1);
+  $tip.interrupt()
+    .html(html)
+    .style("left", (event.clientX + 8) + "px")
+    .style("top", (event.clientY - 8) + "px")
+    .transition().duration(80).style("opacity", .88);
 }
 function hideTip(){ $tip.transition().duration(120).style("opacity", 0); }
+
+let poemCloudPoems = [];
+let poemCloudDefault = [];
+
+function hashCode(str){
+  return Array.from(String(str || "")).reduce((sum, ch) => ((sum << 5) - sum + ch.charCodeAt(0)) | 0, 0);
+}
+
+function flattenTextValue(value){
+  if(value === undefined || value === null) return "";
+  if(Array.isArray(value)){
+    return value.flat(Infinity).filter(v => v !== undefined && v !== null).map(v => String(v).trim()).filter(Boolean).join("\n");
+  }
+  return String(value).trim();
+}
+
+function looksLikePoemBody(text, poem){
+  const t = String(text || "").trim();
+  if(!t) return false;
+  const title = String(poem.title || poem.题名 || poem.name || poem.名称 || "").trim();
+  const author = String(poem.author || poem.作者 || "").trim();
+  if(title && t === title) return false;
+  if(author && t === author) return false;
+  if(/^《.*》/.test(t) && t.length < 24) return false;
+  if(/[，。！？；、\n]/.test(t)) return true;
+  if(t.length >= 10 && (!title || t !== title)) return true;
+  return false;
+}
+
+function getPoemText(poem){
+  // 只取“诗文正文”字段，不再把 title / 题名 当作诗句显示。
+  const fields = [
+    "content", "full_text", "fullText", "text", "poem_text", "poemText",
+    "body", "original", "paragraphs", "lines", "sentences",
+    "正文", "诗文", "原文", "内容", "句子"
+  ];
+  for(const key of fields){
+    const v = flattenTextValue(poem[key]);
+    if(looksLikePoemBody(v, poem)) return v;
+  }
+  return "";
+}
+
+function splitPoemSentences(text){
+  const raw = String(text || "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/[\r\t ]+/g, "")
+    .replace(/([。！？；])/g, "$1\n")
+    .split(/\n+/)
+    .map(d => d.trim())
+    .filter(Boolean);
+
+  const lines = [];
+  raw.forEach(seg => {
+    let s = seg.replace(/[。！？；]+$/g, "");
+    if(!s || s.length < 3) return;
+    if(s.length > 22 && /，/.test(s)){
+      const parts = s.split(/，/).map(d => d.trim()).filter(Boolean);
+      for(let i = 0; i < parts.length; i += 2){
+        const pair = parts.slice(i, i + 2).join("，");
+        if(pair.length >= 3) lines.push(pair.length > 24 ? pair.slice(0, 24) + "…" : pair);
+      }
+    }else{
+      lines.push(s.length > 24 ? s.slice(0, 24) + "…" : s);
+    }
+  });
+  return lines;
+}
+
+function preparePoemCloudSource(rawPoems, categoryMap){
+  const rows = Array.isArray(rawPoems) ? rawPoems : [];
+  return rows.map((p, idx) => {
+    const matched = Array.isArray(p.matched_imagery)
+      ? p.matched_imagery
+      : Array.isArray(p.imagery)
+        ? p.imagery
+        : Array.isArray(p.images)
+          ? p.images
+          : [];
+    const normalized = [...new Set(matched.map(d => normalizeName(String(d).trim(), categoryMap)).filter(Boolean))];
+    return {
+      ...p,
+      id: p.id || `cloud-`,
+      title: p.title || p.题名 || p.name || "",
+      author: p.author || p.作者 || "",
+      matched_imagery: matched.map(d => String(d).trim()).filter(Boolean),
+      imagery_norm: normalized
+    };
+  }).filter(p => getPoemText(p));
+}
+
+function poemMatchesImagery(poem, imagery){
+  const raw = Array.isArray(poem.matched_imagery) ? poem.matched_imagery : [];
+  const norm = Array.isArray(poem.imagery_norm) ? poem.imagery_norm : [];
+  const text = getPoemText(poem);
+  return raw.includes(imagery) || norm.includes(imagery) || text.includes(imagery);
+}
+
+function makePoemCloudItems(filter){
+  const poems = poemCloudPoems || [];
+  let candidates = [];
+  if(filter?.type === "poet") candidates = poems.filter(p => p.author === filter.name);
+  else if(filter?.type === "poetImagery") candidates = poems.filter(p => p.author === filter.author && poemMatchesImagery(p, filter.imagery));
+  else if(filter?.type === "imagery") candidates = poems.filter(p => poemMatchesImagery(p, filter.name));
+  else candidates = poemCloudDefault.length ? poemCloudDefault : poems.slice(0, 80);
+
+  const items = [];
+  candidates.slice(0, 160).forEach((poem, idx) => {
+    const text = getPoemText(poem);
+    if(!text) return;
+    let lines = splitPoemSentences(text);
+    if((filter?.type === "imagery" || filter?.type === "poetImagery") && lines.some(line => line.includes(filter.name || filter.imagery))){
+      const keyWord = filter.name || filter.imagery;
+      lines = lines.filter(line => line.includes(keyWord));
+    }
+    // 不再用《题目》作者作为兜底内容；没有正文就不显示。
+    lines.slice(0, 2).forEach((line, j) => {
+      items.push({
+        text: line,
+        title: poem.title || poem.题名 || "",
+        author: poem.author || poem.作者 || "",
+        score: Math.max(1, 8 - idx * 0.05 - j * 0.45),
+        key: `${line}-${poem.title || ""}-${idx}-${j}`
+      });
+    });
+  });
+  const seen = new Set();
+  return items.filter(d => { if(seen.has(d.text)) return false; seen.add(d.text); return true; }).slice(0, 26);
+}
+
+function drawPoemCloud(filter){
+  const panel = d3.select("#poemCloudPanel");
+  if(panel.empty()) return;
+  panel.selectAll("*").remove();
+  let label = "常见意象相关诗句";
+  let sub = "悬停其他视图中的诗人或意象以更新";
+  if(filter?.type === "poet") { label = `${filter.name}相关诗句`; sub = "按诗人筛选"; }
+  if(filter?.type === "imagery") { label = `${filter.name}相关诗句`; sub = "按意象筛选"; }
+  if(filter?.type === "poetImagery") { label = `${filter.author} × ${filter.imagery}`; sub = "诗人与意象交集"; }
+
+  panel.append("div").attr("class", "poem-cloud-head").html(`<b>${label}</b><span>${sub}</span>`);
+  const items = makePoemCloudItems(filter);
+  if(!items.length){
+    panel.append("div").attr("class", "poem-cloud-empty").html("没有找到可显示的诗句正文。<br/>请确认 sampled_1000_imagery_poems.json 中包含 paragraphs 字段，或 content、text、正文、诗文等诗文正文字段。");
+    return;
+  }
+  const displayItems = items.slice(0, 18);
+  const maxScore = d3.max(displayItems, d => d.score) || 1;
+  const minScore = d3.min(displayItems, d => d.score) || 0;
+  const size = d3.scaleLinear().domain([minScore, maxScore]).range([10.5, 24]);
+  const opacity = d3.scaleLinear().domain([minScore, maxScore]).range([.38, .90]);
+  const colors = ["rgba(53,96,82,.78)", "rgba(128,83,62,.72)", "rgba(151,111,52,.76)", "rgba(91,86,72,.70)", "rgba(139,78,88,.72)"];
+  const cloud = panel.append("div").attr("class", "poem-cloud-words");
+  const layout = displayItems.map((d, i) => {
+    const n = Math.max(1, displayItems.length - 1);
+    const t = i / n;
+    const wave = Math.sin(t * Math.PI * 2.05 - Math.PI * .22);
+    const side = (i % 2 === 0 ? 1 : -1);
+    const x = 9 + t * 82 + ((Math.abs(hashCode(d.key)) % 9) - 4) * .55;
+    const y = 48 + wave * 30 + side * (8 + (i % 3) * 2.5);
+    const rot = wave * 7 + ((Math.abs(hashCode(d.text)) % 7) - 3) * .9;
+    return {...d, x: Math.max(3, Math.min(86, x)), y: Math.max(10, Math.min(86, y)), rot};
+  });
+  cloud.selectAll("span")
+    .data(layout, d => d.key)
+    .join("span")
+    .attr("class", "poem-cloud-word")
+    .style("left", d => `${d.x}%`)
+    .style("top", d => `${d.y}%`)
+    .style("font-size", d => `${size(d.score)}px`)
+    .style("opacity", d => opacity(d.score))
+    .style("transform", d => `translate(-50%,-50%) rotate(${d.rot}deg)`)
+    .style("color", d => colors[Math.abs(hashCode(d.text)) % colors.length])
+    .attr("title", d => `${d.author || ""} ${d.title || ""}`)
+    .text(d => d.text);
+}
+
+function setGlobalImageryFocus(name){
+  const target = String(name || "").trim();
+  if(!target) return;
+
+  d3.selectAll(".cross-view-imagery")
+    .classed("global-imagery-muted", function(){ return this.getAttribute("data-imagery") !== target; })
+    .classed("global-imagery-active", function(){ return this.getAttribute("data-imagery") === target; });
+
+  d3.selectAll(".cross-view-ribbon")
+    .classed("global-imagery-muted", function(){
+      return this.getAttribute("data-source") !== target && this.getAttribute("data-target") !== target;
+    })
+    .classed("global-imagery-active", function(){
+      return this.getAttribute("data-source") === target || this.getAttribute("data-target") === target;
+    });
+}
+
+function clearGlobalImageryFocus(){
+  d3.selectAll(".cross-view-imagery,.cross-view-ribbon")
+    .classed("global-imagery-muted", false)
+    .classed("global-imagery-active", false);
+}
+
+function resetPoemCloud(){ clearGlobalImageryFocus(); drawPoemCloud(null); }
+function updatePoemCloudByImagery(name){ setGlobalImageryFocus(name); drawPoemCloud({type:"imagery", name}); }
+function updatePoemCloudByPoet(name){ drawPoemCloud({type:"poet", name}); }
+function updatePoemCloudByPoetImagery(author, imagery){ drawPoemCloud({type:"poetImagery", author, imagery}); }
+
 
 function getCol(row, names, fallback=""){
   for(const n of names){ if(row[n] !== undefined && row[n] !== null && String(row[n]).trim() !== "") return String(row[n]).trim(); }
@@ -598,24 +951,37 @@ function drawSemanticMotifModules(poems, categoryStats) {
     .attr("viewBox", [0, 0, width, height]);
 
   // 四个模块改为四段连续半圆：上、下、上、下交替，拼成类 S 型。
-  const marginX = width * 0.055;
-  const usableW = width - marginX * 2;
+  // 四个半圆横向拉长：不再为右侧说明预留大空白，让最后一组尽量抵达视图右边界。
+  // 同时降低纵向幅度与轨道间距，使上下半圆更贴近，整体更像压扁后的连续 S。
+  const marginX = width * 0.018;
+  const rightReserved = 0;
+  const usableW = width - marginX * 2 - rightReserved;
   const segW = usableW / modules.length;
-  const baseY = height * 0.50;
-  const arcH = Math.min(height * 0.31, segW * 0.48);
+  const baseY = height * 0.49;
+  const arcH = Math.min(height * 0.245, segW * 0.39);
   const directions = [-1, 1, -1, 1];
 
-  function pointOnHalfArc(moduleIndex, u) {
+  function rawHalfArcPoint(moduleIndex, u) {
     const dir = directions[moduleIndex] || 1;
     const x0 = marginX + moduleIndex * segW;
-    const x = x0 + segW * u;
-    const y = baseY + dir * arcH * Math.sin(Math.PI * u);
+    const uu = Math.max(0, Math.min(1, u));
+    const x = x0 + segW * uu;
+    const v = 2 * uu - 1;
+    const y = baseY + dir * arcH * Math.sqrt(Math.max(0, 1 - v * v));
+    return {x, y};
+  }
 
-    const dx = segW;
-    const dy = dir * arcH * Math.PI * Math.cos(Math.PI * u);
+  function pointOnHalfArc(moduleIndex, u) {
+    const p = rawHalfArcPoint(moduleIndex, u);
+    const e = 0.004;
+    const p0 = rawHalfArcPoint(moduleIndex, Math.max(0, u - e));
+    const p1 = rawHalfArcPoint(moduleIndex, Math.min(1, u + e));
+    const dx = p1.x - p0.x;
+    const dy = p1.y - p0.y;
     const mag = Math.hypot(dx, dy) || 1;
     return {
-      x, y,
+      x: p.x,
+      y: p.y,
       tx: dx / mag,
       ty: dy / mag,
       nx: -dy / mag,
@@ -640,8 +1006,8 @@ function drawSemanticMotifModules(poems, categoryStats) {
 
   const tracks = d3.range(6).map(i => ({
     index: i,
-    offset: (i - 2.5) * 11,
-    width: 6.5
+    offset: (i - 2.5) * 8.8,
+    width: 6.2
   }));
 
   modules.forEach((module, moduleIndex) => {
@@ -658,11 +1024,11 @@ function drawSemanticMotifModules(poems, categoryStats) {
     svg.append("line")
       .attr("class", "semantic-track-boundary")
       .attr("x1", p.x)
-      .attr("y1", p.y - 48)
+      .attr("y1", p.y - 38)
       .attr("x2", p.x)
-      .attr("y2", p.y + 48);
+      .attr("y2", p.y + 38);
 
-    d3.range(-42, 49, 12).forEach(o => {
+    d3.range(-34, 35, 10).forEach(o => {
       svg.append("circle")
         .attr("cx", p.x)
         .attr("cy", p.y + o)
@@ -685,12 +1051,14 @@ function drawSemanticMotifModules(poems, categoryStats) {
       const endU = startU + 0.88 * angleScale(w.total);
 
       svg.append("path")
-        .attr("class", "semantic-track-active")
+        .attr("class", "semantic-track-active cross-view-imagery")
+        .attr("data-imagery", w.name)
         .attr("d", buildModuleArcPath(moduleIndex, startU, Math.min(0.96, endU), track.offset))
         .attr("stroke", module.color)
         .attr("stroke-width", track.width + 1.2)
         .attr("opacity", opacityScale(w.concentration))
         .on("mousemove", event => {
+          updatePoemCloudByImagery(w.name);
           showTip(event, `
             <b>${module.name} / ${w.name}</b><br/>
             总频次：${Math.round(w.total)}<br/>
@@ -699,7 +1067,7 @@ function drawSemanticMotifModules(poems, categoryStats) {
             初唐 ${w.period["初唐"] || 0}｜盛唐 ${w.period["盛唐"] || 0}｜中唐 ${w.period["中唐"] || 0}｜晚唐 ${w.period["晚唐"] || 0}
           `);
         })
-        .on("mouseleave", hideTip);
+        .on("mouseleave", () => { hideTip(); resetPoemCloud(); });
 
       const start = pointOnHalfArc(moduleIndex, startU);
       const end = pointOnHalfArc(moduleIndex, Math.min(0.96, endU));
@@ -709,25 +1077,27 @@ function drawSemanticMotifModules(poems, categoryStats) {
       const ey = end.y + end.ny * track.offset;
 
       svg.append("text")
-        .attr("class", "semantic-track-label")
+        .attr("class", "semantic-track-label cross-view-imagery")
+        .attr("data-imagery", w.name)
         .attr("x", sx - 7)
         .attr("y", sy)
         .attr("text-anchor", "end")
         .text(w.name);
 
       svg.append("circle")
-        .attr("class", "semantic-track-dot")
+        .attr("class", "semantic-track-dot cross-view-imagery")
+        .attr("data-imagery", w.name)
         .attr("cx", ex)
         .attr("cy", ey)
         .attr("r", 4.2)
         .attr("fill", periodDotColor[w.peakPeriod] || periodDotColor["未知"])
-        .on("mousemove", event => showTip(event, `<b>${w.name}</b><br/>峰值时期：${w.peakPeriod}`))
-        .on("mouseleave", hideTip);
+        .on("mousemove", event => { updatePoemCloudByImagery(w.name); showTip(event, `<b>${w.name}</b><br/>峰值时期：${w.peakPeriod}`); })
+        .on("mouseleave", () => { hideTip(); resetPoemCloud(); });
     });
 
     const mid = pointOnHalfArc(moduleIndex, 0.50);
     const dir = directions[moduleIndex] || 1;
-    const titleY = mid.y + dir * 36;
+    const titleY = mid.y + dir * 28;
     svg.append("text")
       .attr("class", "semantic-flow-title")
       .attr("x", mid.x - 56)
@@ -739,11 +1109,19 @@ function drawSemanticMotifModules(poems, categoryStats) {
       .attr("x", mid.x - 12)
       .attr("y", titleY + 2)
       .text(module.name);
+
+    const iconMarks = ["☁", "❦", "山", "✦"];
+    svg.append("text")
+      .attr("class", "semantic-icon-mark")
+      .attr("x", mid.x + segW * 0.26)
+      .attr("y", titleY + dir * 5)
+      .attr("fill", module.color)
+      .text(iconMarks[moduleIndex] || "✦");
   });
 
   panel.append("div")
     .attr("class", "semantic-flow-desc semantic-flow-desc-compact")
-    .html(`四组半圆分别对应天象水文、草木鸟兽、空间行旅与情感典故；每条细轨道代表一个核心意象，弧长表示频次规模，末端色点表示该意象在初唐、盛唐、中唐、晚唐中的峰值时期。`);
+    .html(`四组半圆对应天象水文、草木鸟兽、空间行旅与情感典故；弧长表示频次规模，末端色点表示峰值时期。`);
 
   panel.append("div")
     .attr("class", "semantic-period-legend")
@@ -828,13 +1206,17 @@ function drawChord(poems, coNorm, categoryStats){
   const ribbons = g.append("g").selectAll("path")
     .data(chord)
     .join("path")
+    .attr("class", "cross-view-ribbon")
+    .attr("data-source", d => names[d.source.index])
+    .attr("data-target", d => names[d.target.index])
     .attr("d", ribbon)
     .attr("fill", d => colorFor(names[d.source.index]))
-    .attr("fill-opacity", .22)
+    .attr("fill-opacity", .16)
     .attr("stroke", "rgba(255,255,255,.35)")
     .attr("stroke-width", .3)
     .on("mouseenter", (event,d) => {
       const s = names[d.source.index], t = names[d.target.index];
+      updatePoemCloudByImagery(s);
       showTip(event, `<b>${s} × ${t}</b><br/>共现强度：${matrix[d.source.index][d.target.index].toFixed(1)}`);
       ribbons.classed("fade", x => x.source.index!==d.source.index && x.target.index!==d.source.index && x.source.index!==d.target.index && x.target.index!==d.target.index);
       groups.classed("fade", x => x.index!==d.source.index && x.index!==d.target.index);
@@ -845,6 +1227,7 @@ function drawChord(poems, coNorm, categoryStats){
       ribbons.classed("fade", false);
       groups.classed("fade", false);
       poetLinks.classed("fade", false).classed("active", false);
+      resetPoemCloud();
     });
 
   const groups = g.append("g").selectAll("g")
@@ -852,13 +1235,16 @@ function drawChord(poems, coNorm, categoryStats){
     .join("g");
 
   groups.append("path")
+    .attr("class", "chord-imagery-arc cross-view-imagery")
+    .attr("data-imagery", d => names[d.index])
     .attr("d", arc)
     .attr("fill", d => colorFor(names[d.index]))
-    .attr("fill-opacity", .90)
+    .attr("fill-opacity", .78)
     .attr("stroke", "rgba(250,246,230,.96)")
     .attr("stroke-width", 1)
     .on("mouseenter", (event,d) => {
       const name = names[d.index];
+      updatePoemCloudByImagery(name);
       const total = d3.sum(matrix[d.index]);
       const cat = categoryStats.find(x=>x.name===name)?.category || "未分类";
       showTip(event, `<b>${name}</b><br/>类别：${cat}<br/>共现总量：${total.toFixed(1)}`);
@@ -872,10 +1258,14 @@ function drawChord(poems, coNorm, categoryStats){
       hideTip();
       ribbons.classed("fade", false);
       groups.classed("fade", false);
+      clearGlobalImageryFocus();
+      resetPoemCloud();
       // 意象悬停不再影响诗人 → 意象连线，因此这里不重置外圈连线。
     });
 
   groups.append("text")
+    .attr("class", "chord-imagery-label cross-view-imagery")
+    .attr("data-imagery", d => names[d.index])
     .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
     .attr("dy", ".32em")
     .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${imageryOuterR + 10}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
@@ -924,6 +1314,7 @@ function drawChord(poems, coNorm, categoryStats){
     .on("mouseenter", (event,d) => {
       // 悬停诗人：只高亮相关连线，不弹出文字提示，避免遮挡视野。
       hideTip();
+      updatePoemCloudByPoet(d.data.name);
       const list = poetTopImageryMap.get(d.data.name) || [];
       poetLinks.classed("fade", x => x.author !== d.data.name)
         .classed("active", x => x.author === d.data.name);
@@ -940,6 +1331,7 @@ function drawChord(poems, coNorm, categoryStats){
       poetGroups.selectAll("path").attr("opacity", .88);
       groups.classed("fade", false);
       ribbons.classed("fade", false);
+      resetPoemCloud();
     });
 
   poetGroups.append("text")
@@ -1108,6 +1500,7 @@ function drawChord(poems, coNorm, categoryStats){
     .attr("d", d => circularOuterLinkPath(d))
     .on("mouseenter", (event,d) => {
       hideTip();
+      updatePoemCloudByPoetImagery(d.author, d.imagery);
       poetLinks.classed("fade", x => x !== d).classed("active", x => x === d);
       poetHitLinks.classed("fade", x => x !== d).classed("active", x => x === d);
       ribbons.classed("fade", true);
@@ -1121,6 +1514,7 @@ function drawChord(poems, coNorm, categoryStats){
       ribbons.classed("fade", false);
       groups.classed("fade", false);
       poetGroups.selectAll("path").attr("opacity", .88);
+      resetPoemCloud();
     });
 
   // 让诗人-意象细线位于诗人环和意象环之间，但不遮住内层 chord
@@ -1135,33 +1529,8 @@ function drawChord(poems, coNorm, categoryStats){
 }
 
 function drawBubble(categoryStats){
-  const panel = document.getElementById("bubblePanel");
-  const width = panel.clientWidth, height = panel.clientHeight;
-  const svg = d3.select("#bubbleSvg").attr("viewBox", [0,0,width,height]);
-  svg.selectAll("*").remove();
-
-  svg.append("text").attr("x", 12).attr("y", 20).attr("class", "label").attr("font-size", 13).text("高频意象与类别");
-  svg.append("text").attr("x", 12).attr("y", 43).attr("class", "muted-text").text("气泡大小表示出现诗作数量");
-
-  const data = categoryStats.slice(0, 42).map(d=>({...d, rValue: d.value}));
-  const root = d3.hierarchy({children:data}).sum(d=>d.rValue).sort((a,b)=>b.value-a.value);
-  d3.pack().size([width-20, height-76]).padding(5)(root);
-
-  const g = svg.append("g").attr("transform", "translate(10,58)");
-  const node = g.selectAll("g").data(root.leaves()).join("g").attr("transform", d=>`translate(${d.x},${d.y})`);
-  node.append("circle")
-    .attr("r", d=>d.r)
-    .attr("fill", d => categoryColor.get(d.data.category) || "#999")
-    .attr("fill-opacity", .66)
-    .attr("stroke", "rgba(90,70,50,.26)")
-    .on("mousemove", (event,d) => showTip(event, `<b>${d.data.name}</b><br/>类别：${d.data.category}<br/>出现：${d.data.value} 首`))
-    .on("mouseleave", hideTip);
-  node.filter(d=>d.r>13).append("text")
-    .attr("text-anchor", "middle")
-    .attr("dy", ".35em")
-    .attr("font-size", d=>Math.min(15, d.r*.55))
-    .attr("fill", "#302c23")
-    .text(d=>d.data.name);
+  // 原气泡图替换为“相关诗句词云”。数据由 init() 中的 poemCloudPoems 提供。
+  resetPoemCloud();
 }
 
 const START_YEAR = 648;
@@ -1187,12 +1556,13 @@ const tooltip = d3.select("#tooltip");
 
 function showTip(event, html) {
   tooltip
+    .interrupt()
     .html(html)
-    .style("left", event.clientX + "px")
-    .style("top", event.clientY + "px")
+    .style("left", (event.clientX + 8) + "px")
+    .style("top", (event.clientY - 8) + "px")
     .transition()
-    .duration(100)
-    .style("opacity", 1);
+    .duration(80)
+    .style("opacity", .88);
 }
 
 function hideTip() {
@@ -1459,10 +1829,12 @@ function drawCircularRankFlow(rawData) {
     .selectAll("path")
     .data(lineRuns)
     .join("path")
-    .attr("class", "flow-line")
+    .attr("class", "flow-line cross-view-imagery")
+    .attr("data-imagery", d => d.imagery)
     .attr("d", d => circularPath(d.points, angle, radius))
     .attr("stroke", d => d.color)
     .on("mouseenter", function(event, d) {
+      updatePoemCloudByImagery(d.imagery);
       d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery);
       d3.select(this).classed("active", true);
       const best = d3.min(d.points, p => p.rank);
@@ -1473,6 +1845,7 @@ function drawCircularRankFlow(rawData) {
       d3.selectAll(".flow-line").classed("muted", false);
       d3.select(this).classed("active", false);
       hideTip();
+      resetPoemCloud();
     });
 
   paths.each(function(d) {
@@ -1496,7 +1869,8 @@ function drawCircularRankFlow(rawData) {
     .selectAll("circle")
     .data(displayRows)
     .join("circle")
-    .attr("class", "node")
+    .attr("class", "node cross-view-imagery")
+    .attr("data-imagery", d => d.imagery)
     .attr("cx", d => polarToCartesian(angle(d.bin), radius(d.rank))[0])
     .attr("cy", d => polarToCartesian(angle(d.bin), radius(d.rank))[1])
     .attr("r", 3.9)
@@ -1505,12 +1879,14 @@ function drawCircularRankFlow(rawData) {
       return s ? s.color : "#999";
     })
     .on("mouseenter", function(event, d) {
+      updatePoemCloudByImagery(d.imagery);
       d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery);
       showTip(event, `<b>${d.imagery}</b><br/>时间段：${d.bin}<br/>排名：第 ${d.rank} 名<br/>出现次数：${d.value.toFixed(2)}`);
     })
     .on("mouseleave", function() {
       d3.selectAll(".flow-line").classed("muted", false);
       hideTip();
+      resetPoemCloud();
     });
 
   // 末端标签
@@ -1529,7 +1905,8 @@ function drawCircularRankFlow(rawData) {
     .selectAll("text")
     .data(lastPoints)
     .join("text")
-    .attr("class", "node-label")
+    .attr("class", "node-label cross-view-imagery")
+    .attr("data-imagery", d => d.imagery)
     .attr("x", d => polarToCartesian(angle(d.bin), radius(d.rank) + 18)[0])
     .attr("y", d => polarToCartesian(angle(d.bin), radius(d.rank) + 18)[1])
     .attr("text-anchor", d => {
@@ -1546,10 +1923,11 @@ function drawCircularRankFlow(rawData) {
   legend.selectAll(".legend-item")
     .data(legendData)
     .join("div")
-    .attr("class", "rank-legend-item")
+    .attr("class", "rank-legend-item cross-view-imagery")
+    .attr("data-imagery", d => d.imagery)
     .html(d => `<span class="rank-legend-dot" style="background:${d.color}"></span><span class="rank-legend-name">${d.imagery}</span>`)
-    .on("mouseenter", (event, d) => d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery).classed("active", p => p.imagery === d.imagery))
-    .on("mouseleave", () => d3.selectAll(".flow-line").classed("muted", false).classed("active", false));
+    .on("mouseenter", (event, d) => { updatePoemCloudByImagery(d.imagery); d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery).classed("active", p => p.imagery === d.imagery); })
+    .on("mouseleave", () => { d3.selectAll(".flow-line").classed("muted", false).classed("active", false); resetPoemCloud(); });
 
   svg.append("text")
     .attr("x", width * .06)
@@ -1616,14 +1994,22 @@ function drawTimeline(timelineStats, categoryStats){
 
 async function init(){
   try{
-    const [poems, co, yixiang, rankRaw] = await Promise.all([
+    const [poems, co, yixiang, rankRaw, poemCloudRaw] = await Promise.all([
       d3.json(FILES.poems),
       d3.json(FILES.co),
       d3.csv(FILES.category),
-      d3.json(FILES.rank)
+      d3.json(FILES.rank),
+      d3.json(FILES.poemCloud)
     ]);
 
     const data = aggregateData(poems, co, yixiang);
+
+    // 相关诗句词云单独使用 sampled_1000_imagery_poems.json：
+    // 该文件包含 author、title、paragraphs、matched_imagery 等字段。
+    poemCloudPoems = preparePoemCloudSource(poemCloudRaw, data.categoryMap);
+    poemCloudDefault = poemCloudPoems
+      .sort((a,b) => d3.descending((a.imagery_norm || []).length, (b.imagery_norm || []).length))
+      .slice(0, 120);
     drawChord(data.poems, data.coNorm, data.categoryStats);
     drawSemanticMotifModules(data.poems, data.categoryStats);
     drawBubble(data.categoryStats);
@@ -1633,7 +2019,7 @@ async function init(){
     d3.select(".paper").append("div")
       .style("position","absolute").style("left","40px").style("top","40px").style("z-index",10)
       .style("background","rgba(255,250,235,.95)").style("padding","18px 22px").style("border","1px solid rgba(90,70,50,.2)")
-      .style("line-height","1.8").html(`数据加载失败：<br><b>${err.message}</b><br>请确认 poem_time_visual.json、co_occurrence.json、yixiang.csv、timeline_year_imagery_long.json 与本 HTML 在同一目录，并用本地服务器打开。`);
+      .style("line-height","1.8").html(`数据加载失败：<br><b>${err.message}</b><br>请确认 poem_time_visual.json、co_occurrence.json、yixiang.csv、timeline_year_imagery_long.json、sampled_1000_imagery_poems.json 与本 HTML 在同一目录，并用本地服务器打开。`);
   }
 }
 
