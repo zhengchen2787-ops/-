@@ -1,0 +1,1168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11语言结晶：唐诗意象的时空语义可视化系统 Demo1</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root{
+      --bg:#F4F9F2;
+      --panel:#F4F9F2;
+      --panel2:#ffffff;
+      --text:#24344a;
+      --muted:#5f6f82;
+      --line:rgba(45,67,89,.18);
+      --gold:#c8a86b;
+      --gold2:#e4c98f;
+      --n:#74b5ff;
+      --h:#9ee2b0;
+      --s:#f4bb75;
+      --e:#ec91ba;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);height:100dvh;overflow:hidden}
+    .app{display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:8px;padding:10px;height:100dvh}
+    .header,.toolbar,.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 16px rgba(50,70,90,.08)}
+    .header{padding:12px 16px;display:flex;align-items:center}
+    .header h1{margin:0;font-size:34px;letter-spacing:.03em}
+    .toolbar{padding:8px 12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .tool-group{display:flex;align-items:center;gap:8px}
+    .tool-group label{color:var(--muted);font-size:13px}
+    select,button{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;cursor:pointer}
+    button:hover,select:hover{border-color:rgba(45,67,89,.35)}
+    .layout{
+      display:grid;
+      min-height:0;
+      position:relative;
+      --main-ratio:58;
+      --right-r1:34;
+      --right-r2:33;
+      --right-r3:33;
+      grid-template-columns:minmax(0,calc(var(--main-ratio)*1%)) 8px minmax(0,calc((100 - var(--main-ratio))*1%));
+      grid-template-rows:minmax(0,calc(var(--right-r1)*1%)) 8px minmax(0,calc(var(--right-r2)*1%)) 8px minmax(0,calc(var(--right-r3)*1%));
+      grid-template-areas:
+        "main vsplit side1"
+        "main vsplit hsplit1"
+        "main vsplit side2"
+        "main vsplit hsplit2"
+        "main vsplit side3";
+      gap:0;
+    }
+    .panel{display:grid;grid-template-rows:auto 1fr auto;min-height:0;overflow:hidden;transition:box-shadow 220ms ease,border-color 220ms ease}
+    .panel[data-slot="main"]{grid-area:main}
+    .panel[data-slot="side1"]{grid-area:side1}
+    .panel[data-slot="side2"]{grid-area:side2}
+    .panel[data-slot="side3"]{grid-area:side3}
+    .panel.is-main{border-color:rgba(200,168,107,.55);box-shadow:0 8px 20px rgba(70,80,90,.15)}
+    .panel-header{padding:8px 12px;border-bottom:1px solid var(--line)}
+    .panel-header h2{margin:0;font-size:16px}
+    .panel-header p{display:none}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .view-switch-btn{background:rgba(255,255,255,.85);color:var(--text);border:1px solid rgba(45,67,89,.25);border-radius:8px;padding:4px 8px;font-size:12px;line-height:1.2;cursor:pointer}
+    .view-switch-btn:hover{border-color:rgba(45,67,89,.45)}
+    .view-switch-btn[disabled]{opacity:.65;cursor:default}
+    .chart{position:relative;min-height:0;overflow:hidden;background:var(--bg)}
+    .panel-footer{border-top:1px solid var(--line);padding:6px 10px;color:var(--muted);font-size:11px;line-height:1.3;display:flex;justify-content:space-between;gap:8px}
+    .panel-footer:empty{display:none}
+    svg{display:block;width:100%;height:100%}
+    .legend{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .legend-item{display:inline-flex;gap:6px;align-items:center;font-size:12px}
+    .legend-swatch{width:10px;height:10px;border-radius:999px}
+    .tooltip{position:absolute;pointer-events:none;background:rgba(15,25,40,.92);color:#f3f8ff;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.5;box-shadow:0 10px 24px rgba(0,0,0,.2);opacity:0;transition:opacity 120ms ease;max-width:280px;z-index:10}
+    .node-label{
+      font-family:'KaiTi','STKaiti','SimSun',serif;
+      font-size:12px;
+      fill:#333;
+      pointer-events:none;
+      paint-order:stroke;
+      stroke:#f7f9fc;
+      stroke-width:3px;
+      stroke-linejoin:round;
+    }
+    .status-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--muted);font-size:12px}
+    .small{font-size:11px;color:var(--muted)}
+    .brush .selection{fill:rgba(200,168,107,.24);stroke:var(--gold)}
+    .map-attrib{font-size:10px;color:var(--muted)}
+    .splitter{z-index:5;background:rgba(45,67,89,.15);backdrop-filter:blur(1px);transition:background 120ms ease;user-select:none;touch-action:none}
+    .splitter:hover,.splitter.is-dragging{background:rgba(116,181,255,.5)}
+    .splitter-v{grid-area:vsplit;cursor:col-resize}
+    .splitter-h1{grid-area:hsplit1;cursor:row-resize}
+    .splitter-h2{grid-area:hsplit2;cursor:row-resize}
+    .poet-picker{position:relative}
+    .poet-picker-box{position:relative;width:250px}
+    .poet-search{
+      width:100%;
+      border:1px solid #9cc2f6;
+      border-radius:6px;
+      padding:8px 10px;
+      outline:none;
+      font-size:14px;
+      color:#5f6b7b;
+      background:#fff;
+      margin:0;
+    }
+    .poet-search::placeholder{color:#a3aabc}
+    .poet-tree{
+      position:absolute;
+      top:38px;
+      left:0;
+      width:100%;
+      max-height:420px;
+      overflow:auto;
+      padding:8px 6px;
+      border:1px solid #d5dbd1;
+      border-radius:8px;
+      background:var(--bg);
+      box-shadow:0 8px 20px rgba(50,70,90,.12);
+      z-index:20;
+      display:none;
+    }
+    .poet-picker-box.open .poet-tree{display:block}
+    .poet-hint{font-size:12px;color:#6c7b8c;padding:2px 6px 8px}
+    .poet-empty{font-size:12px;color:#8a96a5;padding:8px 6px;display:none}
+    .poet-empty.show{display:block}
+    .poet-group,.poet-item{display:flex;align-items:center;gap:8px;color:#3b4a61}
+    .poet-group{font-size:16px;padding:7px 0}
+    .poet-item{font-size:15px;padding:6px 0 6px 26px}
+    .poet-group-wrap{margin-bottom:4px}
+    .poet-group-wrap[hidden],.poet-item[hidden]{display:none !important}
+    .poet-toggle{
+      width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:6px solid #556177;cursor:pointer;
+      transition:transform 120ms ease;flex:0 0 auto;
+    }
+    .poet-toggle.expanded{transform:rotate(90deg)}
+    .poet-checkbox{
+      width:18px;height:18px;border:1px solid #c3c8c4;border-radius:3px;accent-color:#78a9ea;flex:0 0 auto;
+    }
+    .poet-children{padding-left:18px}
+    @media (max-width: 1080px){
+      .poet-picker-box{width:210px}
+      .poet-group{font-size:14px}
+      .poet-item{font-size:13px}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>语言结晶：唐诗意象的时空语义可视化系统</h1>
+  </div>
+
+  <div class="toolbar">
+    <div class="tool-group">
+      <label for="period-filter">时段预设</label>
+      <select id="period-filter">
+        <option value="all">全唐</option>
+        <option value="early">初盛唐</option>
+        <option value="war">安史之乱前后</option>
+        <option value="late">中晚唐</option>
+      </select>
+    </div>
+    <div class="tool-group">
+      <label for="topcat-filter">顶级意象类目</label>
+      <select id="topcat-filter">
+        <option value="all">全部</option>
+        <option value="自然">自然</option>
+        <option value="人为">人为</option>
+        <option value="情感">情感</option>
+      </select>
+    </div>
+    <div class="tool-group poet-picker">
+      <label for="poet-search">筛选诗人</label>
+      <div class="poet-picker-box" id="poet-picker-box">
+        <input id="poet-search" class="poet-search" type="text" placeholder="筛选诗人" />
+        <div id="poet-tree" class="poet-tree"></div>
+      </div>
+    </div>
+    <div class="tool-group">
+      <button id="reset-btn">重置筛选</button>
+      <span id="state-indicator" class="status-tag">当前状态：全局概览</span>
+    </div>
+  </div>
+
+  <div class="layout" id="layout-root">
+    <section class="panel" id="network-panel" data-view-id="network">
+      <div class="panel-header">
+        <div class="panel-title">
+          <h2>① 语义关系视口：诗人—意象共现网络</h2>
+          <button class="view-switch-btn" data-view-switch="network">设为主视图</button>
+        </div>
+      </div>
+      <div class="chart" id="network-chart"><div class="tooltip" id="network-tooltip"></div></div>
+      <div class="panel-footer">
+        <div class="legend" id="network-legend"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="voronoi-panel" data-view-id="voronoi">
+      <div class="panel-header">
+        <div class="panel-title">
+          <h2>② 意象层次视口：三层加权沃罗诺伊树图</h2>
+          <button class="view-switch-btn" data-view-switch="voronoi">设为主视图</button>
+        </div>
+      </div>
+      <div class="chart" id="voronoi-chart"><div class="tooltip" id="voronoi-tooltip"></div></div>
+      <div class="panel-footer">
+        <div id="voronoi-breadcrumb" class="small">层级：意象总类</div>
+      </div>
+    </section>
+
+    <section class="panel" id="stream-panel" data-view-id="stream">
+      <div class="panel-header">
+        <div class="panel-title">
+          <h2>③ 时间演进视口：流图</h2>
+          <button class="view-switch-btn" data-view-switch="stream">设为主视图</button>
+        </div>
+      </div>
+      <div class="chart" id="stream-chart"><div class="tooltip" id="stream-tooltip"></div></div>
+      <div class="panel-footer"></div>
+    </section>
+
+    <section class="panel" id="map-panel" data-view-id="map">
+      <div class="panel-header">
+        <div class="panel-title">
+          <h2>④ 空间迁移视口：唐代地图</h2>
+          <button class="view-switch-btn" data-view-switch="map">设为主视图</button>
+        </div>
+      </div>
+      <div class="chart" id="map-chart"><div class="tooltip" id="map-tooltip"></div></div>
+      <div class="panel-footer"></div>
+    </section>
+    <div class="splitter splitter-v" id="splitter-v" title="拖动调整左右宽度"></div>
+    <div class="splitter splitter-h1" id="splitter-h1" title="拖动调整右侧视口高度"></div>
+    <div class="splitter splitter-h2" id="splitter-h2" title="拖动调整右侧视口高度"></div>
+  </div>
+</div>
+
+<script>
+const poets = [
+  {id:'p1',name:'李白',school:'盛唐',years:[725,762],route:['长安','洛阳','江夏','成都']},
+  {id:'p2',name:'杜甫',school:'盛唐',years:[735,770],route:['长安','洛阳','成都','夔州']},
+  {id:'p3',name:'王维',school:'盛唐',years:[720,761],route:['太原','长安','辋川']},
+  {id:'p4',name:'孟浩然',school:'盛唐',years:[710,740],route:['襄阳','长安','吴越']},
+  {id:'p5',name:'岑参',school:'边塞',years:[744,770],route:['长安','凉州','安西','成都']},
+  {id:'p6',name:'高适',school:'边塞',years:[738,765],route:['梁宋','长安','蓟北','蜀中']},
+  {id:'p7',name:'王昌龄',school:'边塞',years:[727,756],route:['长安','龙标','江宁']},
+  {id:'p8',name:'白居易',school:'中唐',years:[798,846],route:['长安','江州','杭州','洛阳']},
+  {id:'p9',name:'元稹',school:'中唐',years:[800,831],route:['长安','通州','越州']},
+  {id:'p10',name:'刘禹锡',school:'中唐',years:[793,842],route:['长安','朗州','夔州','和州','洛阳']},
+  {id:'p11',name:'柳宗元',school:'中唐',years:[793,819],route:['长安','永州','柳州']},
+  {id:'p12',name:'韩愈',school:'中唐',years:[790,824],route:['长安','潮州','袁州']},
+  {id:'p13',name:'李贺',school:'中唐',years:[806,816],route:['福昌','长安']},
+  {id:'p14',name:'温庭筠',school:'晚唐',years:[830,866],route:['太原','长安','江陵']},
+  {id:'p15',name:'李商隐',school:'晚唐',years:[835,858],route:['怀州','长安','桂林']},
+  {id:'p16',name:'杜牧',school:'晚唐',years:[828,852],route:['长安','扬州','黄州','池州']},
+  {id:'p17',name:'贾岛',school:'晚唐',years:[810,843],route:['长安','普州']},
+  {id:'p18',name:'韦应物',school:'中唐',years:[770,792],route:['长安','苏州','滁州']},
+  {id:'p19',name:'张九龄',school:'开元',years:[705,740],route:['曲江','长安','岭南']},
+  {id:'p20',name:'陈子昂',school:'初唐',years:[688,702],route:['射洪','长安','蓟北']}
+];
+
+const places = {
+  '长安':[374,162],'洛阳':[432,176],'江夏':[492,256],'成都':[280,274],'夔州':[362,292],
+  '太原':[396,126],'辋川':[366,180],'襄阳':[456,226],'吴越':[610,308],'凉州':[202,122],
+  '安西':[118,106],
+  '梁宋':[470,184],'蓟北':[512,96],'蜀中':[292,268],'龙标':[418,318],'江宁':[582,286],
+  '江州':[526,268],'杭州':[636,292],'通州':[414,226],'越州':[624,300],'朗州':[420,302],
+  '和州':[560,262],'永州':[462,346],'柳州':[430,392],'潮州':[560,402],'袁州':[520,310],
+  '福昌':[438,184],'怀州':[430,162],'桂林':[448,402],'扬州':[586,242],'黄州':[532,232],
+  '池州':[568,286],'普州':[300,278],'苏州':[640,286],'滁州':[590,258],'曲江':[382,166],
+  '江陵':[502,304],
+  '岭南':[484,418],'射洪':[308,246]
+};
+
+const images = [
+  // 自然 / 天象
+  {id:'i1',name:'月',top:'自然',second:'天象',profile:{700:18,720:22,740:29,760:24,780:22,800:20,820:18,840:17}},
+  {id:'i2',name:'日',top:'自然',second:'天象',profile:{700:7,720:8,740:10,760:8,780:7,800:6,820:5,840:5}},
+  {id:'i3',name:'星',top:'自然',second:'天象',profile:{700:6,720:7,740:9,760:7,780:6,800:6,820:5,840:4}},
+  {id:'i4',name:'云',top:'自然',second:'天象',profile:{700:11,720:13,740:15,760:14,780:12,800:11,820:10,840:9}},
+  // 自然 / 物候
+  {id:'i5',name:'风',top:'自然',second:'物候',profile:{700:12,720:16,740:18,760:17,780:15,800:13,820:12,840:11}},
+  {id:'i6',name:'雪',top:'自然',second:'物候',profile:{700:8,720:10,740:11,760:12,780:11,800:10,820:10,840:11}},
+  {id:'i7',name:'霜',top:'自然',second:'物候',profile:{700:5,720:7,740:8,760:10,780:12,800:14,820:16,840:18}},
+  {id:'i8',name:'雨',top:'自然',second:'物候',profile:{700:7,720:9,740:11,760:12,780:11,800:11,820:10,840:9}},
+  // 自然 / 山水
+  {id:'i9',name:'山',top:'自然',second:'山水',profile:{700:14,720:17,740:20,760:18,780:16,800:15,820:13,840:12}},
+  {id:'i10',name:'江',top:'自然',second:'山水',profile:{700:9,720:10,740:12,760:15,780:16,800:18,820:19,840:18}},
+  {id:'i11',name:'海',top:'自然',second:'山水',profile:{700:4,720:5,740:6,760:7,780:7,800:8,820:8,840:7}},
+  {id:'i12',name:'柳',top:'自然',second:'山水',profile:{700:9,720:12,740:14,760:13,780:12,800:11,820:10,840:10}},
+  // 人为 / 地理
+  {id:'i13',name:'长安',top:'人为',second:'地理',profile:{700:12,720:18,740:24,760:15,780:13,800:10,820:8,840:6}},
+  {id:'i14',name:'洛阳',top:'人为',second:'地理',profile:{700:8,720:10,740:12,760:11,780:11,800:10,820:9,840:8}},
+  {id:'i15',name:'边关',top:'人为',second:'地理',profile:{700:10,720:13,740:18,760:16,780:10,800:7,820:6,840:5}},
+  {id:'i16',name:'江南',top:'人为',second:'地理',profile:{700:4,720:5,740:6,760:9,780:11,800:14,820:17,840:18}},
+  // 人为 / 器物
+  {id:'i17',name:'酒',top:'人为',second:'器物',profile:{700:10,720:14,740:18,760:16,780:14,800:12,820:11,840:10}},
+  {id:'i18',name:'琴',top:'人为',second:'器物',profile:{700:7,720:8,740:9,760:8,780:8,800:7,820:6,840:6}},
+  {id:'i19',name:'剑',top:'人为',second:'器物',profile:{700:8,720:10,740:13,760:11,780:9,800:8,820:6,840:5}},
+  {id:'i20',name:'舟',top:'人为',second:'器物',profile:{700:5,720:7,740:8,760:10,780:12,800:14,820:15,840:15}},
+  {id:'i21',name:'灯',top:'人为',second:'器物',profile:{700:4,720:5,740:6,760:7,780:8,800:9,820:9,840:10}},
+  {id:'i22',name:'钟',top:'人为',second:'器物',profile:{700:5,720:5,740:6,760:6,780:6,800:7,820:8,840:8}},
+  // 人为 / 宫室
+  {id:'i23',name:'宫阙',top:'人为',second:'宫室',profile:{700:9,720:13,740:16,760:10,780:8,800:6,820:5,840:5}},
+  {id:'i24',name:'城',top:'人为',second:'宫室',profile:{700:8,720:9,740:10,760:10,780:9,800:9,820:8,840:8}},
+  // 情感 / 思乡
+  {id:'i25',name:'乡愁',top:'情感',second:'思乡',profile:{700:5,720:6,740:8,760:12,780:13,800:14,820:15,840:16}},
+  {id:'i26',name:'归',top:'情感',second:'思乡',profile:{700:6,720:7,740:8,760:11,780:12,800:12,820:13,840:14}},
+  {id:'i27',name:'离愁',top:'情感',second:'离别',profile:{700:6,720:8,740:9,760:11,780:13,800:14,820:16,840:17}},
+  {id:'i28',name:'孤',top:'情感',second:'离别',profile:{700:4,720:5,740:7,760:10,780:12,800:14,820:16,840:18}},
+  // 情感 / 忧乱
+  {id:'i29',name:'乱',top:'情感',second:'忧乱',profile:{700:2,720:2,740:3,760:15,780:11,800:8,820:7,840:6}},
+  {id:'i30',name:'哀',top:'情感',second:'忧乱',profile:{700:3,720:4,740:5,760:11,780:12,800:11,820:12,840:13}}
+];
+
+const poetImageMap = {
+  '李白':['月','酒','剑','长安','山','江','云'],
+  '杜甫':['乱','哀','乡愁','长安','城','江','归'],
+  '王维':['山','云','月','琴','柳','归'],
+  '孟浩然':['山','江','风','柳','云'],
+  '岑参':['边关','雪','风','剑','城'],
+  '高适':['边关','酒','风','日','城'],
+  '王昌龄':['边关','月','城','剑'],
+  '白居易':['江南','舟','乡愁','灯','归','哀'],
+  '元稹':['离愁','酒','归','灯'],
+  '刘禹锡':['江','城','归','酒','钟'],
+  '柳宗元':['孤','江','舟','归','哀'],
+  '韩愈':['城','长安','风','云'],
+  '李贺':['月','孤','灯','剑','哀'],
+  '温庭筠':['灯','月','离愁','宫阙','江南'],
+  '李商隐':['霜','残蝉','月','宫阙','离愁'].filter(Boolean),
+  '杜牧':['江南','宫阙','酒','灯','城'],
+  '贾岛':['孤','霜','钟','月'],
+  '韦应物':['江南','舟','雨','柳','归'],
+  '张九龄':['月','长安','云','风'],
+  '陈子昂':['蓟北','边关','风','哀'].filter(Boolean)
+};
+
+// 替换不存在的意象名，保持30个词集合内
+poetImageMap['李商隐'] = ['霜','月','宫阙','离愁','孤'];
+poetImageMap['陈子昂'] = ['边关','风','哀','月'];
+
+const imageByName = new Map(images.map(d=>[d.name,d]));
+const poetByName = new Map(poets.map(d=>[d.name,d]));
+
+// --- 缺失的全局状态与配置代码补充 ---
+
+// 1. 定义全局状态对象
+const state = {
+  currentMainViewId: 'network',
+  selectedTop: 'all',
+  selectedImage: null,
+  hoveredImage: null,
+  selectedPoet: null,
+  selectedPoetNames: new Set(),
+  timeRange: [700, 850],
+  preset: 'all',
+  focusPath: [],
+  layout: { mainRatio:58, rightR1:34, rightR2:33, rightR3:33 }
+};
+
+// 2. 定义事件调度器
+const dispatch = d3.dispatch('hoverImage', 'imageSelect', 'poetSelect', 'timeChange', 'topChange', 'reset');
+
+// 3. 定义时间段预设的匹配逻辑
+function matchesPreset(year) {
+  if (state.preset === 'all') return true;
+  if (state.preset === 'early') return year < 755;
+  if (state.preset === 'war') return year >= 755 && year <= 765;
+  if (state.preset === 'late') return year > 765;
+  return true;
+}
+
+// 4. 定义意象权重计算函数
+function totalWeight(profile) {
+  let sum = 0;
+  for (const year in profile) {
+    const y = parseInt(year);
+    if (y >= state.timeRange[0] && y <= state.timeRange[1] && matchesPreset(y)) {
+      sum += profile[year];
+    }
+  }
+  return sum;
+}
+
+// 5. 根据 poetImageMap 动态生成网络图的连线数据
+const links = [];
+poets.forEach(poet => {
+  const imgNames = poetImageMap[poet.name];
+  if (imgNames) {
+    imgNames.forEach(imgName => {
+      const img = imageByName.get(imgName);
+      if (img) {
+        links.push({ source: poet.id, target: img.id, type: 'poet-image' });
+      }
+    });
+  }
+});
+
+const colorTop = {自然:'var(--n)',人为:'var(--s)',情感:'var(--e)'};
+const schoolColors = {
+  '初唐':'#8cc0ff','开元':'#73d6a0','盛唐':'#e8c077','边塞':'#f19a6a','中唐':'#b8a2ff','晚唐':'#ea96c0'
+};
+
+function cssVar(name){return getComputedStyle(document.documentElement).getPropertyValue(name).trim()}
+function activePoets(){
+  if(state.selectedPoetNames.size===poets.length) return poets;
+  return poets.filter(p=>state.selectedPoetNames.has(p.name));
+}
+function activePoetLinks(){
+  const allowedPoets = new Set(activePoets().map(d=>d.id));
+  return links.filter(l=>allowedPoets.has(l.source));
+}
+function activeImages(){
+  const poetLinkedImages = new Set(activePoetLinks().map(d=>d.target));
+  return images.filter(img=> {
+    const topOk = state.selectedTop==='all' || img.top===state.selectedTop;
+    const weightOk = totalWeight(img.profile)>0;
+    const poetOk = state.selectedPoetNames.size===poets.length || poetLinkedImages.has(img.id);
+    return topOk && weightOk && poetOk;
+  });
+}
+function activeLinks(){
+  const allowedImages = new Set(activeImages().map(d=>d.id));
+  return activePoetLinks().filter(l=>allowedImages.has(l.target));
+}
+const viewOrder = ['network','voronoi','stream','map'];
+const layoutRoot = document.getElementById('layout-root');
+const splitterV = document.getElementById('splitter-v');
+const splitterH1 = document.getElementById('splitter-h1');
+const splitterH2 = document.getElementById('splitter-h2');
+const poetTreeEl = document.getElementById('poet-tree');
+const poetSearchEl = document.getElementById('poet-search');
+const poetPickerBox = document.getElementById('poet-picker-box');
+const viewPanels = {
+  network: document.getElementById('network-panel'),
+  voronoi: document.getElementById('voronoi-panel'),
+  stream: document.getElementById('stream-panel'),
+  map: document.getElementById('map-panel')
+};
+const schoolOrder = ['初唐','开元','盛唐','边塞','中唐','晚唐'];
+const poetTreeData = schoolOrder.map(school=>({
+  school,
+  poets: poets.filter(p=>p.school===school).map(p=>p.name)
+})).filter(group=>group.poets.length>0);
+
+function applyLayoutSplit(){
+  layoutRoot.style.setProperty('--main-ratio', state.layout.mainRatio);
+  layoutRoot.style.setProperty('--right-r1', state.layout.rightR1);
+  layoutRoot.style.setProperty('--right-r2', state.layout.rightR2);
+  layoutRoot.style.setProperty('--right-r3', state.layout.rightR3);
+}
+function applyViewLayout(){
+  const currentIdx = viewOrder.indexOf(state.currentMainViewId);
+  if(currentIdx > 0){
+    [viewOrder[0], viewOrder[currentIdx]] = [viewOrder[currentIdx], viewOrder[0]];
+  }
+  viewOrder.forEach((id, idx)=>{
+    const panel = viewPanels[id];
+    const slot = idx===0 ? 'main' : `side${idx}`;
+    panel.dataset.slot = slot;
+    panel.classList.toggle('is-main', idx===0);
+    const btn = panel.querySelector('.view-switch-btn');
+    if(btn){
+      btn.textContent = idx===0 ? '还原默认' : '设为主视图';
+      btn.disabled = idx===0 && id==='network';
+      btn.title = idx===0 ? '恢复语义关系视图为主视图' : '切换为左侧主视图';
+    }
+  });
+}
+function mountPoetTree(){
+  poetTreeEl.innerHTML = '';
+  const hint = document.createElement('div');
+  hint.className = 'poet-hint';
+  hint.textContent = '输入关键词筛选，可按诗人名或时期匹配';
+  poetTreeEl.appendChild(hint);
+  poetTreeData.forEach(group=>{
+    const wrap = document.createElement('div');
+    wrap.className = 'poet-group-wrap';
+    wrap.dataset.group = group.school;
+
+    const groupRow = document.createElement('div');
+    groupRow.className = 'poet-group';
+
+    const toggle = document.createElement('span');
+    toggle.className = 'poet-toggle expanded';
+    toggle.addEventListener('click', ()=>{
+      const expanded = childrenWrap.hidden;
+      childrenWrap.hidden = !expanded;
+      toggle.classList.toggle('expanded', expanded);
+    });
+
+    const groupCheckbox = document.createElement('input');
+    groupCheckbox.type = 'checkbox';
+    groupCheckbox.className = 'poet-checkbox';
+    groupCheckbox.checked = true;
+
+    const groupLabel = document.createElement('span');
+    groupLabel.textContent = group.school;
+    groupLabel.style.userSelect = 'none';
+
+    groupRow.append(toggle, groupCheckbox, groupLabel);
+
+    const childrenWrap = document.createElement('div');
+    childrenWrap.className = 'poet-children';
+
+    group.poets.forEach(name=>{
+      const row = document.createElement('label');
+      row.className = 'poet-item';
+      row.dataset.poetName = name;
+      row.dataset.group = group.school;
+
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.className = 'poet-checkbox poet-child-checkbox';
+      cb.dataset.poetName = name;
+      cb.checked = true;
+
+      const text = document.createElement('span');
+      text.textContent = name;
+      text.style.userSelect = 'none';
+
+      row.append(cb, text);
+      childrenWrap.appendChild(row);
+    });
+
+    groupCheckbox.addEventListener('change', ()=>{
+      childrenWrap.querySelectorAll('.poet-child-checkbox').forEach(cb=>{ cb.checked = groupCheckbox.checked; });
+      syncPoetFilterFromTree();
+    });
+    childrenWrap.addEventListener('change', event=>{
+      if(!(event.target instanceof HTMLInputElement) || !event.target.classList.contains('poet-child-checkbox')) return;
+      const children = [...childrenWrap.querySelectorAll('.poet-child-checkbox')];
+      const checkedCount = children.filter(cb=>cb.checked).length;
+      groupCheckbox.checked = checkedCount === children.length;
+      groupCheckbox.indeterminate = checkedCount > 0 && checkedCount < children.length;
+      syncPoetFilterFromTree();
+    });
+
+    wrap.append(groupRow, childrenWrap);
+    poetTreeEl.appendChild(wrap);
+  });
+  const empty = document.createElement('div');
+  empty.className = 'poet-empty';
+  empty.id = 'poet-empty-tip';
+  empty.textContent = '未找到匹配诗人';
+  poetTreeEl.appendChild(empty);
+}
+function syncPoetFilterFromTree(){
+  const checked = [...document.querySelectorAll('.poet-child-checkbox:checked')].map(el=>el.dataset.poetName);
+  state.selectedPoetNames = new Set(checked);
+  if(state.selectedPoet && !state.selectedPoetNames.has(state.selectedPoet)) state.selectedPoet = null;
+  updateIndicator(state.selectedPoetNames.size===poets.length ? '全局概览' : `诗人筛选：${state.selectedPoetNames.size}人`);
+  rerender();
+}
+function resetPoetFilterTree(){
+  document.querySelectorAll('.poet-child-checkbox').forEach(cb=>{ cb.checked = true; });
+  document.querySelectorAll('.poet-group-wrap').forEach(groupEl=>{
+    const groupCb = groupEl.querySelector('.poet-group .poet-checkbox');
+    if(groupCb){
+      groupCb.checked = true;
+      groupCb.indeterminate = false;
+    }
+    const children = groupEl.querySelector('.poet-children');
+    const toggle = groupEl.querySelector('.poet-toggle');
+    if(children && toggle){
+      children.hidden = false;
+      toggle.classList.add('expanded');
+    }
+  });
+  poetSearchEl.value = '';
+  poetPickerBox.classList.remove('open');
+  applyPoetSearch('');
+}
+function applyPoetSearch(keyword){
+  const text = keyword.trim().toLowerCase();
+  let totalVisible = 0;
+  document.querySelectorAll('.poet-group-wrap').forEach(groupEl=>{
+    const group = groupEl.dataset.group || '';
+    let groupMatched = group.toLowerCase().includes(text);
+    let visibleCount = 0;
+    groupEl.querySelectorAll('.poet-item').forEach(row=>{
+      const name = row.dataset.poetName || '';
+      const matched = !text || groupMatched || name.toLowerCase().includes(text);
+      row.hidden = !matched;
+      if(matched) visibleCount += 1;
+    });
+    totalVisible += visibleCount;
+    groupEl.hidden = visibleCount===0 && !groupMatched;
+  });
+  const emptyTip = document.getElementById('poet-empty-tip');
+  if(emptyTip) emptyTip.classList.toggle('show', totalVisible===0);
+}
+function mountLayoutSplitters(){
+  const onMove = (event)=>{
+    if(splitterV.classList.contains('is-dragging')){
+      const rect = layoutRoot.getBoundingClientRect();
+      const ratio = ((event.clientX - rect.left) / rect.width) * 100;
+      state.layout.mainRatio = Math.max(32, Math.min(76, ratio));
+      applyLayoutSplit();
+      rerender('resize');
+    }
+    if(splitterH1.classList.contains('is-dragging') || splitterH2.classList.contains('is-dragging')){
+      const rect = layoutRoot.getBoundingClientRect();
+      const yRatio = ((event.clientY - rect.top) / rect.height) * 100;
+      let p1 = state.layout.rightR1;
+      let p2 = state.layout.rightR1 + state.layout.rightR2;
+      if(splitterH1.classList.contains('is-dragging')) p1 = yRatio;
+      if(splitterH2.classList.contains('is-dragging')) p2 = yRatio;
+      p1 = Math.max(16, Math.min(72, p1));
+      p2 = Math.max(p1 + 16, Math.min(88, p2));
+      state.layout.rightR1 = p1;
+      state.layout.rightR2 = p2 - p1;
+      state.layout.rightR3 = 100 - p2;
+      applyLayoutSplit();
+      rerender('resize');
+    }
+  };
+  const clearDrag = ()=>{
+    [splitterV, splitterH1, splitterH2].forEach(s=>s.classList.remove('is-dragging'));
+  };
+  splitterV.addEventListener('pointerdown', ()=> splitterV.classList.add('is-dragging'));
+  splitterH1.addEventListener('pointerdown', ()=> splitterH1.classList.add('is-dragging'));
+  splitterH2.addEventListener('pointerdown', ()=> splitterH2.classList.add('is-dragging'));
+  window.addEventListener('pointermove', onMove);
+  window.addEventListener('pointerup', clearDrag);
+}
+function switchMainView(targetId){
+  if(!viewPanels[targetId]) return;
+  if(targetId === state.currentMainViewId){
+    if(targetId === 'network') return;
+    state.currentMainViewId = 'network';
+  }else{
+    state.currentMainViewId = targetId;
+  }
+  applyViewLayout();
+  rerender();
+}
+document.querySelectorAll('[data-view-switch]').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchMainView(btn.dataset.viewSwitch));
+});
+function getHierarchy(){
+  const filtered = activeImages();
+  const root = {name:'意象总类', key:'root', children:[]};
+  const byTop = d3.group(filtered, d=>d.top, d=>d.second);
+  for(const [top, secondMap] of byTop){
+    const topNode = {name:top, key:`top-${top}`, value:0, children:[]};
+    for(const [second, arr] of secondMap){
+      const secondNode = {name:second, key:`sec-${top}-${second}`, value:0, children:[]};
+      arr.forEach(img=>{
+        const v = totalWeight(img.profile);
+        secondNode.children.push({name:img.name,key:img.id,value:v,top:img.top,second:img.second});
+        secondNode.value += v;
+      });
+      topNode.children.push(secondNode);
+      topNode.value += secondNode.value;
+    }
+    root.children.push(topNode);
+  }
+  return root;
+}
+function hierarchyAtFocus(){
+  let node = getHierarchy();
+  for(const step of state.focusPath){
+    const next = node.children?.find(d=>d.name===step);
+    if(next) node = next;
+  }
+  return node;
+}
+function showTooltip(id, html, event){
+  const tt=document.getElementById(id);
+  tt.innerHTML=html;tt.style.opacity=1;
+  const rect=tt.parentElement.getBoundingClientRect();
+  tt.style.left=`${event.clientX-rect.left+12}px`;
+  tt.style.top=`${event.clientY-rect.top+12}px`;
+}
+function hideTooltip(id){document.getElementById(id).style.opacity=0}
+function updateIndicator(text){document.getElementById('state-indicator').textContent=`当前状态：${text}`}
+function mountSVG(id){const el=document.getElementById(id);const {width,height}=el.getBoundingClientRect();const svg=d3.select(el).append('svg').attr('viewBox',[0,0,width,height]);return {svg,el}}
+function legend(id, items){const wrap=d3.select(`#${id}`);wrap.selectAll('*').remove();items.forEach(it=>{const d=wrap.append('div').attr('class','legend-item');d.append('span').attr('class','legend-swatch').style('background',it.color);d.append('span').text(it.label)})}
+
+// --- 网络视图 ---
+const network = (()=>{
+  const {svg,el}=mountSVG('network-chart');
+  let width=0,height=0;
+  const g=svg.append('g');
+  const linkLayer=g.append('g');
+  const nodeLayer=g.append('g');
+  const labelLayer=g.append('g');
+  const nodeState = new Map();
+  let lastDataKey = '';
+  let hoverNodeId = null;
+  const adjacency = new Map();
+  const linkSetByNode = new Map();
+  const networkConfig = {
+    defaultLinkOpacity: 0.24,
+    isolatedOpacity: 0.05,
+    blendMode: 'multiply'
+  };
+  svg.call(d3.zoom().scaleExtent([.6,2.5]).on('zoom', e=>g.attr('transform',e.transform)));
+  linkLayer.style('mix-blend-mode', networkConfig.blendMode);
+
+  const schoolYRatio = {'初唐':0.16,'开元':0.26,'盛唐':0.38,'边塞':0.5,'中唐':0.66,'晚唐':0.82};
+  const topYRatio = {'自然':0.3,'人为':0.5,'情感':0.72};
+  const topXRatio = {'自然':0.72,'人为':0.8,'情感':0.88};
+  const sim=d3.forceSimulation()
+    .force('link',d3.forceLink().id(d=>d.id).distance(d=>d.type==='poet'?136:96).strength(.32))
+    .force('charge',d3.forceManyBody().strength(d=>d.type==='poet'?-96:-52))
+    .force('x', d3.forceX(d=>d.type==='poet' ? width*0.26 : (topXRatio[d.top] || 0.8) * width).strength(d=>d.type==='poet'?0.2:0.35))
+    .force('y', d3.forceY(d=>d.type==='poet' ? (schoolYRatio[d.school] || 0.5) * height : (topYRatio[d.top] || 0.5) * height).strength(d=>d.type==='poet'?0.32:0.2))
+    .force('collide',d3.forceCollide().radius(d=>d.type==='poet'?18:12));
+
+  function drag(sim){
+    function start(event,d){if(!event.active) sim.alphaTarget(.3).restart(); d.fx=d.x;d.fy=d.y}
+    function move(event,d){d.fx=event.x;d.fy=event.y}
+    function end(event,d){if(!event.active) sim.alphaTarget(0); d.fx=null;d.fy=null}
+    return d3.drag().on('start',start).on('drag',move).on('end',end)
+  }
+  function path(d){
+    const sx=d.source.x, sy=d.source.y, tx=d.target.x, ty=d.target.y;
+    const bundleX = width*0.52;
+    const bundleY = ((schoolYRatio[d.source.school] || 0.5) * height + (topYRatio[d.target.top] || 0.5) * height) * 0.5;
+    const c1x = sx + (bundleX - sx) * 0.62;
+    const c1y = sy + (bundleY - sy) * 0.42;
+    const c2x = tx + (bundleX - tx) * 0.62;
+    const c2y = ty + (bundleY - ty) * 0.42;
+    return `M${sx},${sy} C${c1x},${c1y} ${c2x},${c2y} ${tx},${ty}`;
+  }
+  function applyNodeLayer(){
+    linkLayer.selectAll('path').attr('d',path);
+    nodeLayer.selectAll('circle').attr('cx',d=>d.x).attr('cy',d=>d.y);
+    labelLayer.selectAll('text')
+      .attr('text-anchor',d=>d.type==='poet' ? 'end' : 'start')
+      .attr('x',d=>d.x + (d.type==='poet' ? -15 : 15))
+      .attr('y',d=>d.y + 4);
+  }
+  function buildAdjacency(lines){
+    adjacency.clear();
+    linkSetByNode.clear();
+    lines.forEach(l=>{
+      const a = l.source.id;
+      const b = l.target.id;
+      if(!adjacency.has(a)) adjacency.set(a, new Set());
+      if(!adjacency.has(b)) adjacency.set(b, new Set());
+      adjacency.get(a).add(b);
+      adjacency.get(b).add(a);
+      const key = `${a}|${b}`;
+      if(!linkSetByNode.has(a)) linkSetByNode.set(a, new Set());
+      if(!linkSetByNode.has(b)) linkSetByNode.set(b, new Set());
+      linkSetByNode.get(a).add(key);
+      linkSetByNode.get(b).add(key);
+      l.key = key;
+    });
+  }
+  function applyVisualState(withTransition=false){
+    const image=state.selectedImage ?? state.hoveredImage;
+    const poet=state.selectedPoet;
+    const activeSelection = !!(image || poet);
+    const relevantLinks = activeLinks();
+    const relevantSet = new Set(relevantLinks.map(l=>`${l.source}|${l.target}`));
+    const isRelatedToSelection = (node)=>{
+      if(!activeSelection) return true;
+      if(image && node.type==='image') return node.name===image;
+      if(poet && node.type==='poet') return node.name===poet;
+      if(image && node.type==='poet') return relevantLinks.some(l=>poetByName.get(node.name)?.id===l.source && imageByName.get(image)?.id===l.target);
+      if(poet && node.type==='image') return relevantLinks.some(l=>poetByName.get(poet)?.id===l.source && imageByName.get(node.name)?.id===l.target);
+      return true;
+    };
+
+    const nodeSel = nodeLayer.selectAll('circle');
+    const labelSel = labelLayer.selectAll('text');
+    const linkSel = linkLayer.selectAll('path');
+    const nodeOp = d=>{
+      if(hoverNodeId){
+        if(d.id===hoverNodeId) return 1;
+        return adjacency.get(hoverNodeId)?.has(d.id) ? 1 : networkConfig.isolatedOpacity;
+      }
+      if(!activeSelection) return 0.95;
+      return isRelatedToSelection(d) ? 1 : 0.12;
+    };
+    const labelOp = d=>{
+      if(hoverNodeId) return (d.id===hoverNodeId || adjacency.get(hoverNodeId)?.has(d.id)) ? 1 : 0.08;
+      if(!activeSelection) return 0.9;
+      return isRelatedToSelection(d) ? 1 : 0.15;
+    };
+    const labelWeight = d=>{
+      if(hoverNodeId && d.id===hoverNodeId) return 700;
+      if(hoverNodeId && adjacency.get(hoverNodeId)?.has(d.id)) return 600;
+      return 500;
+    };
+    const labelSize = d=>{
+      const base = d.labelSize || 12;
+      if(hoverNodeId && d.id===hoverNodeId) return `${base + 1.6}px`;
+      if(hoverNodeId && adjacency.get(hoverNodeId)?.has(d.id)) return `${base + 0.8}px`;
+      return `${base}px`;
+    };
+    const linkOp = d=>{
+      if(hoverNodeId){
+        return linkSetByNode.get(hoverNodeId)?.has(d.key) ? 0.92 : networkConfig.isolatedOpacity;
+      }
+      if(!activeSelection) return networkConfig.defaultLinkOpacity;
+      return relevantSet.has(`${d.source.id}|${d.target.id}`) ? 0.9 : 0.08;
+    };
+    const linkStroke = d=>{
+      if(hoverNodeId && linkSetByNode.get(hoverNodeId)?.has(d.key)) return cssVar(d.target.top==='自然'?'--n':d.target.top==='人为'?'--s':'--e');
+      if(!hoverNodeId && activeSelection && relevantSet.has(`${d.source.id}|${d.target.id}`)) return cssVar(d.target.top==='自然'?'--n':d.target.top==='人为'?'--s':'--e');
+      return '#8ca0b5';
+    };
+    const linkWidth = d=>{
+      if(hoverNodeId && linkSetByNode.get(hoverNodeId)?.has(d.key)) return d.strokeW + 0.8;
+      if(!hoverNodeId && activeSelection && relevantSet.has(`${d.source.id}|${d.target.id}`)) return d.strokeW + 0.6;
+      return d.strokeW;
+    };
+    const nodeStrokeW = d=>{
+      if(hoverNodeId){
+        if(d.id===hoverNodeId || adjacency.get(hoverNodeId)?.has(d.id)) return d.type==='poet' ? 1.7 : 1.4;
+        return 0.7;
+      }
+      if(activeSelection){
+        return isRelatedToSelection(d) ? (d.type==='poet'?1.6:1.3) : 0.8;
+      }
+      return d.type==='poet' ? 1.4 : 1;
+    };
+
+    if(withTransition){
+      linkSel.transition().duration(200).attr('stroke-opacity',linkOp).attr('stroke',linkStroke).attr('stroke-width',linkWidth);
+      nodeSel.transition().duration(200).attr('opacity',nodeOp).attr('stroke-width',nodeStrokeW);
+      labelSel.transition().duration(200).attr('opacity',labelOp).style('font-weight',labelWeight).style('font-size',labelSize);
+    }else{
+      linkSel.attr('stroke-opacity',linkOp).attr('stroke',linkStroke).attr('stroke-width',linkWidth);
+      nodeSel.attr('opacity',nodeOp).attr('stroke-width',nodeStrokeW);
+      labelSel.attr('opacity',labelOp).style('font-weight',labelWeight).style('font-size',labelSize);
+    }
+  }
+  function render(mode='data'){
+    const rect = el.getBoundingClientRect();
+    const prevWidth = width || Math.max(220, rect.width);
+    const prevHeight = height || Math.max(220, rect.height);
+    width = Math.max(220, rect.width);
+    height = Math.max(220, rect.height);
+    svg.attr('viewBox',[0,0,width,height]);
+    const imgs = activeImages();
+    const imgIds = new Set(imgs.map(d=>d.id));
+    const lks = activeLinks().filter(l=>imgIds.has(l.target));
+    const poetIds = new Set(lks.map(d=>d.source));
+    const pnodes = poets.filter(d=>poetIds.has(d.id)).map(d=>({...d,type:'poet'}));
+    const inodes = imgs.map(d=>({...d,type:'image',weight:totalWeight(d.profile)}));
+    pnodes.forEach(d=>{ d.labelSize = 12.2; });
+    inodes.forEach(d=>{ d.labelSize = Math.max(11.4, Math.min(13.8, 11.4 + (d.weight || 0) / 95)); });
+    const nodes=[...pnodes,...inodes];
+    const map=new Map(nodes.map(d=>[d.id,d]));
+    const lines=lks.map(d=>({...d,source:map.get(d.source),target:map.get(d.target),activeWeight:Math.max(1,totalWeight(map.get(d.target).profile)/12)}));
+    const weightExtent = d3.extent(lines, d=>d.activeWeight);
+    const minW = weightExtent[0] ?? 1;
+    const maxW = weightExtent[1] ?? 1;
+    const widthScale = (maxW===minW) ? (()=>2.5) : d3.scaleLinear().domain([minW, maxW]).range([1,5]);
+    lines.forEach(l=>{ l.strokeW = widthScale(l.activeWeight); });
+    buildAdjacency(lines);
+    const dataKey = `${nodes.map(d=>d.id).sort().join(',')}|${lines.map(d=>`${d.source.id}-${d.target.id}`).sort().join(',')}`;
+    const sameData = dataKey===lastDataKey;
+
+    pnodes.forEach((d,i)=>{
+      const prev = nodeState.get(d.id);
+      if(prev){
+        d.x = prev.x; d.y = prev.y; d.vx = prev.vx; d.vy = prev.vy;
+      }else{
+        d.x = width*0.2 + (i%4)*28;
+        d.y = (schoolYRatio[d.school] || 0.5) * height + ((i%3)-1)*14;
+      }
+    });
+    inodes.forEach((d,i)=>{
+      const prev = nodeState.get(d.id);
+      if(prev){
+        d.x = prev.x; d.y = prev.y; d.vx = prev.vx; d.vy = prev.vy;
+      }else{
+        d.x = (topXRatio[d.top] || 0.8) * width + (i%3)*12;
+        d.y = (topYRatio[d.top] || 0.5) * height + ((i%4)-1.5)*10;
+      }
+    });
+    if(mode==='resize' && sameData){
+      const sx = width / prevWidth;
+      const sy = height / prevHeight;
+      const margin = 22;
+      nodes.forEach(d=>{
+        d.x = (d.x - prevWidth/2) * sx + width/2;
+        d.y = (d.y - prevHeight/2) * sy + height/2;
+        d.x = Math.max(margin, Math.min(width - margin, d.x));
+        d.y = Math.max(margin, Math.min(height - margin, d.y));
+      });
+    }
+
+    sim.force('x', d3.forceX(d=>d.type==='poet' ? width*0.26 : (topXRatio[d.top] || 0.8) * width).strength(d=>d.type==='poet'?0.2:0.35));
+    sim.force('y', d3.forceY(d=>d.type==='poet' ? (schoolYRatio[d.school] || 0.5) * height : (topYRatio[d.top] || 0.5) * height).strength(d=>d.type==='poet'?0.32:0.2));
+
+    linkLayer.selectAll('path').data(lines,d=>`${d.source.id}-${d.target.id}`).join(
+      enter=>enter.append('path').attr('fill','none').attr('stroke','#8ca0b5').attr('stroke-opacity',networkConfig.defaultLinkOpacity).attr('stroke-width',d=>d.strokeW),
+      update=>update,
+      exit=>exit.remove()
+    );
+    nodeLayer.selectAll('circle').data(nodes,d=>d.id).join(
+      enter=>enter.append('circle').attr('r',d=>d.type==='poet'?13:8+Math.min(12,d.weight/18)).attr('fill',d=>d.type==='poet'?schoolColors[d.school]:cssVar(d.top==='自然'?'--n':d.top==='人为'?'--s':'--e')).attr('stroke','rgba(255,255,255,.9)').attr('stroke-width',d=>d.type==='poet'?1.4:1).style('cursor','pointer').call(drag(sim)).on('mouseover',(event,d)=>{hoverNodeId=d.id; if(d.type==='image') dispatch.call('hoverImage',null,d.name); showTooltip('network-tooltip', d.type==='poet' ? `<strong>${d.name}</strong><br>诗歌阶段：${d.school}<br>活跃期：${d.years[0]}–${d.years[1]}` : `<strong>${d.name}</strong><br>${d.top} / ${d.second}<br>当前权重：${d.weight}`, event); applyVisualState(true);}).on('mousemove',(event,d)=>{showTooltip('network-tooltip', d.type==='poet' ? `<strong>${d.name}</strong><br>诗歌阶段：${d.school}<br>活跃期：${d.years[0]}–${d.years[1]}` : `<strong>${d.name}</strong><br>${d.top} / ${d.second}<br>当前权重：${d.weight}`, event)}).on('mouseout',()=>{hoverNodeId=null; hideTooltip('network-tooltip'); dispatch.call('hoverImage',null,null); applyVisualState(true);}).on('click',(event,d)=>{if(d.type==='poet') dispatch.call('poetSelect',null,d.name); else dispatch.call('imageSelect',null,d.name)}),
+      update=>update,
+      exit=>exit.remove()
+    );
+    labelLayer.selectAll('text').data(nodes,d=>d.id).join(
+      enter=>enter.append('text').attr('class','node-label').style('font-size',d=>`${d.labelSize || 12}px`).style('font-weight',500).text(d=>d.name),
+      update=>update.style('font-size',d=>`${d.labelSize || 12}px`).text(d=>d.name),
+      exit=>exit.remove()
+    );
+
+    sim.nodes(nodes).on('tick',()=>{
+      nodes.forEach(n=> nodeState.set(n.id, {x:n.x, y:n.y, vx:n.vx ?? 0, vy:n.vy ?? 0}));
+      applyNodeLayer();
+    });
+    sim.force('link').links(lines);
+    if(mode==='resize' && sameData){
+      applyNodeLayer();
+      nodes.forEach(n=> nodeState.set(n.id, {x:n.x, y:n.y, vx:n.vx ?? 0, vy:n.vy ?? 0}));
+      sim.alpha(0.08).restart();
+    }else{
+      sim.alpha(.55).restart();
+    }
+    lastDataKey = dataKey;
+    applyVisualState(false);
+  }
+  function applyHighlight(){
+    applyVisualState(false);
+  }
+  legend('network-legend', [
+    {label:'自然意象', color:cssVar('--n')},
+    {label:'人为意象', color:cssVar('--s')},
+    {label:'情感意象', color:cssVar('--e')},
+    {label:'诗人节点', color:'#d8d8d8'}
+  ]);
+  return {render,applyHighlight};
+})();
+
+// --- 加权沃罗诺伊树图 ---
+// --- 加权沃罗诺伊树图（重构优化版） ---
+const voronoiView = (()=>{
+  const {svg,el}=mountSVG('voronoi-chart');
+  let width=0,height=0;
+  const g=svg.append('g');
+
+  function currentNode(){return hierarchyAtFocus()}
+
+  function render(){
+    const rect = el.getBoundingClientRect();
+    width = Math.max(220, rect.width);
+    height = Math.max(220, rect.height);
+    svg.attr('viewBox',[0,0,width,height]);
+    const center=[width/2,height/2], radius=Math.min(width,height)*.42;
+    g.selectAll('*').remove();
+    const node=currentNode();
+    const items=(node.children||[]).map(d=>({...d,value:d.value ?? d3.sum(d.children||[],e=>e.value)})).filter(d=>d.value>0);
+
+    if(items.length === 0) return;
+
+    // 用 Circle Pack，确保圆面积与权重严格成比例
+    const rootNode = d3.hierarchy({children: items})
+      .sum(d => d.value)
+      .sort((a, b) => b.value - a.value);
+
+    const pack = d3.pack().size([radius * 2, radius * 2]).padding(5);
+    pack(rootNode);
+
+    const cells = (rootNode.children || []).map(d=>({
+      ...d.data,
+      value: d.value,
+      hasChildren: !!(d.data.children && d.data.children.length),
+      x: d.x + (center[0]-radius),
+      y: d.y + (center[1]-radius),
+      r: d.r
+    }));
+
+    g.append('circle').attr('cx',center[0]).attr('cy',center[1]).attr('r',radius).attr('fill','#f8fcf6').attr('stroke','rgba(45,67,89,.2)');
+
+    const group=g.selectAll('g.cell').data(cells,d=>d.key || d.name).join('g').attr('class','cell');
+    
+    group.append('circle').attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>d.r).attr('fill',d=>{
+      const top = d.top || (state.focusPath[0]||d.name);
+      return cssVar(top==='自然'?'--n':top==='人为'?'--s':top==='情感'?'--e':'--gold');
+    }).attr('fill-opacity',.9).attr('stroke','rgba(255,255,255,.9)').attr('stroke-width',1).style('cursor','pointer').on('mouseover',(event,d)=>{
+      if(!d.hasChildren) dispatch.call('hoverImage',null,d.name);
+      const level = state.focusPath.length===0 ? '顶级' : state.focusPath.length===1 ? '二级' : '三级';
+      showTooltip('voronoi-tooltip', `<strong>${d.name}</strong><br>${level}类目<br>当前权重：${Math.round(d.value)}`, event);
+    }).on('mousemove',(event,d)=>showTooltip('voronoi-tooltip', `<strong>${d.name}</strong><br>${state.focusPath.length===0?'顶级':state.focusPath.length===1?'二级':'三级'}类目<br>当前权重：${Math.round(d.value)}`, event)).on('mouseout',()=>{hideTooltip('voronoi-tooltip'); dispatch.call('hoverImage',null,null)}).on('click',(event,d)=>{ if(!d.hasChildren) dispatch.call('imageSelect',null,d.name); else { state.focusPath=[...state.focusPath,d.name]; updateBreadcrumb(); render(); } }).on('dblclick',()=>{ if(state.focusPath.length){ state.focusPath=state.focusPath.slice(0,-1); updateBreadcrumb(); render(); } });
+    
+    group.append('text').attr('x',d=>d.x).attr('y',d=>d.y).attr('text-anchor','middle').attr('dy','0.35em').style('font-size',d=>Math.max(10,Math.min(18,d.r/1.8))+'px').style('font-weight',700).style('fill','#24344a').style('pointer-events','none').text(d=>d.r>=14 ? d.name : '');
+    g.append('circle').attr('cx',center[0]).attr('cy',center[1]).attr('r',radius).attr('fill','none').attr('stroke','rgba(45,67,89,.18)');
+    applyHighlight();
+  }
+
+  function updateBreadcrumb(){
+    document.getElementById('voronoi-breadcrumb').textContent = `层级：意象总类${state.focusPath.length? ' / '+state.focusPath.join(' / '):''}`;
+  }
+  function applyHighlight(){
+    const image=state.selectedImage ?? state.hoveredImage;
+    g.selectAll('g.cell circle').attr('stroke-width',d=> image && d.name===image ? 3 : 1).attr('opacity',d=>{
+      if(!image) return 1;
+      if(d.hasChildren) return .72;
+      return d.name===image ? 1 : .2;
+    });
+  }
+  updateBreadcrumb();
+  return {render,applyHighlight,updateBreadcrumb};
+})();
+
+// --- 时空视图 ---
+function drawTangMapBase(container, width, height){
+  container.append('rect').attr('width', width).attr('height', height).attr('fill', '#ddd0a7').attr('rx', 14).attr('opacity', 0.95);
+  container.append('path').attr('d', `M60,70 C140,40 240,48 310,90 C360,74 430,80 520,120 C590,152 640,210 650,270 C645,325 612,372 550,402 C470,438 380,432 315,392 C250,406 165,392 115,340 C72,292 52,220 58,160 C60,126 62,98 60,70Z`).attr('fill', '#c7b287').attr('stroke', '#9d885b').attr('stroke-width', 2).attr('opacity', 0.95);
+  container.append('path').attr('d', 'M455,78 C490,125 520,162 562,230 C590,275 606,322 608,360').attr('fill', 'none').attr('stroke', 'rgba(90,130,190,.55)').attr('stroke-width', 3.2);
+  container.append('path').attr('d', 'M250,140 C315,165 370,195 425,238 C472,272 502,302 525,342').attr('fill', 'none').attr('stroke', 'rgba(90,130,190,.45)').attr('stroke-width', 2.4);
+  container.append('text').attr('x', 22).attr('y', 28).attr('fill', '#5d4d2d').attr('font-size', 16).attr('font-weight', 700).text('唐代疆域示意图');
+  container.append('text').attr('x', 22).attr('y', 48).attr('fill', '#7a6a49').attr('font-size', 11).text('为避免 file:// 跨域限制，Demo 版采用内嵌手绘底图');
+}
+
+const streamView = (()=>{
+  const {svg,el}=mountSVG('stream-chart');
+  const g=svg.append('g');
+  function buildTimeline(){
+    const years=[700,720,740,760,780,800,820,840];
+    const filtered=activeImages();
+    return years.map(y=>{
+      const rec={year:y,自然:0,人为:0,情感:0};
+      filtered.forEach(img=>{ if(matchesPreset(y) && y>=state.timeRange[0] && y<=state.timeRange[1]) rec[img.top]+=img.profile[y]||0; });
+      return rec;
+    });
+  }
+  function render(){
+    const rect = el.getBoundingClientRect();
+    const width = Math.max(220, rect.width);
+    const height = Math.max(220, rect.height);
+    svg.attr('viewBox',[0,0,width,height]);
+    const pad={top:16,right:18,bottom:44,left:42};
+    const W=width-pad.left-pad.right;
+    const H=height-pad.top-pad.bottom;
+    g.attr('transform',`translate(${pad.left},${pad.top})`);
+    g.selectAll('*').remove();
+    const timeline=buildTimeline();
+    const keys=['自然','人为','情感'].filter(k=> state.selectedTop==='all' || state.selectedTop===k);
+    const stack=d3.stack().keys(keys).offset(d3.stackOffsetWiggle);
+    const series=stack(timeline);
+    const x=d3.scaleLinear().domain([700,840]).range([0,W]);
+    const y=d3.scaleLinear().domain([d3.min(series,s=>d3.min(s,d=>d[0]))||-10,d3.max(series,s=>d3.max(s,d=>d[1]))||10]).range([H,0]);
+    const area=d3.area().x(d=>x(d.data.year)).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveCatmullRom.alpha(.5));
+    g.append('g').attr('transform',`translate(0,${H})`).call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(8)).call(k=>k.selectAll('path,line').attr('stroke','rgba(45,67,89,.35)')).call(k=>k.selectAll('text').attr('fill','#2b3d56').attr('font-size',11));
+    g.append('g').call(d3.axisLeft(y).ticks(5)).call(k=>k.selectAll('path,line').attr('stroke','rgba(45,67,89,.35)')).call(k=>k.selectAll('text').attr('fill','#2b3d56').attr('font-size',11));
+    g.selectAll('path.stream').data(series,d=>d.key).join('path').attr('class','stream').attr('d',area).attr('fill',d=>cssVar(d.key==='自然'?'--n':d.key==='人为'?'--s':'--e')).attr('fill-opacity',.88).attr('stroke','rgba(45,67,89,.28)').style('cursor','pointer').on('mouseover',(event,d)=>showTooltip('stream-tooltip',`<strong>${d.key}</strong><br>该意象顶级类目在当前时间范围内的波动。`,event)).on('mousemove',(event,d)=>showTooltip('stream-tooltip',`<strong>${d.key}</strong><br>该意象顶级类目在当前时间范围内的波动。`,event)).on('mouseout',()=>hideTooltip('stream-tooltip')).on('click',(event,d)=>{ state.selectedTop=d.key; document.getElementById('topcat-filter').value=d.key; dispatch.call('topChange',null,d.key); });
+    const brush=d3.brushX().extent([[0,0],[W,H]]).on('end',(event)=>{ if(!event.selection) return; const [a,b]=event.selection.map(x.invert); dispatch.call('timeChange',null,[Math.round(a),Math.round(b)]); });
+    g.append('g').attr('class','brush').call(brush);
+    applyHighlight();
+  }
+  function applyHighlight(){
+    g.selectAll('path.stream').attr('opacity',d=> state.selectedTop==='all' ? .92 : (d.key===state.selectedTop?1:.2));
+  }
+  return {render,applyHighlight};
+})();
+
+const mapView = (()=>{
+  const {svg,el}=mountSVG('map-chart');
+  const g=svg.append('g');
+  function activePoetsForTime(){
+    return activePoets().filter(p=>!(p.years[1]<state.timeRange[0] || p.years[0]>state.timeRange[1]));
+  }
+  function render(){
+    const rect = el.getBoundingClientRect();
+    const width = Math.max(220, rect.width);
+    const height = Math.max(220, rect.height);
+    svg.attr('viewBox',[0,0,width,height]);
+    const pad={top:12,right:12,bottom:12,left:12};
+    const W=width-pad.left-pad.right;
+    const H=height-pad.top-pad.bottom;
+    g.attr('transform',`translate(${pad.left},${pad.top})`);
+    g.selectAll('*').remove();
+    const mapBaseWidth = 680;
+    const mapBaseHeight = 450;
+    const mapScale = Math.min(W / mapBaseWidth, H / mapBaseHeight) * 0.98;
+    const mapDx = (W - mapBaseWidth * mapScale) / 2;
+    const mapDy = (H - mapBaseHeight * mapScale) / 2;
+    const innerMapG = g.append('g').attr('transform', `translate(${mapDx},${mapDy}) scale(${mapScale})`);
+    drawTangMapBase(innerMapG, mapBaseWidth, mapBaseHeight);
+    g.append('rect').attr('width',W).attr('height',H).attr('fill','rgba(244,249,242,.24)').attr('stroke','rgba(45,67,89,.2)').attr('rx',14).style('pointer-events','none');
+    const activePoets=activePoetsForTime();
+    const line=d3.line().curve(d3.curveCatmullRom.alpha(.65));
+    innerMapG.selectAll('path.route').data(activePoets,d=>d.id).join('path').attr('class','route').attr('d',d=>line(d.route.filter(r=>places[r]).map(r=>places[r]))).attr('fill','none').attr('stroke',d=>schoolColors[d.school]||'#ddd').attr('stroke-width',d=>state.selectedPoet===d.name?4.2:2.2).attr('stroke-opacity',d=> state.selectedPoet && state.selectedPoet!==d.name ? .14 : .86).style('cursor','pointer').on('mouseover',(event,d)=>showTooltip('map-tooltip',`<strong>${d.name}</strong><br>迁移路线：${d.route.join(' → ')}`,event)).on('mousemove',(event,d)=>showTooltip('map-tooltip',`<strong>${d.name}</strong><br>迁移路线：${d.route.join(' → ')}`,event)).on('mouseout',()=>hideTooltip('map-tooltip')).on('click',(event,d)=>dispatch.call('poetSelect',null,d.name));
+    const cityNames=['长安','洛阳','成都','江州','杭州','扬州','柳州','凉州','安西'];
+    innerMapG.selectAll('circle.city').data(cityNames).join('circle').attr('class','city').attr('cx',d=>places[d][0]).attr('cy',d=>places[d][1]).attr('r',3.2).attr('fill',cssVar('--gold2')).attr('stroke','#fff').attr('stroke-width',.6);
+    innerMapG.selectAll('text.city').data(cityNames).join('text').attr('class','city').attr('x',d=>places[d][0]+5).attr('y',d=>places[d][1]-5).attr('font-size',10).attr('fill','#4c4029').text(d=>d);
+  }
+  return {render};
+})();
+
+function rerender(mode='data'){
+  network.render(mode);
+  voronoiView.render();
+  streamView.render();
+  mapView.render();
+}
+
+dispatch.on('hoverImage.ui', name=>{
+  state.hoveredImage = state.selectedImage ? null : name;
+  network.applyHighlight();
+  voronoiView.applyHighlight();
+});
+dispatch.on('imageSelect.ui', name=>{
+  state.selectedImage = state.selectedImage===name ? null : name;
+  state.hoveredImage = null;
+  state.selectedPoet = null;
+  updateIndicator(state.selectedImage ? `锁定意象：${state.selectedImage}` : '取消意象锁定');
+  rerender();
+});
+dispatch.on('poetSelect.ui', name=>{
+  state.selectedPoet = state.selectedPoet===name ? null : name;
+  state.selectedImage = null;
+  state.hoveredImage = null;
+  updateIndicator(state.selectedPoet ? `锁定诗人：${state.selectedPoet}` : '取消诗人锁定');
+  rerender();
+});
+dispatch.on('timeChange.ui', range=>{
+  state.timeRange = range;
+  updateIndicator(`时间刷选：${range[0]}–${range[1]}`);
+  rerender();
+});
+dispatch.on('topChange.ui', top=>{
+  state.selectedTop = top;
+  state.focusPath=[];
+  voronoiView.updateBreadcrumb();
+  updateIndicator(top==='all' ? '顶级类目：全部' : `顶级类目：${top}`);
+  rerender();
+});
+dispatch.on('reset.ui', ()=>{
+  state.selectedImage=null; state.hoveredImage=null; state.selectedPoet=null; state.selectedTop='all'; state.timeRange=[700,850]; state.preset='all'; state.focusPath=[];
+  state.selectedPoetNames = new Set(poets.map(p=>p.name));
+  state.layout = { mainRatio:58, rightR1:34, rightR2:33, rightR3:33 };
+  state.currentMainViewId='network';
+  document.getElementById('period-filter').value='all'; document.getElementById('topcat-filter').value='all';
+  voronoiView.updateBreadcrumb();
+  resetPoetFilterTree();
+  updateIndicator('全局概览');
+  applyLayoutSplit();
+  applyViewLayout();
+  rerender();
+});
+
+document.getElementById('period-filter').addEventListener('change', e=>{ state.preset=e.target.value; updateIndicator(`时段预设：${e.target.options[e.target.selectedIndex].text}`); rerender(); });
+document.getElementById('topcat-filter').addEventListener('change', e=> dispatch.call('topChange',null,e.target.value));
+document.getElementById('reset-btn').addEventListener('click', ()=> dispatch.call('reset'));
+poetSearchEl.addEventListener('focus', ()=> poetPickerBox.classList.add('open'));
+poetSearchEl.addEventListener('input', e=>{
+  poetPickerBox.classList.add('open');
+  applyPoetSearch(e.target.value);
+});
+document.addEventListener('click', event=>{
+  if(!poetPickerBox.contains(event.target)) poetPickerBox.classList.remove('open');
+});
+
+window.addEventListener('resize', ()=> rerender('resize'));
+mountPoetTree();
+mountLayoutSplitters();
+state.selectedPoetNames = new Set(poets.map(p=>p.name));
+applyLayoutSplit();
+applyViewLayout();
+rerender();
+</script>
+</body>
+</html>

@@ -1,0 +1,10863 @@
+[
+  {
+    "year": 648,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 649,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 650,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 651,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 652,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 653,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 654,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 655,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 656,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 657,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 658,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 659,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 660,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 661,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 662,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 663,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 664,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 665,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 666,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 667,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 668,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 669,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 670,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 671,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 672,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 673,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 674,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 675,
+    "weighted_poem_count": 4.7,
+    "raw_poem_count_touching_year": 38,
+    "total_imagery_mentions": 21.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "酒",
+        "value": 1.7
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "九",
+        "value": 1.6
+      },
+      {
+        "imagery": "菊",
+        "value": 1.0
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 676,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 677,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 678,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 679,
+    "weighted_poem_count": 3.7,
+    "raw_poem_count_touching_year": 37,
+    "total_imagery_mentions": 18.2,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "风",
+        "value": 1.9
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "琴",
+        "value": 0.8
+      },
+      {
+        "imagery": "相思",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.7
+      },
+      {
+        "imagery": "鸿雁",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.6
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 680,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 681,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 682,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 683,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 684,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 685,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 686,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 687,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 688,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 689,
+    "weighted_poem_count": 1.45,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 6.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.85
+      },
+      {
+        "imagery": "云",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "白云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3
+      },
+      {
+        "imagery": "琴",
+        "value": 0.25
+      },
+      {
+        "imagery": "愁",
+        "value": 0.2
+      },
+      {
+        "imagery": "南浦",
+        "value": 0.2
+      },
+      {
+        "imagery": "草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 690,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 691,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 692,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 693,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 694,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 695,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 696,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 697,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 698,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 699,
+    "weighted_poem_count": 0.45,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 2.55,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.3
+      },
+      {
+        "imagery": "风",
+        "value": 0.2
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.15
+      },
+      {
+        "imagery": "江南",
+        "value": 0.15
+      },
+      {
+        "imagery": "琴",
+        "value": 0.15
+      },
+      {
+        "imagery": "明月",
+        "value": 0.15
+      },
+      {
+        "imagery": "月",
+        "value": 0.15
+      },
+      {
+        "imagery": "八",
+        "value": 0.15
+      },
+      {
+        "imagery": "白云",
+        "value": 0.15
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 700,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 701,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 702,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 703,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 704,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 705,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 706,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 707,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 708,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 709,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 710,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 711,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 712,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 713,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 714,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 715,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 716,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 717,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 718,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 719,
+    "weighted_poem_count": 0.3833,
+    "raw_poem_count_touching_year": 10,
+    "total_imagery_mentions": 1.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.1833
+      },
+      {
+        "imagery": "愁",
+        "value": 0.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.1333
+      },
+      {
+        "imagery": "月",
+        "value": 0.1333
+      },
+      {
+        "imagery": "明月",
+        "value": 0.1
+      },
+      {
+        "imagery": "江水",
+        "value": 0.1
+      },
+      {
+        "imagery": "流水",
+        "value": 0.1
+      },
+      {
+        "imagery": "白云",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "雁",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 720,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 721,
+    "weighted_poem_count": 2.4333,
+    "raw_poem_count_touching_year": 21,
+    "total_imagery_mentions": 9.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.4333
+      },
+      {
+        "imagery": "九",
+        "value": 1.2833
+      },
+      {
+        "imagery": "月",
+        "value": 1.2333
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1667
+      },
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      }
+    ]
+  },
+  {
+    "year": 722,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 723,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 724,
+    "weighted_poem_count": 5.9333,
+    "raw_poem_count_touching_year": 25,
+    "total_imagery_mentions": 25.75,
+    "top_imagery": [
+      {
+        "imagery": "七",
+        "value": 4.1
+      },
+      {
+        "imagery": "月",
+        "value": 3.7333
+      },
+      {
+        "imagery": "愁",
+        "value": 2.6667
+      },
+      {
+        "imagery": "关山",
+        "value": 2.5
+      },
+      {
+        "imagery": "风",
+        "value": 1.9333
+      },
+      {
+        "imagery": "烽火",
+        "value": 1.5
+      },
+      {
+        "imagery": "云",
+        "value": 1.4833
+      },
+      {
+        "imagery": "羌笛",
+        "value": 1.15
+      },
+      {
+        "imagery": "玉门关",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 725,
+    "weighted_poem_count": 1.9333,
+    "raw_poem_count_touching_year": 21,
+    "total_imagery_mentions": 7.75,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.9333
+      },
+      {
+        "imagery": "月",
+        "value": 0.7333
+      },
+      {
+        "imagery": "愁",
+        "value": 0.6667
+      },
+      {
+        "imagery": "关山",
+        "value": 0.5
+      },
+      {
+        "imagery": "烽火",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      }
+    ]
+  },
+  {
+    "year": 726,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 727,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 728,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 729,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 5.25,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 0.4833
+      },
+      {
+        "imagery": "草",
+        "value": 0.4333
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2833
+      },
+      {
+        "imagery": "白云",
+        "value": 0.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2333
+      },
+      {
+        "imagery": "酒",
+        "value": 0.2167
+      },
+      {
+        "imagery": "春草",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 730,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 731,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 732,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 733,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 734,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 735,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 736,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 737,
+    "weighted_poem_count": 4.65,
+    "raw_poem_count_touching_year": 30,
+    "total_imagery_mentions": 20.5,
+    "top_imagery": [
+      {
+        "imagery": "松",
+        "value": 1.7
+      },
+      {
+        "imagery": "草",
+        "value": 1.6
+      },
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "酒",
+        "value": 1.45
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "关山",
+        "value": 1.2
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "春草",
+        "value": 1.1
+      },
+      {
+        "imagery": "松柏",
+        "value": 1.1
+      },
+      {
+        "imagery": "柏",
+        "value": 1.1
+      }
+    ]
+  },
+  {
+    "year": 738,
+    "weighted_poem_count": 2.65,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 11.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.45
+      },
+      {
+        "imagery": "月",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.95
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 739,
+    "weighted_poem_count": 3.65,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 15.5,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "月",
+        "value": 2.15
+      },
+      {
+        "imagery": "云",
+        "value": 1.95
+      },
+      {
+        "imagery": "松",
+        "value": 1.7
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      },
+      {
+        "imagery": "琴",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.45
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "七",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 740,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 62,
+    "total_imagery_mentions": 24.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.5
+      },
+      {
+        "imagery": "风",
+        "value": 2.3
+      },
+      {
+        "imagery": "云",
+        "value": 2.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.9
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "酒",
+        "value": 1.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "明月",
+        "value": 0.75
+      },
+      {
+        "imagery": "竹",
+        "value": 0.75
+      },
+      {
+        "imagery": "松",
+        "value": 0.75
+      }
+    ]
+  },
+  {
+    "year": 741,
+    "weighted_poem_count": 9.225,
+    "raw_poem_count_touching_year": 67,
+    "total_imagery_mentions": 39.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.125
+      },
+      {
+        "imagery": "风",
+        "value": 3.8
+      },
+      {
+        "imagery": "云",
+        "value": 3.725
+      },
+      {
+        "imagery": "雨",
+        "value": 3.525
+      },
+      {
+        "imagery": "愁",
+        "value": 2.35
+      },
+      {
+        "imagery": "明月",
+        "value": 1.75
+      },
+      {
+        "imagery": "雪",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "猿",
+        "value": 1.3
+      },
+      {
+        "imagery": "梅",
+        "value": 1.3
+      }
+    ]
+  },
+  {
+    "year": 742,
+    "weighted_poem_count": 6.225,
+    "raw_poem_count_touching_year": 64,
+    "total_imagery_mentions": 27.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 3.125
+      },
+      {
+        "imagery": "风",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 2.725
+      },
+      {
+        "imagery": "雨",
+        "value": 2.525
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "明月",
+        "value": 0.75
+      },
+      {
+        "imagery": "竹",
+        "value": 0.75
+      },
+      {
+        "imagery": "松",
+        "value": 0.75
+      }
+    ]
+  },
+  {
+    "year": 743,
+    "weighted_poem_count": 8.725,
+    "raw_poem_count_touching_year": 66,
+    "total_imagery_mentions": 38.45,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 5.3
+      },
+      {
+        "imagery": "月",
+        "value": 4.625
+      },
+      {
+        "imagery": "云",
+        "value": 3.225
+      },
+      {
+        "imagery": "八",
+        "value": 2.5
+      },
+      {
+        "imagery": "草",
+        "value": 2.1
+      },
+      {
+        "imagery": "雨",
+        "value": 2.025
+      },
+      {
+        "imagery": "雪",
+        "value": 1.7
+      },
+      {
+        "imagery": "七",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "梅",
+        "value": 1.3
+      }
+    ]
+  },
+  {
+    "year": 744,
+    "weighted_poem_count": 16.0107,
+    "raw_poem_count_touching_year": 75,
+    "total_imagery_mentions": 78.45,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 10.7679
+      },
+      {
+        "imagery": "风",
+        "value": 9.3
+      },
+      {
+        "imagery": "云",
+        "value": 8.3679
+      },
+      {
+        "imagery": "草",
+        "value": 7.1
+      },
+      {
+        "imagery": "霜",
+        "value": 4.55
+      },
+      {
+        "imagery": "八",
+        "value": 2.5
+      },
+      {
+        "imagery": "白云",
+        "value": 2.45
+      },
+      {
+        "imagery": "七",
+        "value": 2.4
+      },
+      {
+        "imagery": "九",
+        "value": 2.3
+      },
+      {
+        "imagery": "雨",
+        "value": 2.025
+      }
+    ]
+  },
+  {
+    "year": 745,
+    "weighted_poem_count": 6.0107,
+    "raw_poem_count_touching_year": 65,
+    "total_imagery_mentions": 26.45,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.7679
+      },
+      {
+        "imagery": "云",
+        "value": 2.3679
+      },
+      {
+        "imagery": "风",
+        "value": 2.3
+      },
+      {
+        "imagery": "雨",
+        "value": 2.025
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "酒",
+        "value": 1.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "明月",
+        "value": 0.8929
+      },
+      {
+        "imagery": "竹",
+        "value": 0.8929
+      },
+      {
+        "imagery": "松",
+        "value": 0.8929
+      }
+    ]
+  },
+  {
+    "year": 746,
+    "weighted_poem_count": 6.0107,
+    "raw_poem_count_touching_year": 65,
+    "total_imagery_mentions": 26.45,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.7679
+      },
+      {
+        "imagery": "云",
+        "value": 2.3679
+      },
+      {
+        "imagery": "风",
+        "value": 2.3
+      },
+      {
+        "imagery": "雨",
+        "value": 2.025
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "酒",
+        "value": 1.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "明月",
+        "value": 0.8929
+      },
+      {
+        "imagery": "竹",
+        "value": 0.8929
+      },
+      {
+        "imagery": "松",
+        "value": 0.8929
+      }
+    ]
+  },
+  {
+    "year": 747,
+    "weighted_poem_count": 7.0107,
+    "raw_poem_count_touching_year": 66,
+    "total_imagery_mentions": 31.45,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 3.3679
+      },
+      {
+        "imagery": "风",
+        "value": 3.3
+      },
+      {
+        "imagery": "月",
+        "value": 2.7679
+      },
+      {
+        "imagery": "愁",
+        "value": 2.35
+      },
+      {
+        "imagery": "雨",
+        "value": 2.025
+      },
+      {
+        "imagery": "雪",
+        "value": 1.7
+      },
+      {
+        "imagery": "雁",
+        "value": 1.2
+      },
+      {
+        "imagery": "酒",
+        "value": 1.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "明月",
+        "value": 0.8929
+      }
+    ]
+  },
+  {
+    "year": 748,
+    "weighted_poem_count": 9.7107,
+    "raw_poem_count_touching_year": 70,
+    "total_imagery_mentions": 43.65,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.4679
+      },
+      {
+        "imagery": "风",
+        "value": 4.0
+      },
+      {
+        "imagery": "愁",
+        "value": 3.85
+      },
+      {
+        "imagery": "雨",
+        "value": 3.025
+      },
+      {
+        "imagery": "明月",
+        "value": 2.3929
+      },
+      {
+        "imagery": "云",
+        "value": 2.3679
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "竹",
+        "value": 1.3929
+      },
+      {
+        "imagery": "流水",
+        "value": 1.325
+      },
+      {
+        "imagery": "九",
+        "value": 1.3
+      }
+    ]
+  },
+  {
+    "year": 749,
+    "weighted_poem_count": 6.5857,
+    "raw_poem_count_touching_year": 66,
+    "total_imagery_mentions": 30.15,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 3.3429
+      },
+      {
+        "imagery": "风",
+        "value": 3.0
+      },
+      {
+        "imagery": "云",
+        "value": 2.2429
+      },
+      {
+        "imagery": "雨",
+        "value": 1.9
+      },
+      {
+        "imagery": "愁",
+        "value": 1.85
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "明月",
+        "value": 1.3929
+      },
+      {
+        "imagery": "竹",
+        "value": 1.3929
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "松",
+        "value": 0.8929
+      }
+    ]
+  },
+  {
+    "year": 750,
+    "weighted_poem_count": 7.9357,
+    "raw_poem_count_touching_year": 55,
+    "total_imagery_mentions": 34.1,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 5.05
+      },
+      {
+        "imagery": "月",
+        "value": 3.7929
+      },
+      {
+        "imagery": "云",
+        "value": 3.0429
+      },
+      {
+        "imagery": "酒",
+        "value": 2.8
+      },
+      {
+        "imagery": "愁",
+        "value": 2.55
+      },
+      {
+        "imagery": "草",
+        "value": 2.5
+      },
+      {
+        "imagery": "六",
+        "value": 2.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.8
+      },
+      {
+        "imagery": "松",
+        "value": 0.9929
+      },
+      {
+        "imagery": "琴",
+        "value": 0.7929
+      }
+    ]
+  },
+  {
+    "year": 751,
+    "weighted_poem_count": 7.65,
+    "raw_poem_count_touching_year": 53,
+    "total_imagery_mentions": 42.1,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.65
+      },
+      {
+        "imagery": "云",
+        "value": 4.9
+      },
+      {
+        "imagery": "风",
+        "value": 4.05
+      },
+      {
+        "imagery": "雨",
+        "value": 2.8
+      },
+      {
+        "imagery": "雪",
+        "value": 2.6
+      },
+      {
+        "imagery": "草",
+        "value": 2.5
+      },
+      {
+        "imagery": "九",
+        "value": 2.5
+      },
+      {
+        "imagery": "七",
+        "value": 2.5
+      },
+      {
+        "imagery": "冰",
+        "value": 2.1
+      },
+      {
+        "imagery": "霜",
+        "value": 1.75
+      }
+    ]
+  },
+  {
+    "year": 752,
+    "weighted_poem_count": 4.65,
+    "raw_poem_count_touching_year": 50,
+    "total_imagery_mentions": 22.1,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 3.05
+      },
+      {
+        "imagery": "月",
+        "value": 2.65
+      },
+      {
+        "imagery": "云",
+        "value": 1.9
+      },
+      {
+        "imagery": "愁",
+        "value": 1.55
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "雨",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.75
+      },
+      {
+        "imagery": "琴",
+        "value": 0.65
+      }
+    ]
+  },
+  {
+    "year": 753,
+    "weighted_poem_count": 11.45,
+    "raw_poem_count_touching_year": 59,
+    "total_imagery_mentions": 46.9,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 6.95
+      },
+      {
+        "imagery": "风",
+        "value": 5.35
+      },
+      {
+        "imagery": "云",
+        "value": 3.9
+      },
+      {
+        "imagery": "七",
+        "value": 3.3
+      },
+      {
+        "imagery": "愁",
+        "value": 2.55
+      },
+      {
+        "imagery": "酒",
+        "value": 2.3
+      },
+      {
+        "imagery": "雪",
+        "value": 2.1
+      },
+      {
+        "imagery": "八",
+        "value": 2.1
+      },
+      {
+        "imagery": "竹",
+        "value": 1.85
+      },
+      {
+        "imagery": "明月",
+        "value": 1.6
+      }
+    ]
+  },
+  {
+    "year": 754,
+    "weighted_poem_count": 20.95,
+    "raw_poem_count_touching_year": 69,
+    "total_imagery_mentions": 91.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 14.35
+      },
+      {
+        "imagery": "月",
+        "value": 12.45
+      },
+      {
+        "imagery": "愁",
+        "value": 8.55
+      },
+      {
+        "imagery": "六",
+        "value": 7.6
+      },
+      {
+        "imagery": "云",
+        "value": 5.9
+      },
+      {
+        "imagery": "雪",
+        "value": 5.6
+      },
+      {
+        "imagery": "霜",
+        "value": 3.75
+      },
+      {
+        "imagery": "酒",
+        "value": 3.3
+      },
+      {
+        "imagery": "七",
+        "value": 3.3
+      },
+      {
+        "imagery": "竹",
+        "value": 2.85
+      }
+    ]
+  },
+  {
+    "year": 755,
+    "weighted_poem_count": 4.75,
+    "raw_poem_count_touching_year": 49,
+    "total_imagery_mentions": 21.9,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.75
+      },
+      {
+        "imagery": "风",
+        "value": 2.65
+      },
+      {
+        "imagery": "云",
+        "value": 1.7
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "雨",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.8
+      }
+    ]
+  },
+  {
+    "year": 756,
+    "weighted_poem_count": 8.75,
+    "raw_poem_count_touching_year": 53,
+    "total_imagery_mentions": 38.9,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 5.2
+      },
+      {
+        "imagery": "风",
+        "value": 4.65
+      },
+      {
+        "imagery": "酒",
+        "value": 3.3
+      },
+      {
+        "imagery": "九",
+        "value": 3.0
+      },
+      {
+        "imagery": "雪",
+        "value": 2.6
+      },
+      {
+        "imagery": "愁",
+        "value": 2.35
+      },
+      {
+        "imagery": "月",
+        "value": 2.25
+      },
+      {
+        "imagery": "松",
+        "value": 1.85
+      },
+      {
+        "imagery": "雨",
+        "value": 1.8
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      }
+    ]
+  },
+  {
+    "year": 757,
+    "weighted_poem_count": 6.75,
+    "raw_poem_count_touching_year": 51,
+    "total_imagery_mentions": 31.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 3.65
+      },
+      {
+        "imagery": "草",
+        "value": 3.5
+      },
+      {
+        "imagery": "月",
+        "value": 3.25
+      },
+      {
+        "imagery": "云",
+        "value": 3.2
+      },
+      {
+        "imagery": "酒",
+        "value": 2.3
+      },
+      {
+        "imagery": "雨",
+        "value": 1.8
+      },
+      {
+        "imagery": "春草",
+        "value": 1.55
+      },
+      {
+        "imagery": "愁",
+        "value": 1.35
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      },
+      {
+        "imagery": "烽火",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 758,
+    "weighted_poem_count": 7.25,
+    "raw_poem_count_touching_year": 51,
+    "total_imagery_mentions": 32.9,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.25
+      },
+      {
+        "imagery": "愁",
+        "value": 3.35
+      },
+      {
+        "imagery": "云",
+        "value": 2.7
+      },
+      {
+        "imagery": "风",
+        "value": 2.65
+      },
+      {
+        "imagery": "松",
+        "value": 1.85
+      },
+      {
+        "imagery": "明月",
+        "value": 1.6
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      },
+      {
+        "imagery": "相思",
+        "value": 1.4
+      },
+      {
+        "imagery": "七",
+        "value": 1.3
+      },
+      {
+        "imagery": "雁",
+        "value": 1.1
+      }
+    ]
+  },
+  {
+    "year": 759,
+    "weighted_poem_count": 6.25,
+    "raw_poem_count_touching_year": 50,
+    "total_imagery_mentions": 29.9,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.65
+      },
+      {
+        "imagery": "月",
+        "value": 4.25
+      },
+      {
+        "imagery": "云",
+        "value": 2.7
+      },
+      {
+        "imagery": "愁",
+        "value": 2.35
+      },
+      {
+        "imagery": "雨",
+        "value": 1.8
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      },
+      {
+        "imagery": "桃花",
+        "value": 1.25
+      },
+      {
+        "imagery": "雁",
+        "value": 1.1
+      },
+      {
+        "imagery": "下榻",
+        "value": 1.0
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      }
+    ]
+  },
+  {
+    "year": 760,
+    "weighted_poem_count": 6.6,
+    "raw_poem_count_touching_year": 8,
+    "total_imagery_mentions": 30.0,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.6
+      },
+      {
+        "imagery": "草",
+        "value": 4.0
+      },
+      {
+        "imagery": "雨",
+        "value": 4.0
+      },
+      {
+        "imagery": "酒",
+        "value": 3.0
+      },
+      {
+        "imagery": "愁",
+        "value": 2.5
+      },
+      {
+        "imagery": "月",
+        "value": 2.1
+      },
+      {
+        "imagery": "云",
+        "value": 2.0
+      },
+      {
+        "imagery": "雪",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.0
+      },
+      {
+        "imagery": "夕阳",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 761,
+    "weighted_poem_count": 14.6,
+    "raw_poem_count_touching_year": 16,
+    "total_imagery_mentions": 63.0,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 7.1
+      },
+      {
+        "imagery": "九",
+        "value": 7.0
+      },
+      {
+        "imagery": "风",
+        "value": 5.6
+      },
+      {
+        "imagery": "云",
+        "value": 5.0
+      },
+      {
+        "imagery": "梅",
+        "value": 3.5
+      },
+      {
+        "imagery": "雨",
+        "value": 3.0
+      },
+      {
+        "imagery": "草",
+        "value": 3.0
+      },
+      {
+        "imagery": "愁",
+        "value": 2.5
+      },
+      {
+        "imagery": "雪",
+        "value": 2.5
+      },
+      {
+        "imagery": "七",
+        "value": 2.1
+      }
+    ]
+  },
+  {
+    "year": 762,
+    "weighted_poem_count": 1.6,
+    "raw_poem_count_touching_year": 3,
+    "total_imagery_mentions": 10.0,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.6
+      },
+      {
+        "imagery": "菊",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.5
+      },
+      {
+        "imagery": "九",
+        "value": 1.0
+      },
+      {
+        "imagery": "愁",
+        "value": 1.0
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "月",
+        "value": 0.6
+      },
+      {
+        "imagery": "深院",
+        "value": 0.5
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "霜",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 763,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 2,
+    "total_imagery_mentions": 4.0,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.6
+      },
+      {
+        "imagery": "风",
+        "value": 0.6
+      },
+      {
+        "imagery": "深院",
+        "value": 0.5
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "菊",
+        "value": 0.5
+      },
+      {
+        "imagery": "雨",
+        "value": 0.5
+      },
+      {
+        "imagery": "霜",
+        "value": 0.5
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      },
+      {
+        "imagery": "寒鸦",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 764,
+    "weighted_poem_count": 5.1,
+    "raw_poem_count_touching_year": 6,
+    "total_imagery_mentions": 18.5,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 4.0
+      },
+      {
+        "imagery": "竹",
+        "value": 3.0
+      },
+      {
+        "imagery": "月",
+        "value": 2.1
+      },
+      {
+        "imagery": "风",
+        "value": 2.1
+      },
+      {
+        "imagery": "雨",
+        "value": 2.0
+      },
+      {
+        "imagery": "六",
+        "value": 2.0
+      },
+      {
+        "imagery": "草",
+        "value": 1.0
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 1.0
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 765,
+    "weighted_poem_count": 1.1,
+    "raw_poem_count_touching_year": 2,
+    "total_imagery_mentions": 5.5,
+    "top_imagery": [
+      {
+        "imagery": "九",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "愁",
+        "value": 1.0
+      },
+      {
+        "imagery": "白云",
+        "value": 1.0
+      },
+      {
+        "imagery": "菊",
+        "value": 1.0
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      },
+      {
+        "imagery": "寒鸦",
+        "value": 0.1
+      },
+      {
+        "imagery": "月",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      },
+      {
+        "imagery": "风",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 766,
+    "weighted_poem_count": 2.1,
+    "raw_poem_count_touching_year": 3,
+    "total_imagery_mentions": 13.5,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 2.0
+      },
+      {
+        "imagery": "七",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "九",
+        "value": 1.0
+      },
+      {
+        "imagery": "干戈",
+        "value": 1.0
+      },
+      {
+        "imagery": "愁",
+        "value": 1.0
+      },
+      {
+        "imagery": "松",
+        "value": 1.0
+      },
+      {
+        "imagery": "松柏",
+        "value": 1.0
+      },
+      {
+        "imagery": "柏",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 767,
+    "weighted_poem_count": 22.1,
+    "raw_poem_count_touching_year": 23,
+    "total_imagery_mentions": 94.5,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 10.0
+      },
+      {
+        "imagery": "愁",
+        "value": 9.0
+      },
+      {
+        "imagery": "风",
+        "value": 8.1
+      },
+      {
+        "imagery": "霜",
+        "value": 6.0
+      },
+      {
+        "imagery": "草",
+        "value": 6.0
+      },
+      {
+        "imagery": "月",
+        "value": 5.1
+      },
+      {
+        "imagery": "菊",
+        "value": 5.0
+      },
+      {
+        "imagery": "雁",
+        "value": 5.0
+      },
+      {
+        "imagery": "雪",
+        "value": 5.0
+      },
+      {
+        "imagery": "雨",
+        "value": 5.0
+      }
+    ]
+  },
+  {
+    "year": 768,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 3,
+    "total_imagery_mentions": 5.8333,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.4333
+      },
+      {
+        "imagery": "风",
+        "value": 1.4333
+      },
+      {
+        "imagery": "愁",
+        "value": 1.0
+      },
+      {
+        "imagery": "竹",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.3333
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3333
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      },
+      {
+        "imagery": "寒鸦",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 769,
+    "weighted_poem_count": 1.4333,
+    "raw_poem_count_touching_year": 3,
+    "total_imagery_mentions": 6.8333,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.4333
+      },
+      {
+        "imagery": "云",
+        "value": 1.3333
+      },
+      {
+        "imagery": "冰",
+        "value": 1.0
+      },
+      {
+        "imagery": "草",
+        "value": 1.0
+      },
+      {
+        "imagery": "雁",
+        "value": 1.0
+      },
+      {
+        "imagery": "风",
+        "value": 0.4333
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3333
+      },
+      {
+        "imagery": "七",
+        "value": 0.1
+      },
+      {
+        "imagery": "寒鸦",
+        "value": 0.1
+      },
+      {
+        "imagery": "相思",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 770,
+    "weighted_poem_count": 1.3333,
+    "raw_poem_count_touching_year": 2,
+    "total_imagery_mentions": 4.3333,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.3333
+      },
+      {
+        "imagery": "九",
+        "value": 1.0
+      },
+      {
+        "imagery": "江南",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.3333
+      },
+      {
+        "imagery": "月",
+        "value": 0.3333
+      },
+      {
+        "imagery": "雨",
+        "value": 0.3333
+      }
+    ]
+  },
+  {
+    "year": 771,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 772,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 773,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 774,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 775,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 776,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 777,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 778,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 779,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 780,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 781,
+    "weighted_poem_count": 3.8,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 12.6,
+    "top_imagery": [
+      {
+        "imagery": "雨",
+        "value": 2.1
+      },
+      {
+        "imagery": "草",
+        "value": 2.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "黄鹂",
+        "value": 1.0
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 782,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 783,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 784,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 785,
+    "weighted_poem_count": 3.8,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 12.6,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 2.0
+      },
+      {
+        "imagery": "云",
+        "value": 1.9
+      },
+      {
+        "imagery": "白云",
+        "value": 1.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 786,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 787,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 788,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 789,
+    "weighted_poem_count": 2.8,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 9.6,
+    "top_imagery": [
+      {
+        "imagery": "草",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "月",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.9
+      },
+      {
+        "imagery": "竹",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "冰",
+        "value": 0.4
+      },
+      {
+        "imagery": "霜",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 790,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 791,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 792,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 793,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 794,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 795,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 796,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 797,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 798,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 799,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 7.7,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 0.95
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "风",
+        "value": 0.75
+      },
+      {
+        "imagery": "明月",
+        "value": 0.55
+      },
+      {
+        "imagery": "松",
+        "value": 0.5
+      },
+      {
+        "imagery": "云",
+        "value": 0.45
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "荷",
+        "value": 0.3
+      },
+      {
+        "imagery": "雨",
+        "value": 0.25
+      },
+      {
+        "imagery": "冰",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 800,
+    "weighted_poem_count": 2.0833,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 9.2667,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.4833
+      },
+      {
+        "imagery": "月",
+        "value": 0.9167
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "松",
+        "value": 0.4667
+      },
+      {
+        "imagery": "明月",
+        "value": 0.4167
+      },
+      {
+        "imagery": "竹",
+        "value": 0.4167
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      }
+    ]
+  },
+  {
+    "year": 801,
+    "weighted_poem_count": 2.0833,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 9.2667,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.4833
+      },
+      {
+        "imagery": "月",
+        "value": 0.9167
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "松",
+        "value": 0.4667
+      },
+      {
+        "imagery": "明月",
+        "value": 0.4167
+      },
+      {
+        "imagery": "竹",
+        "value": 0.4167
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      }
+    ]
+  },
+  {
+    "year": 802,
+    "weighted_poem_count": 2.0833,
+    "raw_poem_count_touching_year": 20,
+    "total_imagery_mentions": 9.2667,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.4833
+      },
+      {
+        "imagery": "月",
+        "value": 0.9167
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "松",
+        "value": 0.4667
+      },
+      {
+        "imagery": "明月",
+        "value": 0.4167
+      },
+      {
+        "imagery": "竹",
+        "value": 0.4167
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      }
+    ]
+  },
+  {
+    "year": 803,
+    "weighted_poem_count": 3.0833,
+    "raw_poem_count_touching_year": 21,
+    "total_imagery_mentions": 14.2667,
+    "top_imagery": [
+      {
+        "imagery": "雪",
+        "value": 1.5
+      },
+      {
+        "imagery": "风",
+        "value": 1.4833
+      },
+      {
+        "imagery": "草",
+        "value": 1.4
+      },
+      {
+        "imagery": "六",
+        "value": 1.0
+      },
+      {
+        "imagery": "春草",
+        "value": 1.0
+      },
+      {
+        "imagery": "杨花",
+        "value": 1.0
+      },
+      {
+        "imagery": "月",
+        "value": 0.9167
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      }
+    ]
+  },
+  {
+    "year": 804,
+    "weighted_poem_count": 3.0833,
+    "raw_poem_count_touching_year": 21,
+    "total_imagery_mentions": 13.2667,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.4833
+      },
+      {
+        "imagery": "月",
+        "value": 1.9167
+      },
+      {
+        "imagery": "松",
+        "value": 1.4667
+      },
+      {
+        "imagery": "相思",
+        "value": 1.0
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "明月",
+        "value": 0.4167
+      },
+      {
+        "imagery": "竹",
+        "value": 0.4167
+      }
+    ]
+  },
+  {
+    "year": 805,
+    "weighted_poem_count": 3.0833,
+    "raw_poem_count_touching_year": 21,
+    "total_imagery_mentions": 13.2667,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.4833
+      },
+      {
+        "imagery": "雨",
+        "value": 1.55
+      },
+      {
+        "imagery": "九",
+        "value": 1.1
+      },
+      {
+        "imagery": "秋雨",
+        "value": 1.0
+      },
+      {
+        "imagery": "月",
+        "value": 0.9167
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "愁",
+        "value": 0.5667
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "松",
+        "value": 0.4667
+      },
+      {
+        "imagery": "明月",
+        "value": 0.4167
+      }
+    ]
+  },
+  {
+    "year": 806,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 8.1,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "月",
+        "value": 0.75
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "莲",
+        "value": 0.3
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 807,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 8.1,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "月",
+        "value": 0.75
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "莲",
+        "value": 0.3
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 808,
+    "weighted_poem_count": 1.75,
+    "raw_poem_count_touching_year": 18,
+    "total_imagery_mentions": 8.1,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.15
+      },
+      {
+        "imagery": "云",
+        "value": 0.75
+      },
+      {
+        "imagery": "月",
+        "value": 0.75
+      },
+      {
+        "imagery": "雨",
+        "value": 0.55
+      },
+      {
+        "imagery": "雪",
+        "value": 0.5
+      },
+      {
+        "imagery": "八",
+        "value": 0.4
+      },
+      {
+        "imagery": "愁",
+        "value": 0.4
+      },
+      {
+        "imagery": "草",
+        "value": 0.4
+      },
+      {
+        "imagery": "莲",
+        "value": 0.3
+      },
+      {
+        "imagery": "松",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "year": 809,
+    "weighted_poem_count": 5.25,
+    "raw_poem_count_touching_year": 22,
+    "total_imagery_mentions": 27.6,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 4.25
+      },
+      {
+        "imagery": "风",
+        "value": 3.65
+      },
+      {
+        "imagery": "草",
+        "value": 2.4
+      },
+      {
+        "imagery": "竹",
+        "value": 2.25
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "九",
+        "value": 1.1
+      },
+      {
+        "imagery": "霜",
+        "value": 1.1
+      },
+      {
+        "imagery": "流水",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 810,
+    "weighted_poem_count": 17.85,
+    "raw_poem_count_touching_year": 89,
+    "total_imagery_mentions": 84.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 9.25
+      },
+      {
+        "imagery": "月",
+        "value": 8.55
+      },
+      {
+        "imagery": "酒",
+        "value": 6.1
+      },
+      {
+        "imagery": "九",
+        "value": 6.0
+      },
+      {
+        "imagery": "竹",
+        "value": 4.75
+      },
+      {
+        "imagery": "雨",
+        "value": 4.25
+      },
+      {
+        "imagery": "草",
+        "value": 4.25
+      },
+      {
+        "imagery": "云",
+        "value": 3.95
+      },
+      {
+        "imagery": "琴",
+        "value": 3.0
+      },
+      {
+        "imagery": "霜",
+        "value": 2.75
+      }
+    ]
+  },
+  {
+    "year": 811,
+    "weighted_poem_count": 13.5167,
+    "raw_poem_count_touching_year": 89,
+    "total_imagery_mentions": 53.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 7.0
+      },
+      {
+        "imagery": "月",
+        "value": 4.9667
+      },
+      {
+        "imagery": "雨",
+        "value": 4.5833
+      },
+      {
+        "imagery": "九",
+        "value": 3.6667
+      },
+      {
+        "imagery": "云",
+        "value": 3.2833
+      },
+      {
+        "imagery": "酒",
+        "value": 3.2667
+      },
+      {
+        "imagery": "竹",
+        "value": 3.0833
+      },
+      {
+        "imagery": "愁",
+        "value": 2.65
+      },
+      {
+        "imagery": "六",
+        "value": 1.9833
+      },
+      {
+        "imagery": "草",
+        "value": 1.8333
+      }
+    ]
+  },
+  {
+    "year": 812,
+    "weighted_poem_count": 9.5167,
+    "raw_poem_count_touching_year": 85,
+    "total_imagery_mentions": 40.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 6.0
+      },
+      {
+        "imagery": "月",
+        "value": 3.9667
+      },
+      {
+        "imagery": "云",
+        "value": 3.2833
+      },
+      {
+        "imagery": "雨",
+        "value": 2.5833
+      },
+      {
+        "imagery": "酒",
+        "value": 2.2667
+      },
+      {
+        "imagery": "竹",
+        "value": 2.0833
+      },
+      {
+        "imagery": "草",
+        "value": 1.8333
+      },
+      {
+        "imagery": "雪",
+        "value": 1.6833
+      },
+      {
+        "imagery": "九",
+        "value": 1.6667
+      },
+      {
+        "imagery": "愁",
+        "value": 1.65
+      }
+    ]
+  },
+  {
+    "year": 813,
+    "weighted_poem_count": 9.5167,
+    "raw_poem_count_touching_year": 85,
+    "total_imagery_mentions": 40.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 6.0
+      },
+      {
+        "imagery": "月",
+        "value": 3.9667
+      },
+      {
+        "imagery": "云",
+        "value": 3.2833
+      },
+      {
+        "imagery": "雨",
+        "value": 2.5833
+      },
+      {
+        "imagery": "酒",
+        "value": 2.2667
+      },
+      {
+        "imagery": "竹",
+        "value": 2.0833
+      },
+      {
+        "imagery": "草",
+        "value": 1.8333
+      },
+      {
+        "imagery": "雪",
+        "value": 1.6833
+      },
+      {
+        "imagery": "九",
+        "value": 1.6667
+      },
+      {
+        "imagery": "愁",
+        "value": 1.65
+      }
+    ]
+  },
+  {
+    "year": 814,
+    "weighted_poem_count": 7.85,
+    "raw_poem_count_touching_year": 80,
+    "total_imagery_mentions": 34.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 5.0
+      },
+      {
+        "imagery": "月",
+        "value": 3.3
+      },
+      {
+        "imagery": "云",
+        "value": 2.95
+      },
+      {
+        "imagery": "雨",
+        "value": 2.25
+      },
+      {
+        "imagery": "竹",
+        "value": 1.75
+      },
+      {
+        "imagery": "愁",
+        "value": 1.65
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "草",
+        "value": 1.5
+      },
+      {
+        "imagery": "雪",
+        "value": 1.35
+      },
+      {
+        "imagery": "霜",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 815,
+    "weighted_poem_count": 17.6,
+    "raw_poem_count_touching_year": 98,
+    "total_imagery_mentions": 70.8,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 11.0
+      },
+      {
+        "imagery": "月",
+        "value": 7.55
+      },
+      {
+        "imagery": "雨",
+        "value": 6.5
+      },
+      {
+        "imagery": "愁",
+        "value": 4.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.95
+      },
+      {
+        "imagery": "九",
+        "value": 3.75
+      },
+      {
+        "imagery": "明月",
+        "value": 3.7
+      },
+      {
+        "imagery": "霜",
+        "value": 3.25
+      },
+      {
+        "imagery": "草",
+        "value": 2.75
+      },
+      {
+        "imagery": "雪",
+        "value": 2.35
+      }
+    ]
+  },
+  {
+    "year": 816,
+    "weighted_poem_count": 11.6,
+    "raw_poem_count_touching_year": 92,
+    "total_imagery_mentions": 49.8,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 7.0
+      },
+      {
+        "imagery": "月",
+        "value": 4.55
+      },
+      {
+        "imagery": "雨",
+        "value": 4.5
+      },
+      {
+        "imagery": "云",
+        "value": 3.95
+      },
+      {
+        "imagery": "竹",
+        "value": 3.25
+      },
+      {
+        "imagery": "愁",
+        "value": 2.9
+      },
+      {
+        "imagery": "雪",
+        "value": 2.35
+      },
+      {
+        "imagery": "霜",
+        "value": 2.25
+      },
+      {
+        "imagery": "酒",
+        "value": 2.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      }
+    ]
+  },
+  {
+    "year": 817,
+    "weighted_poem_count": 13.6,
+    "raw_poem_count_touching_year": 94,
+    "total_imagery_mentions": 61.8,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 9.0
+      },
+      {
+        "imagery": "雨",
+        "value": 6.5
+      },
+      {
+        "imagery": "月",
+        "value": 5.55
+      },
+      {
+        "imagery": "云",
+        "value": 4.95
+      },
+      {
+        "imagery": "酒",
+        "value": 3.1
+      },
+      {
+        "imagery": "愁",
+        "value": 2.9
+      },
+      {
+        "imagery": "九",
+        "value": 2.75
+      },
+      {
+        "imagery": "雪",
+        "value": 2.35
+      },
+      {
+        "imagery": "竹",
+        "value": 2.25
+      },
+      {
+        "imagery": "霜",
+        "value": 2.25
+      }
+    ]
+  },
+  {
+    "year": 818,
+    "weighted_poem_count": 11.6,
+    "raw_poem_count_touching_year": 92,
+    "total_imagery_mentions": 51.8,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 7.0
+      },
+      {
+        "imagery": "月",
+        "value": 4.55
+      },
+      {
+        "imagery": "雨",
+        "value": 4.5
+      },
+      {
+        "imagery": "云",
+        "value": 3.95
+      },
+      {
+        "imagery": "竹",
+        "value": 3.25
+      },
+      {
+        "imagery": "愁",
+        "value": 2.9
+      },
+      {
+        "imagery": "九",
+        "value": 2.75
+      },
+      {
+        "imagery": "草",
+        "value": 2.75
+      },
+      {
+        "imagery": "霜",
+        "value": 2.25
+      },
+      {
+        "imagery": "酒",
+        "value": 2.1
+      }
+    ]
+  },
+  {
+    "year": 819,
+    "weighted_poem_count": 8.35,
+    "raw_poem_count_touching_year": 79,
+    "total_imagery_mentions": 35.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.75
+      },
+      {
+        "imagery": "云",
+        "value": 3.95
+      },
+      {
+        "imagery": "月",
+        "value": 3.05
+      },
+      {
+        "imagery": "雨",
+        "value": 2.25
+      },
+      {
+        "imagery": "雪",
+        "value": 1.85
+      },
+      {
+        "imagery": "竹",
+        "value": 1.75
+      },
+      {
+        "imagery": "霜",
+        "value": 1.75
+      },
+      {
+        "imagery": "愁",
+        "value": 1.65
+      },
+      {
+        "imagery": "酒",
+        "value": 1.6
+      },
+      {
+        "imagery": "草",
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "year": 820,
+    "weighted_poem_count": 12.75,
+    "raw_poem_count_touching_year": 78,
+    "total_imagery_mentions": 59.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 8.05
+      },
+      {
+        "imagery": "月",
+        "value": 5.05
+      },
+      {
+        "imagery": "冰",
+        "value": 4.4
+      },
+      {
+        "imagery": "雪",
+        "value": 3.55
+      },
+      {
+        "imagery": "云",
+        "value": 3.45
+      },
+      {
+        "imagery": "霜",
+        "value": 3.25
+      },
+      {
+        "imagery": "草",
+        "value": 3.15
+      },
+      {
+        "imagery": "愁",
+        "value": 3.05
+      },
+      {
+        "imagery": "酒",
+        "value": 2.8
+      },
+      {
+        "imagery": "雨",
+        "value": 2.55
+      }
+    ]
+  },
+  {
+    "year": 821,
+    "weighted_poem_count": 8.75,
+    "raw_poem_count_touching_year": 74,
+    "total_imagery_mentions": 40.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 5.05
+      },
+      {
+        "imagery": "云",
+        "value": 4.45
+      },
+      {
+        "imagery": "月",
+        "value": 4.05
+      },
+      {
+        "imagery": "雨",
+        "value": 2.55
+      },
+      {
+        "imagery": "雪",
+        "value": 2.55
+      },
+      {
+        "imagery": "草",
+        "value": 2.15
+      },
+      {
+        "imagery": "松",
+        "value": 1.45
+      },
+      {
+        "imagery": "九",
+        "value": 1.4
+      },
+      {
+        "imagery": "白云",
+        "value": 1.3
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "year": 822,
+    "weighted_poem_count": 32.75,
+    "raw_poem_count_touching_year": 100,
+    "total_imagery_mentions": 133.6167,
+    "top_imagery": [
+      {
+        "imagery": "竹",
+        "value": 15.4833
+      },
+      {
+        "imagery": "风",
+        "value": 14.05
+      },
+      {
+        "imagery": "杨柳",
+        "value": 12.35
+      },
+      {
+        "imagery": "雨",
+        "value": 11.8833
+      },
+      {
+        "imagery": "九",
+        "value": 10.4
+      },
+      {
+        "imagery": "八",
+        "value": 6.35
+      },
+      {
+        "imagery": "雪",
+        "value": 5.55
+      },
+      {
+        "imagery": "愁",
+        "value": 5.3833
+      },
+      {
+        "imagery": "云",
+        "value": 4.7833
+      },
+      {
+        "imagery": "月",
+        "value": 4.3833
+      }
+    ]
+  },
+  {
+    "year": 823,
+    "weighted_poem_count": 8.75,
+    "raw_poem_count_touching_year": 76,
+    "total_imagery_mentions": 35.6167,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 6.05
+      },
+      {
+        "imagery": "月",
+        "value": 3.3833
+      },
+      {
+        "imagery": "雨",
+        "value": 2.8833
+      },
+      {
+        "imagery": "云",
+        "value": 2.7833
+      },
+      {
+        "imagery": "雪",
+        "value": 1.55
+      },
+      {
+        "imagery": "竹",
+        "value": 1.4833
+      },
+      {
+        "imagery": "草",
+        "value": 1.4833
+      },
+      {
+        "imagery": "九",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.3833
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "year": 824,
+    "weighted_poem_count": 15.75,
+    "raw_poem_count_touching_year": 83,
+    "total_imagery_mentions": 64.6167,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 7.3833
+      },
+      {
+        "imagery": "风",
+        "value": 6.05
+      },
+      {
+        "imagery": "云",
+        "value": 5.7833
+      },
+      {
+        "imagery": "竹",
+        "value": 5.4833
+      },
+      {
+        "imagery": "草",
+        "value": 4.4833
+      },
+      {
+        "imagery": "愁",
+        "value": 4.3833
+      },
+      {
+        "imagery": "九",
+        "value": 3.4
+      },
+      {
+        "imagery": "瑟",
+        "value": 3.2
+      },
+      {
+        "imagery": "相思",
+        "value": 3.2
+      },
+      {
+        "imagery": "雨",
+        "value": 2.8833
+      }
+    ]
+  },
+  {
+    "year": 825,
+    "weighted_poem_count": 9.75,
+    "raw_poem_count_touching_year": 75,
+    "total_imagery_mentions": 43.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 6.05
+      },
+      {
+        "imagery": "草",
+        "value": 4.15
+      },
+      {
+        "imagery": "月",
+        "value": 4.05
+      },
+      {
+        "imagery": "莲",
+        "value": 2.85
+      },
+      {
+        "imagery": "雪",
+        "value": 2.55
+      },
+      {
+        "imagery": "云",
+        "value": 2.45
+      },
+      {
+        "imagery": "霜",
+        "value": 2.25
+      },
+      {
+        "imagery": "琴",
+        "value": 1.6
+      },
+      {
+        "imagery": "江南",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.55
+      }
+    ]
+  },
+  {
+    "year": 826,
+    "weighted_poem_count": 6.75,
+    "raw_poem_count_touching_year": 72,
+    "total_imagery_mentions": 27.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.05
+      },
+      {
+        "imagery": "月",
+        "value": 3.05
+      },
+      {
+        "imagery": "云",
+        "value": 2.45
+      },
+      {
+        "imagery": "雪",
+        "value": 1.55
+      },
+      {
+        "imagery": "雨",
+        "value": 1.55
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      },
+      {
+        "imagery": "草",
+        "value": 1.15
+      },
+      {
+        "imagery": "竹",
+        "value": 1.15
+      },
+      {
+        "imagery": "愁",
+        "value": 1.05
+      },
+      {
+        "imagery": "莲",
+        "value": 0.85
+      }
+    ]
+  },
+  {
+    "year": 827,
+    "weighted_poem_count": 6.75,
+    "raw_poem_count_touching_year": 72,
+    "total_imagery_mentions": 27.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.05
+      },
+      {
+        "imagery": "月",
+        "value": 3.05
+      },
+      {
+        "imagery": "云",
+        "value": 2.45
+      },
+      {
+        "imagery": "雪",
+        "value": 1.55
+      },
+      {
+        "imagery": "雨",
+        "value": 1.55
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      },
+      {
+        "imagery": "草",
+        "value": 1.15
+      },
+      {
+        "imagery": "竹",
+        "value": 1.15
+      },
+      {
+        "imagery": "愁",
+        "value": 1.05
+      },
+      {
+        "imagery": "莲",
+        "value": 0.85
+      }
+    ]
+  },
+  {
+    "year": 828,
+    "weighted_poem_count": 20.75,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 83.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 12.05
+      },
+      {
+        "imagery": "九",
+        "value": 8.4
+      },
+      {
+        "imagery": "杨柳",
+        "value": 8.35
+      },
+      {
+        "imagery": "雪",
+        "value": 5.55
+      },
+      {
+        "imagery": "月",
+        "value": 5.05
+      },
+      {
+        "imagery": "八",
+        "value": 4.35
+      },
+      {
+        "imagery": "酒",
+        "value": 3.8
+      },
+      {
+        "imagery": "云",
+        "value": 3.45
+      },
+      {
+        "imagery": "雨",
+        "value": 2.55
+      },
+      {
+        "imagery": "七",
+        "value": 2.35
+      }
+    ]
+  },
+  {
+    "year": 829,
+    "weighted_poem_count": 8.75,
+    "raw_poem_count_touching_year": 74,
+    "total_imagery_mentions": 37.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.05
+      },
+      {
+        "imagery": "风",
+        "value": 5.05
+      },
+      {
+        "imagery": "雨",
+        "value": 2.55
+      },
+      {
+        "imagery": "云",
+        "value": 2.45
+      },
+      {
+        "imagery": "草",
+        "value": 2.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.55
+      },
+      {
+        "imagery": "九",
+        "value": 1.4
+      },
+      {
+        "imagery": "冰",
+        "value": 1.4
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.35
+      },
+      {
+        "imagery": "霜",
+        "value": 1.25
+      }
+    ]
+  },
+  {
+    "year": 830,
+    "weighted_poem_count": 11.45,
+    "raw_poem_count_touching_year": 88,
+    "total_imagery_mentions": 50.95,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 6.55
+      },
+      {
+        "imagery": "风",
+        "value": 5.9
+      },
+      {
+        "imagery": "月",
+        "value": 5.35
+      },
+      {
+        "imagery": "雪",
+        "value": 3.95
+      },
+      {
+        "imagery": "松",
+        "value": 3.4
+      },
+      {
+        "imagery": "霜",
+        "value": 2.5
+      },
+      {
+        "imagery": "九",
+        "value": 2.1
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "明月",
+        "value": 1.7
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      }
+    ]
+  },
+  {
+    "year": 831,
+    "weighted_poem_count": 9.45,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 38.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.35
+      },
+      {
+        "imagery": "风",
+        "value": 4.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "八",
+        "value": 1.4
+      }
+    ]
+  },
+  {
+    "year": 832,
+    "weighted_poem_count": 8.45,
+    "raw_poem_count_touching_year": 85,
+    "total_imagery_mentions": 35.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "风",
+        "value": 3.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "year": 833,
+    "weighted_poem_count": 9.45,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 40.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.9
+      },
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "雨",
+        "value": 3.05
+      },
+      {
+        "imagery": "酒",
+        "value": 2.5
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "八",
+        "value": 1.4
+      }
+    ]
+  },
+  {
+    "year": 834,
+    "weighted_poem_count": 9.45,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 40.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "风",
+        "value": 3.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "雨",
+        "value": 3.05
+      },
+      {
+        "imagery": "霜",
+        "value": 2.5
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "竹",
+        "value": 2.2
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      }
+    ]
+  },
+  {
+    "year": 835,
+    "weighted_poem_count": 9.45,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 38.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 5.35
+      },
+      {
+        "imagery": "风",
+        "value": 4.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "year": 836,
+    "weighted_poem_count": 8.45,
+    "raw_poem_count_touching_year": 85,
+    "total_imagery_mentions": 35.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "风",
+        "value": 3.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "year": 837,
+    "weighted_poem_count": 15.45,
+    "raw_poem_count_touching_year": 92,
+    "total_imagery_mentions": 58.95,
+    "top_imagery": [
+      {
+        "imagery": "江南",
+        "value": 7.3
+      },
+      {
+        "imagery": "风",
+        "value": 6.9
+      },
+      {
+        "imagery": "月",
+        "value": 5.35
+      },
+      {
+        "imagery": "竹",
+        "value": 4.2
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "酒",
+        "value": 3.5
+      },
+      {
+        "imagery": "草",
+        "value": 2.7
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "芙蓉",
+        "value": 2.0
+      }
+    ]
+  },
+  {
+    "year": 838,
+    "weighted_poem_count": 9.45,
+    "raw_poem_count_touching_year": 86,
+    "total_imagery_mentions": 38.95,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 4.9
+      },
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "雨",
+        "value": 3.05
+      },
+      {
+        "imagery": "酒",
+        "value": 2.5
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "year": 839,
+    "weighted_poem_count": 8.45,
+    "raw_poem_count_touching_year": 85,
+    "total_imagery_mentions": 35.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 4.35
+      },
+      {
+        "imagery": "风",
+        "value": 3.9
+      },
+      {
+        "imagery": "云",
+        "value": 3.55
+      },
+      {
+        "imagery": "松",
+        "value": 2.4
+      },
+      {
+        "imagery": "雨",
+        "value": 2.05
+      },
+      {
+        "imagery": "雪",
+        "value": 1.95
+      },
+      {
+        "imagery": "草",
+        "value": 1.7
+      },
+      {
+        "imagery": "酒",
+        "value": 1.5
+      },
+      {
+        "imagery": "霜",
+        "value": 1.5
+      },
+      {
+        "imagery": "竹",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "year": 840,
+    "weighted_poem_count": 5.65,
+    "raw_poem_count_touching_year": 58,
+    "total_imagery_mentions": 21.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      },
+      {
+        "imagery": "雪",
+        "value": 0.65
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 841,
+    "weighted_poem_count": 5.65,
+    "raw_poem_count_touching_year": 58,
+    "total_imagery_mentions": 21.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      },
+      {
+        "imagery": "雪",
+        "value": 0.65
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 842,
+    "weighted_poem_count": 5.9833,
+    "raw_poem_count_touching_year": 59,
+    "total_imagery_mentions": 22.9167,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 3.1333
+      },
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "云",
+        "value": 1.8333
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "草",
+        "value": 0.9333
+      },
+      {
+        "imagery": "竹",
+        "value": 0.9333
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      }
+    ]
+  },
+  {
+    "year": 843,
+    "weighted_poem_count": 5.9833,
+    "raw_poem_count_touching_year": 59,
+    "total_imagery_mentions": 22.9167,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 3.1333
+      },
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "云",
+        "value": 1.8333
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "草",
+        "value": 0.9333
+      },
+      {
+        "imagery": "竹",
+        "value": 0.9333
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      }
+    ]
+  },
+  {
+    "year": 844,
+    "weighted_poem_count": 6.9833,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 26.9167,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 3.85
+      },
+      {
+        "imagery": "月",
+        "value": 3.1333
+      },
+      {
+        "imagery": "云",
+        "value": 2.8333
+      },
+      {
+        "imagery": "雨",
+        "value": 2.4
+      },
+      {
+        "imagery": "竹",
+        "value": 1.9333
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "草",
+        "value": 0.9333
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      }
+    ]
+  },
+  {
+    "year": 845,
+    "weighted_poem_count": 6.65,
+    "raw_poem_count_touching_year": 59,
+    "total_imagery_mentions": 24.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 2.5
+      },
+      {
+        "imagery": "雪",
+        "value": 1.65
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "九",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      }
+    ]
+  },
+  {
+    "year": 846,
+    "weighted_poem_count": 7.65,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 29.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 3.85
+      },
+      {
+        "imagery": "月",
+        "value": 3.8
+      },
+      {
+        "imagery": "雨",
+        "value": 2.4
+      },
+      {
+        "imagery": "愁",
+        "value": 2.4
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.1
+      },
+      {
+        "imagery": "芙蓉",
+        "value": 1.1
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 1.1
+      },
+      {
+        "imagery": "芭蕉",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 847,
+    "weighted_poem_count": 5.65,
+    "raw_poem_count_touching_year": 58,
+    "total_imagery_mentions": 21.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      },
+      {
+        "imagery": "雪",
+        "value": 0.65
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 848,
+    "weighted_poem_count": 5.65,
+    "raw_poem_count_touching_year": 58,
+    "total_imagery_mentions": 21.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      },
+      {
+        "imagery": "雪",
+        "value": 0.65
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 849,
+    "weighted_poem_count": 5.65,
+    "raw_poem_count_touching_year": 58,
+    "total_imagery_mentions": 21.25,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.85
+      },
+      {
+        "imagery": "月",
+        "value": 2.8
+      },
+      {
+        "imagery": "云",
+        "value": 1.5
+      },
+      {
+        "imagery": "雨",
+        "value": 1.4
+      },
+      {
+        "imagery": "愁",
+        "value": 1.4
+      },
+      {
+        "imagery": "酒",
+        "value": 1.25
+      },
+      {
+        "imagery": "松",
+        "value": 0.9
+      },
+      {
+        "imagery": "霜",
+        "value": 0.9
+      },
+      {
+        "imagery": "雪",
+        "value": 0.65
+      },
+      {
+        "imagery": "草",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 850,
+    "weighted_poem_count": 7.6,
+    "raw_poem_count_touching_year": 62,
+    "total_imagery_mentions": 31.35,
+    "top_imagery": [
+      {
+        "imagery": "云",
+        "value": 3.75
+      },
+      {
+        "imagery": "风",
+        "value": 3.45
+      },
+      {
+        "imagery": "雨",
+        "value": 2.75
+      },
+      {
+        "imagery": "雪",
+        "value": 2.1
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "秋雨",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      }
+    ]
+  },
+  {
+    "year": 851,
+    "weighted_poem_count": 14.6,
+    "raw_poem_count_touching_year": 69,
+    "total_imagery_mentions": 66.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 8.45
+      },
+      {
+        "imagery": "雨",
+        "value": 6.75
+      },
+      {
+        "imagery": "月",
+        "value": 4.65
+      },
+      {
+        "imagery": "酒",
+        "value": 3.95
+      },
+      {
+        "imagery": "云",
+        "value": 3.75
+      },
+      {
+        "imagery": "愁",
+        "value": 3.15
+      },
+      {
+        "imagery": "雪",
+        "value": 3.1
+      },
+      {
+        "imagery": "九",
+        "value": 2.55
+      },
+      {
+        "imagery": "竹",
+        "value": 2.4
+      },
+      {
+        "imagery": "六",
+        "value": 2.35
+      }
+    ]
+  },
+  {
+    "year": 852,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 853,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 854,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 855,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 856,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 857,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 858,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 859,
+    "weighted_poem_count": 5.6,
+    "raw_poem_count_touching_year": 60,
+    "total_imagery_mentions": 25.35,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 2.45
+      },
+      {
+        "imagery": "雨",
+        "value": 1.75
+      },
+      {
+        "imagery": "云",
+        "value": 1.75
+      },
+      {
+        "imagery": "草",
+        "value": 1.75
+      },
+      {
+        "imagery": "月",
+        "value": 1.65
+      },
+      {
+        "imagery": "杨柳",
+        "value": 1.6
+      },
+      {
+        "imagery": "愁",
+        "value": 1.15
+      },
+      {
+        "imagery": "雪",
+        "value": 1.1
+      },
+      {
+        "imagery": "八",
+        "value": 1.0
+      },
+      {
+        "imagery": "酒",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "year": 860,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 861,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 862,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 863,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 864,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 865,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 866,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 867,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 868,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 869,
+    "weighted_poem_count": 2.5,
+    "raw_poem_count_touching_year": 28,
+    "total_imagery_mentions": 10.95,
+    "top_imagery": [
+      {
+        "imagery": "月",
+        "value": 1.1
+      },
+      {
+        "imagery": "风",
+        "value": 1.1
+      },
+      {
+        "imagery": "雨",
+        "value": 0.7
+      },
+      {
+        "imagery": "松",
+        "value": 0.7
+      },
+      {
+        "imagery": "草",
+        "value": 0.65
+      },
+      {
+        "imagery": "云",
+        "value": 0.6
+      },
+      {
+        "imagery": "雪",
+        "value": 0.6
+      },
+      {
+        "imagery": "九",
+        "value": 0.55
+      },
+      {
+        "imagery": "莲",
+        "value": 0.5
+      },
+      {
+        "imagery": "酒",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "year": 870,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 871,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 872,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 873,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 874,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 875,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 876,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 877,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 878,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 879,
+    "weighted_poem_count": 0.6,
+    "raw_poem_count_touching_year": 7,
+    "total_imagery_mentions": 3.3,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.45
+      },
+      {
+        "imagery": "雨",
+        "value": 0.4
+      },
+      {
+        "imagery": "月",
+        "value": 0.3
+      },
+      {
+        "imagery": "酒",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      },
+      {
+        "imagery": "江南",
+        "value": 0.2
+      },
+      {
+        "imagery": "鸳鸯",
+        "value": 0.2
+      },
+      {
+        "imagery": "云",
+        "value": 0.15
+      },
+      {
+        "imagery": "莲",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "year": 880,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 881,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 882,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 883,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 884,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 885,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 886,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 887,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 888,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 889,
+    "weighted_poem_count": 1.25,
+    "raw_poem_count_touching_year": 14,
+    "total_imagery_mentions": 5.55,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 0.8
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      },
+      {
+        "imagery": "雨",
+        "value": 0.45
+      },
+      {
+        "imagery": "霜",
+        "value": 0.4
+      },
+      {
+        "imagery": "云",
+        "value": 0.35
+      },
+      {
+        "imagery": "雪",
+        "value": 0.3
+      },
+      {
+        "imagery": "愁",
+        "value": 0.3
+      },
+      {
+        "imagery": "竹",
+        "value": 0.25
+      },
+      {
+        "imagery": "月",
+        "value": 0.2
+      },
+      {
+        "imagery": "九",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "year": 890,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 891,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 892,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 893,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 894,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 895,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 896,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 897,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 898,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 899,
+    "weighted_poem_count": 2.85,
+    "raw_poem_count_touching_year": 29,
+    "total_imagery_mentions": 14.05,
+    "top_imagery": [
+      {
+        "imagery": "风",
+        "value": 1.85
+      },
+      {
+        "imagery": "月",
+        "value": 1.6
+      },
+      {
+        "imagery": "雨",
+        "value": 1.05
+      },
+      {
+        "imagery": "云",
+        "value": 1.0
+      },
+      {
+        "imagery": "猿",
+        "value": 0.95
+      },
+      {
+        "imagery": "雪",
+        "value": 0.9
+      },
+      {
+        "imagery": "松",
+        "value": 0.85
+      },
+      {
+        "imagery": "愁",
+        "value": 0.8
+      },
+      {
+        "imagery": "霜",
+        "value": 0.7
+      },
+      {
+        "imagery": "酒",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "year": 900,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 901,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 902,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 903,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 904,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 905,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 906,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  },
+  {
+    "year": 907,
+    "weighted_poem_count": 0,
+    "raw_poem_count_touching_year": 0,
+    "total_imagery_mentions": 0,
+    "top_imagery": []
+  }
+]

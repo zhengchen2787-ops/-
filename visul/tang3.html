@@ -1,0 +1,840 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>唐诗意象的时空语义可视化系统</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root{
+      --paper:#efe9d8;
+      --ink:#1f201b;
+      --muted:#746f61;
+      --line:rgba(80,72,52,.24);
+      --red:#bd6a5f;
+      --green:#80936b;
+      --gold:#c39a48;
+      --blue:#6f9eaa;
+      --teal:#3f8f8d;
+      --brown:#a47b52;
+      --shadow:rgba(64,48,26,.12);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#e8e3d4;
+      color:var(--ink);
+      font-family:"Noto Serif SC","Songti SC","SimSun",serif;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.46;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.62), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(120,100,70,.12), transparent 30%),
+        repeating-linear-gradient(12deg, rgba(80,70,50,.03) 0 1px, transparent 1px 7px);
+      mix-blend-mode:multiply;
+    }
+
+    #app{position:relative;width:100vw;height:100vh;padding:26px 34px;}
+
+    .paper{
+      position:absolute;
+      left:3.2vw;
+      right:3.2vw;
+      top:5.2vh;
+      bottom:3vh;
+      background:rgba(244,238,221,.92);
+      box-shadow:0 18px 52px rgba(75,62,42,.18);
+      border:1px solid rgba(110,96,70,.16);
+      overflow:hidden;
+    }
+
+    .paper::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background-image:
+        radial-gradient(rgba(90,75,55,.22) .7px, transparent .7px),
+        radial-gradient(rgba(255,255,255,.8) .9px, transparent .9px);
+      background-size:28px 28px, 42px 42px;
+      background-position:0 0, 10px 10px;
+    }
+
+    .grid{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      padding:36px 42px 30px 42px;
+      display:grid;
+      grid-template-columns: 40% 30% 30%;
+      grid-template-rows: 20% 45% 35%;
+      gap:10px 22px;
+    }
+
+    .title-block{grid-column:1;grid-row:1;position:relative;padding-left:4px;}
+    .title-block h1{margin:0;font-size:30px;letter-spacing:5px;font-weight:600;line-height:1.52;}
+    .title-block p{max-width:640px;font-size:12px;line-height:1.72;color:#4d493d;margin:18px 0 0;}
+
+    .mini-intro{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding-top:10px;}
+    .mini-card{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;min-width:0;}
+    .mini-icon{font-size:30px;filter:saturate(.86);}
+    .mini-card b{font-size:12px;font-weight:600;display:block;margin-bottom:3px;}
+    .mini-card span{font-size:10px;color:var(--muted);line-height:1.35;display:block;}
+
+    .right-title{grid-column:3;grid-row:1;padding-top:16px;}
+    .right-title h2{margin:0;font-size:18px;letter-spacing:3px;font-weight:600;text-align:center;}
+    .right-title p{font-size:11px;line-height:1.7;color:var(--muted);margin:20px 8px 0;}
+
+    #chordPanel{grid-column:1;grid-row:2 / 4;position:relative;}
+    #seasonPanel{
+      grid-column:2 / 4;
+      grid-row:2;
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      grid-template-rows:1fr;
+      gap:0;
+      overflow:visible;
+    }
+    #evolutionPanel{grid-column:2 / 4;grid-row:3;position:relative;}
+
+    .panel-title{position:absolute;left:8px;top:0;font-size:14px;letter-spacing:3px;color:#2f2d26;z-index:5;}
+    .small-note{position:absolute;left:12px;bottom:4px;width:70%;font-size:10px;line-height:1.7;color:var(--muted);}
+    svg{display:block;width:100%;height:100%;overflow:visible;}
+
+    .season-card{position:relative;overflow:hidden;}
+    .season-title{position:absolute;left:22px;top:2px;font-size:46px;font-weight:600;line-height:1;z-index:2;font-family:"STKaiti","KaiTi","Noto Serif SC",serif;}
+    .season-words{position:absolute;right:16px;top:28px;max-width:160px;text-align:left;font-size:10px;line-height:1.55;color:#4d493d;z-index:2;}
+    .season-arc{position:absolute;left:82px;top:42px;width:190px;height:110px;}
+
+    .semantic-card{
+      min-height:250px;
+      overflow:visible;
+      position:relative;
+    }
+    .semantic-title{font-size:42px;left:12px;top:2px;}
+    .semantic-name{
+      position:absolute;
+      left:62px;
+      top:12px;
+      font-size:14px;
+      letter-spacing:2px;
+      color:rgba(45,40,32,.78);
+      z-index:4;
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .semantic-words{display:none;}
+    .semantic-arc{position:absolute;left:-10px;top:42px;width:260px;height:158px;z-index:3;}
+    .semantic-illus{
+      position:absolute;
+      left:70px;
+      bottom:34px;
+      width:180px;
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      font-size:25px;
+      opacity:.84;
+      filter:saturate(.86);
+      z-index:4;
+    }
+    .semantic-desc{
+      position:absolute;
+      left:14px;
+      right:8px;
+      bottom:5px;
+      font-size:9.5px;
+      line-height:1.45;
+      color:rgba(82,75,62,.72);
+    }
+    .semantic-connector-svg{
+      position:absolute;
+      inset:34px -24px 40px -24px;
+      width:calc(100% + 48px);
+      height:calc(100% - 74px);
+      z-index:1;
+      pointer-events:none;
+      overflow:visible;
+    }
+    .semantic-rail{
+      fill:none;
+      stroke:rgba(116,105,78,.12);
+      stroke-width:6;
+      stroke-linecap:round;
+    }
+    .semantic-rail-dot{
+      fill:rgba(116,105,78,.24);
+      stroke:rgba(255,250,235,.7);
+      stroke-width:1;
+    }
+    .semantic-start-label{
+      font-size:8.5px;
+      fill:rgba(44,39,31,.68);
+      dominant-baseline:middle;
+    }
+    .semantic-period-legend{
+      position:absolute;
+      right:4px;
+      bottom:-8px;
+      display:flex;
+      gap:9px;
+      font-size:10px;
+      color:rgba(70,63,52,.72);
+      z-index:8;
+    }
+    .semantic-period-legend span{display:inline-flex;align-items:center;gap:4px;}
+    .semantic-period-legend i{
+      width:8px;
+      height:8px;
+      display:inline-block;
+      border-radius:50%;
+      border:1px solid rgba(90,75,50,.18);
+    }
+
+    .tooltip{
+      position:fixed;
+      z-index:20;
+      pointer-events:none;
+      background:rgba(255,252,240,.96);
+      border:1px solid rgba(90,78,55,.2);
+      box-shadow:0 8px 24px rgba(40,32,18,.14);
+      padding:10px 12px;
+      border-radius:10px;
+      font-size:12px;
+      line-height:1.65;
+      max-width:280px;
+      opacity:0;
+      transform:translate(-50%,-110%);
+    }
+
+    .legend{position:absolute;left:12px;bottom:18px;display:flex;gap:12px;flex-wrap:wrap;max-width:80%;font-size:10px;color:#4e493d;}
+    .legend-item{display:flex;align-items:center;gap:5px;}
+    .dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.1)}
+
+    .axis text{font-size:9px;fill:#605a4d}.axis path,.axis line{stroke:rgba(70,62,45,.28)}
+    .muted-text{font-size:10px;fill:#746f61}.label{font-size:10px;fill:#292722}.tiny{font-size:8px;fill:#605a4d}
+    .fade{opacity:.12!important}.highlight{opacity:1!important;stroke-opacity:1!important;fill-opacity:1!important}
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="paper">
+    <div class="grid">
+      <section class="title-block">
+        <h1>唐代诗词中的<br/>意象统计</h1>
+        <p>以一千首唐诗为样本，统计诗歌中的自然、空间、人为与情感意象，并展示它们在诗作中的共现关系、语义母题与时间演化。</p>
+      </section>
+
+      <section class="mini-intro">
+        <div class="mini-card"><div class="mini-icon">🌙</div><div><b>天象水文</b><span>月、云、风、雨、水、雪</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🌿</div><div><b>草木鸟兽</b><span>草、柳、梅、竹、雁、猿</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🏯</div><div><b>空间行旅</b><span>长亭、关山、江南、天涯</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🍶</div><div><b>器物雅事</b><span>酒、琴、剑、亭台</span></div></div>
+        <div class="mini-card"><div class="mini-icon">💭</div><div><b>情感典故</b><span>愁、相思、思乡、青鸟</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🧭</div><div><b>峰值时期</b><span>弧末色点表示初盛中晚唐</span></div></div>
+      </section>
+
+      <section class="right-title">
+        <h2>诗词中意象方式的统计</h2>
+        <p>右侧以气泡图呈现不同类别意象的出现规模，并以时间流线展示意象从初唐到晚唐的变化。</p>
+      </section>
+
+      <section id="chordPanel">
+        <div class="panel-title">诗词意象共现方式</div>
+        <svg id="chordSvg"></svg>
+        <div class="small-note">弦图中，外圈为高频意象，内部连线表示两个意象在同一首诗中共同出现的强度。</div>
+      </section>
+
+      <section id="seasonPanel"></section>
+
+      <section id="evolutionPanel">
+        <svg id="evolutionSvg"></svg>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const FILES = {
+  poems: "poem_time_visual.json",
+  co: "co_occurrence.json",
+  category: "yixiang.csv"
+};
+
+const categoryColor = new Map([
+  ["自然意象", "#6f9e8b"],
+  ["空间意象", "#c39a48"],
+  ["人为意象", "#b77d58"],
+  ["情感意象", "#bd6a74"],
+  ["品格象征", "#8c7ab8"],
+  ["战争边塞", "#8a7761"],
+  ["典故文化", "#6f9eaa"],
+  ["未分类", "#9a988c"]
+]);
+
+const periodDotColor = {
+  "初唐": "#d6b86a",
+  "盛唐": "#d9734f",
+  "中唐": "#6d9c86",
+  "晚唐": "#6f8798",
+  "未知": "#aaa396"
+};
+
+const periodOrderForMotif = ["初唐", "盛唐", "中唐", "晚唐", "未知"];
+
+const semanticMotifConfig = [
+  {
+    key: "sky_water",
+    name: "天象水文",
+    short: "天",
+    color: "#c97872",
+    words: ["月", "云", "风", "雨", "水", "雪"],
+    icons: ["🌙", "☁️", "🌊", "💧", "❄️", "〰️"],
+    desc: "月、云、风、雨、水、雪共同构成唐诗中最稳定的自然感知系统。"
+  },
+  {
+    key: "plant_animal",
+    name: "草木鸟兽",
+    short: "物",
+    color: "#7f9a6e",
+    words: ["草", "柳", "梅", "竹", "雁", "猿"],
+    icons: ["🌿", "🍃", "🌸", "🎋", "🕊️", "🐒"],
+    desc: "草木与鸟兽承载季节、离别、隐逸与生命感，是诗歌感物传统的重要媒介。"
+  },
+  {
+    key: "space_travel",
+    name: "空间行旅",
+    short: "境",
+    color: "#c99744",
+    words: ["长亭", "关山", "江南", "天涯", "酒", "琴"],
+    icons: ["🏯", "⛰️", "🌊", "🧭", "🍶", "🎻"],
+    desc: "空间与器物连接送别、边塞、远游和宴饮，展示诗人移动中的情感经验。"
+  },
+  {
+    key: "emotion_allusion",
+    name: "情感典故",
+    short: "情",
+    color: "#6f9eaa",
+    words: ["愁", "相思", "思乡", "青鸟", "精卫", "鸿鹄"],
+    icons: ["📜", "🪽", "🪶", "💡", "🌉", "🌊"],
+    desc: "情感词与典故符号将个人经验转化为文化记忆，体现唐诗的象征系统。"
+  }
+];
+
+const periodOrder = ["初唐", "盛唐", "中唐", "晚唐", "未知"];
+const $tip = d3.select("#tooltip");
+
+function showTip(event, html){
+  $tip.html(html).style("left", event.clientX + "px").style("top", event.clientY + "px").transition().duration(120).style("opacity", 1);
+}
+function hideTip(){ $tip.transition().duration(120).style("opacity", 0); }
+
+function getCol(row, names, fallback=""){
+  for(const n of names){ if(row[n] !== undefined && row[n] !== null && String(row[n]).trim() !== "") return String(row[n]).trim(); }
+  return fallback;
+}
+
+function normalizeName(name, categoryMap){
+  const item = categoryMap.get(name);
+  return item?.normalize_to || item?.normalize || name;
+}
+
+function aggregateData(poems, coData, yixiangRows){
+  const categoryMap = new Map();
+  yixiangRows.forEach(r => {
+    const imagery = getCol(r, ["imagery", "意象", "name", "名称"]);
+    if(!imagery) return;
+    categoryMap.set(imagery, {
+      imagery,
+      category: getCol(r, ["category", "一级分类", "顶级分类", "类别"], "未分类"),
+      subcategory: getCol(r, ["subcategory", "二级分类", "子类"], "未分类"),
+      season: getCol(r, ["season", "季节"], ""),
+      normalize_to: getCol(r, ["normalize_to", "归一化", "标准意象"], imagery)
+    });
+  });
+
+  const poemImagery = poems.map(p => {
+    const arr = Array.isArray(p.matched_imagery) ? p.matched_imagery : [];
+    return {...p, imagery_norm: [...new Set(arr.map(d => normalizeName(d, categoryMap)).filter(Boolean))]};
+  });
+
+  const freq = d3.rollup(
+    poemImagery.flatMap(p => p.imagery_norm.map(name => ({name, p}))),
+    v => v.length,
+    d => d.name
+  );
+
+  const categoryStats = Array.from(freq, ([name, value]) => {
+    const info = categoryMap.get(name) || categoryMap.get([...categoryMap.keys()].find(k => categoryMap.get(k).normalize_to === name)) || {};
+    return {
+      name, value,
+      category: info.category || "未分类",
+      subcategory: info.subcategory || "未分类",
+      season: info.season || ""
+    };
+  }).sort((a,b)=>d3.descending(a.value,b.value));
+
+  const coNormCounter = new Map();
+  coData.forEach(d => {
+    const a = normalizeName(d.source, categoryMap), b = normalizeName(d.target, categoryMap);
+    if(!a || !b || a === b) return;
+    const key = [a,b].sort().join("||");
+    coNormCounter.set(key, (coNormCounter.get(key)||0) + (+d.value || 0));
+  });
+  const coNorm = Array.from(coNormCounter, ([key,value]) => {
+    const [source,target] = key.split("||");
+    return {source,target,value};
+  }).sort((a,b)=>d3.descending(a.value,b.value));
+
+  const timeline = [];
+  poemImagery.forEach(p => {
+    const period = p.tang_period || "未知";
+    p.imagery_norm.forEach(img => timeline.push({period, imagery: img, poem: p.title, author: p.author, year: p.estimated_year}));
+  });
+  const timelineStats = Array.from(d3.rollup(timeline, v => v.length, d => d.period, d => d.imagery), ([period, m]) =>
+    Array.from(m, ([imagery, value]) => ({period, imagery, value}))
+  ).flat();
+
+  return {poems: poemImagery, categoryMap, categoryStats, coNorm, timelineStats, freq};
+}
+
+function getPeriodForPoem(poem) {
+  if (poem.tang_period && poem.tang_period !== "未知") return poem.tang_period;
+  const year = Number(poem.estimated_year);
+  if (!Number.isFinite(year)) return "未知";
+  if (year <= 712) return "初唐";
+  if (year <= 765) return "盛唐";
+  if (year <= 835) return "中唐";
+  if (year <= 907) return "晚唐";
+  return "未知";
+}
+
+function normalizeForCore(word) {
+  const alias = {
+    "明月": "月", "月亮": "月", "婵娟": "月",
+    "白云": "云",
+    "流水": "水", "春水": "水", "江水": "水", "秋水": "水", "东流之水": "水",
+    "西风": "风", "秋雨": "雨", "细雨": "雨", "冰雪": "雪",
+    "杨柳": "柳", "梅花": "梅", "鸿雁": "雁", "猿啸": "猿", "猿鸣": "猿",
+    "离愁": "愁", "忧愁": "愁"
+  };
+  return alias[word] || word;
+}
+
+function buildMotifStats(poems) {
+  const allCoreWords = new Set(semanticMotifConfig.flatMap(d => d.words));
+  const statMap = new Map();
+
+  allCoreWords.forEach(word => {
+    statMap.set(word, {
+      name: word,
+      total: 0,
+      period: {"初唐": 0, "盛唐": 0, "中唐": 0, "晚唐": 0, "未知": 0}
+    });
+  });
+
+  poems.forEach(poem => {
+    const period = getPeriodForPoem(poem);
+    const words = poem.imagery_norm || poem.matched_imagery || [];
+    const normalized = Array.from(new Set(words.map(normalizeForCore)));
+
+    normalized.forEach(word => {
+      if (!allCoreWords.has(word)) return;
+      const item = statMap.get(word);
+      item.total += 1;
+      item.period[period] = (item.period[period] || 0) + 1;
+    });
+  });
+
+  statMap.forEach(item => {
+    const entries = periodOrderForMotif.map(p => ({ period: p, value: item.period[p] || 0 }));
+    const peak = entries.sort((a, b) => d3.descending(a.value, b.value))[0];
+    item.peakPeriod = peak && peak.value > 0 ? peak.period : "未知";
+
+    const values = periodOrderForMotif.filter(p => p !== "未知").map(p => item.period[p] || 0);
+    const totalKnown = d3.sum(values);
+    const maxKnown = d3.max(values) || 0;
+    item.concentration = totalKnown > 0 ? maxKnown / totalKnown : 0;
+  });
+
+  return statMap;
+}
+
+function drawSemanticMotifModules(poems, categoryStats) {
+  const panel = d3.select("#seasonPanel");
+  panel.selectAll("*").remove();
+
+  const statMap = buildMotifStats(poems);
+
+  const modules = semanticMotifConfig.map((cfg, idx) => {
+    const words = cfg.words
+      .map(word => statMap.get(word) || {
+        name: word,
+        total: 0,
+        peakPeriod: "未知",
+        concentration: 0,
+        period: {"初唐": 0, "盛唐": 0, "中唐": 0, "晚唐": 0, "未知": 0}
+      })
+      .sort((a, b) => d3.descending(a.total, b.total));
+
+    return {
+      ...cfg,
+      index: idx,
+      words,
+      maxTotal: d3.max(words, d => d.total) || 1,
+      total: d3.sum(words, d => d.total)
+    };
+  });
+
+  // 横向连接轨道：四个模块按从左到右的顺序首尾相接，形成连续的信息带
+  const connector = panel.append("svg")
+    .attr("class", "semantic-connector-svg")
+    .attr("viewBox", "0 0 1200 260");
+
+  const moduleCenters = [130, 440, 750, 1060];
+  const railY = 138;
+  const railRadii = [50, 63, 76, 89, 102, 115];
+
+  railRadii.forEach((r, i) => {
+    const points = moduleCenters.map((cx, idx) => {
+      const localX = idx % 2 === 0 ? cx + 80 : cx - 80;
+      const localY = railY + (i - 2.5) * 6;
+      return [localX, localY];
+    });
+
+    connector.append("path")
+      .attr("class", "semantic-rail")
+      .attr("d", d3.line().curve(d3.curveBasis)(points));
+
+    connector.selectAll(`.rail-dot-${i}`)
+      .data(points)
+      .join("circle")
+      .attr("class", "semantic-rail-dot")
+      .attr("cx", d => d[0])
+      .attr("cy", d => d[1])
+      .attr("r", 3.2);
+  });
+
+  const cards = panel.selectAll(".season-card")
+    .data(modules)
+    .join("div")
+    .attr("class", "season-card semantic-card");
+
+  cards.append("div")
+    .attr("class", "season-title semantic-title")
+    .style("color", d => d.color)
+    .text(d => d.short);
+
+  cards.append("div")
+    .attr("class", "semantic-name")
+    .text(d => d.name);
+
+  cards.append("svg")
+    .attr("class", "season-arc semantic-arc")
+    .each(function(module) {
+      const svg = d3.select(this).attr("viewBox", [0, 0, 260, 158]);
+      const cx = 130;
+      const cy = 138;
+
+      const startAngle = -Math.PI / 2;
+      const minAngle = Math.PI * 0.38;
+      const maxAngle = Math.PI * 1.26;
+      const angleScale = d3.scaleLinear().domain([0, module.maxTotal]).range([minAngle, maxAngle]);
+      const opacityScale = d3.scaleLinear().domain([0, 1]).range([0.30, 0.92]);
+
+      // 模块之间首尾连接用的淡色底环：视觉上形成连续的轨道
+      module.words.slice(0, 6).forEach((w, i) => {
+        const r = 40 + i * 12;
+        const bgArc = d3.arc()
+          .innerRadius(r)
+          .outerRadius(r + 6)
+          .startAngle(startAngle)
+          .endAngle(startAngle + maxAngle);
+
+        svg.append("path")
+          .attr("d", bgArc())
+          .attr("transform", `translate(${cx},${cy})`)
+          .attr("fill", "rgba(84,75,58,.075)");
+      });
+
+      module.words.slice(0, 6).forEach((w, i) => {
+        const r = 40 + i * 12;
+        const end = startAngle + angleScale(w.total);
+
+        const arc = d3.arc()
+          .innerRadius(r)
+          .outerRadius(r + 7)
+          .startAngle(startAngle)
+          .endAngle(end)
+          .cornerRadius(4);
+
+        svg.append("path")
+          .attr("d", arc())
+          .attr("transform", `translate(${cx},${cy})`)
+          .attr("fill", module.color)
+          .attr("opacity", opacityScale(w.concentration))
+          .attr("stroke", "rgba(255,255,255,.35)")
+          .attr("stroke-width", 0.7)
+          .on("mousemove", event => {
+            showTip(event, `
+              <b>${module.name} / ${w.name}</b><br/>
+              总频次：${Math.round(w.total)}<br/>
+              峰值时期：${w.peakPeriod}<br/>
+              时间集中度：${w.concentration.toFixed(2)}<br/>
+              初唐 ${w.period["初唐"] || 0}｜盛唐 ${w.period["盛唐"] || 0}｜中唐 ${w.period["中唐"] || 0}｜晚唐 ${w.period["晚唐"] || 0}
+            `);
+          })
+          .on("mouseleave", hideTip);
+
+        // 每层起点写意象名：不再额外列出“意象(次数)”小字
+        const labelX = cx + Math.cos(startAngle - Math.PI / 2) * (r + 3.5) - 8;
+        const labelY = cy + Math.sin(startAngle - Math.PI / 2) * (r + 3.5);
+
+        svg.append("text")
+          .attr("class", "semantic-start-label")
+          .attr("x", labelX)
+          .attr("y", labelY)
+          .attr("text-anchor", "end")
+          .text(w.name);
+
+        const dotPos = {
+          x: cx + Math.cos(end - Math.PI / 2) * (r + 3.5),
+          y: cy + Math.sin(end - Math.PI / 2) * (r + 3.5)
+        };
+
+        // 弧末峰值时期色点：只保留小点，不再在弧末写小字
+        svg.append("circle")
+          .attr("cx", dotPos.x)
+          .attr("cy", dotPos.y)
+          .attr("r", 4.2)
+          .attr("fill", periodDotColor[w.peakPeriod] || periodDotColor["未知"])
+          .attr("stroke", "rgba(255,250,235,.9)")
+          .attr("stroke-width", 1.4)
+          .on("mousemove", event => showTip(event, `<b>${w.name}</b><br/>峰值时期：${w.peakPeriod}`))
+          .on("mouseleave", hideTip);
+      });
+    });
+
+  cards.append("div")
+    .attr("class", "semantic-illus")
+    .html(d => d.icons.map(icon => `<span>${icon}</span>`).join(""));
+
+  cards.append("div")
+    .attr("class", "semantic-desc")
+    .text(d => d.desc);
+
+  panel.append("div")
+    .attr("class", "semantic-period-legend")
+    .html(`
+      <span><i style="background:${periodDotColor["初唐"]}"></i>初唐</span>
+      <span><i style="background:${periodDotColor["盛唐"]}"></i>盛唐</span>
+      <span><i style="background:${periodDotColor["中唐"]}"></i>中唐</span>
+      <span><i style="background:${periodDotColor["晚唐"]}"></i>晚唐</span>
+    `);
+}
+
+function drawChord(coNorm, categoryStats){
+  const panel = document.getElementById("chordPanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#chordSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  const topNames = new Set(categoryStats.slice(0, 44).map(d => d.name));
+  const links = coNorm.filter(d => topNames.has(d.source) && topNames.has(d.target)).slice(0, 220);
+  const names = Array.from(new Set(links.flatMap(d => [d.source,d.target])));
+  const index = new Map(names.map((d,i)=>[d,i]));
+  const matrix = Array.from({length:names.length}, () => Array(names.length).fill(0));
+  links.forEach(d => { const i=index.get(d.source), j=index.get(d.target); matrix[i][j]+=d.value; matrix[j][i]+=d.value; });
+
+  const cx = width * .49, cy = height * .47;
+  const outerR = Math.min(width, height) * .34;
+  const innerR = outerR - 28;
+
+  const chord = d3.chord().padAngle(.018).sortSubgroups(d3.descending)(matrix);
+  const arc = d3.arc().innerRadius(innerR).outerRadius(outerR);
+  const ribbon = d3.ribbon().radius(innerR - 7);
+  const g = svg.append("g").attr("transform", `translate(${cx},${cy})`);
+
+  const colorFor = (name) => {
+    const row = categoryStats.find(d=>d.name===name);
+    return categoryColor.get(row?.category || "未分类") || "#999";
+  };
+
+  g.append("circle").attr("r", outerR+72).attr("fill", "rgba(255,255,255,.18)").attr("stroke", "rgba(90,80,60,.16)");
+
+  const ribbons = g.append("g").selectAll("path")
+    .data(chord)
+    .join("path")
+    .attr("d", ribbon)
+    .attr("fill", d => colorFor(names[d.source.index]))
+    .attr("fill-opacity", .25)
+    .attr("stroke", "rgba(255,255,255,.35)")
+    .attr("stroke-width", .35)
+    .on("mouseenter", (event,d) => {
+      const s = names[d.source.index], t = names[d.target.index];
+      showTip(event, `<b>${s} × ${t}</b><br/>共现强度：${matrix[d.source.index][d.target.index]}`);
+      ribbons.classed("fade", x => x.source.index!==d.source.index && x.target.index!==d.source.index && x.source.index!==d.target.index && x.target.index!==d.target.index);
+      groups.classed("fade", x => x.index!==d.source.index && x.index!==d.target.index);
+    })
+    .on("mouseleave", () => { hideTip(); ribbons.classed("fade", false); groups.classed("fade", false); });
+
+  const groups = g.append("g").selectAll("g")
+    .data(chord.groups)
+    .join("g");
+
+  groups.append("path")
+    .attr("d", arc)
+    .attr("fill", d => colorFor(names[d.index]))
+    .attr("fill-opacity", .86)
+    .attr("stroke", "rgba(90,70,45,.28)")
+    .on("mouseenter", (event,d) => {
+      const name = names[d.index];
+      const total = d3.sum(matrix[d.index]);
+      const cat = categoryStats.find(x=>x.name===name)?.category || "未分类";
+      showTip(event, `<b>${name}</b><br/>类别：${cat}<br/>共现总量：${total}`);
+      ribbons.classed("fade", x => x.source.index!==d.index && x.target.index!==d.index);
+      groups.classed("fade", x => x.index!==d.index);
+    })
+    .on("mouseleave", () => { hideTip(); ribbons.classed("fade", false); groups.classed("fade", false); });
+
+  groups.append("text")
+    .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
+    .attr("dy", ".32em")
+    .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outerR + 10}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
+    .attr("text-anchor", d => d.angle > Math.PI ? "end" : "start")
+    .attr("font-size", 9)
+    .attr("fill", "#332f27")
+    .text(d => names[d.index]);
+
+  d3.select("#chordPanel").selectAll(".chord-legend").remove();
+  const legendData = Array.from(categoryColor.entries()).filter(([k]) => categoryStats.some(d=>d.category===k));
+  const legend = d3.select("#chordPanel").append("div").attr("class", "legend chord-legend");
+  legend.selectAll("div").data(legendData).join("div").attr("class", "legend-item")
+    .html(d => `<span class="dot" style="background:${d[1]}"></span>${d[0]}`);
+}
+
+function drawBubble(categoryStats){
+  const panel = document.getElementById("bubblePanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#bubbleSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  svg.append("text").attr("x", 12).attr("y", 20).attr("class", "label").attr("font-size", 13).text("高频意象与类别");
+  svg.append("text").attr("x", 12).attr("y", 43).attr("class", "muted-text").text("气泡大小表示出现诗作数量");
+
+  const data = categoryStats.slice(0, 42).map(d=>({...d, rValue: d.value}));
+  const root = d3.hierarchy({children:data}).sum(d=>d.rValue).sort((a,b)=>b.value-a.value);
+  d3.pack().size([width-20, height-76]).padding(5)(root);
+
+  const g = svg.append("g").attr("transform", "translate(10,58)");
+  const node = g.selectAll("g").data(root.leaves()).join("g").attr("transform", d=>`translate(${d.x},${d.y})`);
+  node.append("circle")
+    .attr("r", d=>d.r)
+    .attr("fill", d => categoryColor.get(d.data.category) || "#999")
+    .attr("fill-opacity", .66)
+    .attr("stroke", "rgba(90,70,50,.26)")
+    .on("mousemove", (event,d) => showTip(event, `<b>${d.data.name}</b><br/>类别：${d.data.category}<br/>出现：${d.data.value} 首`))
+    .on("mouseleave", hideTip);
+  node.filter(d=>d.r>13).append("text")
+    .attr("text-anchor", "middle")
+    .attr("dy", ".35em")
+    .attr("font-size", d=>Math.min(15, d.r*.55))
+    .attr("fill", "#302c23")
+    .text(d=>d.data.name);
+}
+
+function drawTimeline(timelineStats, categoryStats){
+  const panel = document.getElementById("timelinePanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#timelineSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  svg.append("text").attr("x", 10).attr("y", 18).attr("class", "label").attr("font-size", 13).text("意象时间演化");
+  svg.append("text").attr("x", 10).attr("y", 40).attr("class", "muted-text").text("从初唐到晚唐，高频意象的流动变化");
+
+  const top = new Set(categoryStats.slice(0, 16).map(d=>d.name));
+  const rows = timelineStats.filter(d => top.has(d.imagery));
+  const periods = periodOrder.filter(p => rows.some(d=>d.period===p));
+  const names = Array.from(top).filter(n => rows.some(d=>d.imagery===n)).slice(0, 14);
+
+  const margin = {top:58,right:14,bottom:24,left:44};
+  const x = d3.scalePoint().domain(periods).range([margin.left, width-margin.right]).padding(.45);
+  const y = d3.scalePoint().domain(names).range([margin.top, height-margin.bottom]).padding(.3);
+  const maxV = d3.max(rows, d=>d.value) || 1;
+  const stroke = d3.scaleLinear().domain([1,maxV]).range([.4,5]);
+
+  svg.append("g").attr("class","axis").attr("transform",`translate(0,${height-margin.bottom})`).call(d3.axisBottom(x).tickSize(0));
+  svg.selectAll(".y-label").data(names).join("text")
+    .attr("x", margin.left-8).attr("y", d=>y(d)+3).attr("text-anchor","end").attr("class","tiny").text(d=>d);
+
+  const cell = new Map(rows.map(d=>[`${d.period}||${d.imagery}`, d.value]));
+  const line = d3.line().curve(d3.curveMonotoneX).x(d=>x(d.period)).y(d=>y(d.imagery));
+
+  const paths = [];
+  names.forEach(name => {
+    const pts = periods.map(p => ({period:p, imagery:name, value:cell.get(`${p}||${name}`)||0})).filter(d=>d.value>0);
+    for(let i=0;i<pts.length-1;i++) paths.push({imagery:name, a:pts[i], b:pts[i+1], value:(pts[i].value+pts[i+1].value)/2});
+  });
+
+  svg.append("g").selectAll("path")
+    .data(paths)
+    .join("path")
+    .attr("d", d => line([d.a,d.b]))
+    .attr("fill", "none")
+    .attr("stroke", d => categoryColor.get(categoryStats.find(x=>x.name===d.imagery)?.category || "未分类") || "#7aa")
+    .attr("stroke-width", d => stroke(d.value))
+    .attr("stroke-opacity", .38);
+
+  svg.append("g").selectAll("circle")
+    .data(rows.filter(d=>names.includes(d.imagery) && periods.includes(d.period)))
+    .join("circle")
+    .attr("cx", d=>x(d.period)).attr("cy", d=>y(d.imagery))
+    .attr("r", d=>Math.sqrt(d.value)*1.2+1.5)
+    .attr("fill", d => categoryColor.get(categoryStats.find(x=>x.name===d.imagery)?.category || "未分类") || "#7aa")
+    .attr("fill-opacity", .72)
+    .attr("stroke", "rgba(90,70,50,.3)")
+    .on("mousemove", (event,d)=>showTip(event, `<b>${d.imagery}</b><br/>时期：${d.period}<br/>出现：${d.value} 首`))
+    .on("mouseleave", hideTip);
+}
+
+async function init(){
+  try{
+    const [poems, co, yixiang] = await Promise.all([
+      d3.json(FILES.poems),
+      d3.json(FILES.co),
+      d3.csv(FILES.category)
+    ]);
+
+    const data = aggregateData(poems, co, yixiang);
+    drawChord(data.coNorm, data.categoryStats);
+    drawSemanticMotifModules(data.poems, data.categoryStats);
+    drawBubble(data.categoryStats);
+    drawTimeline(data.timelineStats, data.categoryStats);
+  }catch(err){
+    console.error(err);
+    d3.select(".paper").append("div")
+      .style("position","absolute").style("left","40px").style("top","40px").style("z-index",10)
+      .style("background","rgba(255,250,235,.95)").style("padding","18px 22px").style("border","1px solid rgba(90,70,50,.2)")
+      .style("line-height","1.8").html(`数据加载失败：<br><b>${err.message}</b><br>请确认 poem_time_visual.json、co_occurrence.json、yixiang.csv 与本 HTML 在同一目录，并用本地服务器打开。`);
+  }
+}
+
+window.addEventListener("resize", () => location.reload());
+init();
+</script>
+</body>
+</html>

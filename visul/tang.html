@@ -1,0 +1,1644 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>唐诗意象的时空语义可视化系统</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root{
+      --paper:#efe9d8;
+      --ink:#1f201b;
+      --muted:#746f61;
+      --line:rgba(80,72,52,.24);
+      --red:#bd6a5f;
+      --green:#80936b;
+      --gold:#c39a48;
+      --blue:#6f9eaa;
+      --teal:#3f8f8d;
+      --brown:#a47b52;
+      --shadow:rgba(64,48,26,.12);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#e8e3d4;
+      color:var(--ink);
+      font-family:"Noto Serif SC","Songti SC","SimSun",serif;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.46;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.62), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(120,100,70,.12), transparent 30%),
+        repeating-linear-gradient(12deg, rgba(80,70,50,.03) 0 1px, transparent 1px 7px);
+      mix-blend-mode:multiply;
+    }
+
+    #app{position:relative;width:100vw;height:100vh;padding:26px 34px;}
+
+    .paper{
+      position:absolute;
+      left:3.2vw;
+      right:3.2vw;
+      top:5.2vh;
+      bottom:3vh;
+      background:rgba(244,238,221,.92);
+      box-shadow:0 18px 52px rgba(75,62,42,.18);
+      border:1px solid rgba(110,96,70,.16);
+      overflow:hidden;
+    }
+
+    .paper::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background-image:
+        radial-gradient(rgba(90,75,55,.22) .7px, transparent .7px),
+        radial-gradient(rgba(255,255,255,.8) .9px, transparent .9px);
+      background-size:28px 28px, 42px 42px;
+      background-position:0 0, 10px 10px;
+    }
+
+    .grid{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      padding:36px 42px 30px 42px;
+      display:grid;
+      grid-template-columns: 40% 30% 30%;
+      grid-template-rows: 20% 45% 35%;
+      gap:10px 22px;
+    }
+
+    .title-block{grid-column:1;grid-row:1;position:relative;padding-left:4px;}
+    .title-block h1{margin:0;font-size:30px;letter-spacing:5px;font-weight:600;line-height:1.52;}
+    .title-block p{max-width:640px;font-size:12px;line-height:1.72;color:#4d493d;margin:18px 0 0;}
+
+    .mini-intro{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding-top:10px;}
+    .mini-card{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;min-width:0;}
+    .mini-icon{font-size:30px;filter:saturate(.86);}
+    .mini-card b{font-size:12px;font-weight:600;display:block;margin-bottom:3px;}
+    .mini-card span{font-size:10px;color:var(--muted);line-height:1.35;display:block;}
+
+    .right-title{grid-column:3;grid-row:1;padding-top:16px;}
+    .right-title h2{margin:0;font-size:18px;letter-spacing:3px;font-weight:600;text-align:center;}
+    .right-title p{font-size:11px;line-height:1.7;color:var(--muted);margin:20px 8px 0;}
+
+    #chordPanel{grid-column:1;grid-row:2 / 4;position:relative;}
+    #seasonPanel{
+      grid-column:2 / 4;
+      grid-row:2;
+      position:relative;
+      display:block;
+      overflow:visible;
+    }
+    #bubblePanel{grid-column:2;grid-row:3;position:relative;}
+    #timelinePanel{grid-column:3;grid-row:3;position:relative;}
+
+    .panel-title{position:absolute;left:8px;top:0;font-size:14px;letter-spacing:3px;color:#2f2d26;z-index:5;}
+    .small-note{position:absolute;left:12px;bottom:4px;width:70%;font-size:10px;line-height:1.7;color:var(--muted);}
+    svg{display:block;width:100%;height:100%;overflow:visible;}
+
+    .season-card{position:relative;overflow:hidden;}
+    .season-title{position:absolute;left:22px;top:2px;font-size:46px;font-weight:600;line-height:1;z-index:2;font-family:"STKaiti","KaiTi","Noto Serif SC",serif;}
+    .season-words{position:absolute;right:16px;top:28px;max-width:160px;text-align:left;font-size:10px;line-height:1.55;color:#4d493d;z-index:2;}
+    .season-arc{position:absolute;left:82px;top:42px;width:190px;height:110px;}
+
+    .semantic-flow-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      overflow:visible;
+      z-index:3;
+    }
+    .semantic-flow-title{
+      font-family:"STKaiti","KaiTi","Noto Serif SC",serif;
+      font-size:44px;
+      font-weight:600;
+      dominant-baseline:middle;
+    }
+    .semantic-flow-name{
+      font-size:14px;
+      letter-spacing:2px;
+      fill:rgba(45,40,32,.78);
+      dominant-baseline:middle;
+      font-weight:600;
+    }
+    .semantic-flow-desc{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:8px;
+      z-index:4;
+      font-size:10px;
+      line-height:1.55;
+      color:rgba(82,75,62,.72);
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+    .semantic-flow-icons{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:45px;
+      z-index:4;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      pointer-events:none;
+    }
+    .semantic-flow-icons div{
+      text-align:center;
+      font-size:27px;
+      letter-spacing:8px;
+      opacity:.84;
+      filter:saturate(.86);
+      white-space:nowrap;
+    }
+    .semantic-track-bg{
+      fill:none;
+      stroke:rgba(84,75,58,.075);
+      stroke-linecap:round;
+    }
+    .semantic-track-active{
+      fill:none;
+      stroke-linecap:round;
+      filter:drop-shadow(0 2px 2px rgba(90,70,38,.08));
+    }
+    .semantic-track-boundary{
+      fill:none;
+      stroke:rgba(116,105,78,.16);
+      stroke-width:1.2;
+      stroke-dasharray:5 8;
+    }
+    .semantic-track-label{
+      font-size:9px;
+      fill:rgba(44,39,31,.68);
+      dominant-baseline:middle;
+    }
+    .semantic-track-dot{
+      stroke:rgba(255,250,235,.92);
+      stroke-width:1.4;
+    }
+    .semantic-period-legend{
+      position:absolute;
+      left:16px;
+      bottom:4px;
+      display:flex;
+      gap:9px;
+      font-size:10px;
+      color:rgba(70,63,52,.72);
+      z-index:8;
+    }
+    .semantic-period-legend span{display:inline-flex;align-items:center;gap:4px;}
+    .semantic-period-legend i{
+      width:8px;
+      height:8px;
+      display:inline-block;
+      border-radius:50%;
+      border:1px solid rgba(90,75,50,.18);
+    }
+
+    .tooltip{
+      position:fixed;
+      z-index:20;
+      pointer-events:none;
+      background:rgba(255,252,240,.96);
+      border:1px solid rgba(90,78,55,.2);
+      box-shadow:0 8px 24px rgba(40,32,18,.14);
+      padding:10px 12px;
+      border-radius:10px;
+      font-size:12px;
+      line-height:1.65;
+      max-width:280px;
+      opacity:0;
+      transform:translate(-50%,-110%);
+    }
+
+    .legend{position:absolute;left:12px;bottom:18px;display:flex;gap:12px;flex-wrap:wrap;max-width:80%;font-size:10px;color:#4e493d;}
+    .legend-item{display:flex;align-items:center;gap:5px;}
+    .dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.1)}
+
+
+
+    /* 环形意象数量排名图 */
+    #rankSvg{display:block;width:100%;height:100%;overflow:visible;}
+    .ring-bg { fill: none; stroke: rgba(89, 79, 59, 0.10); stroke-width: 1; }
+    .ring-bg.main { stroke: rgba(89, 79, 59, 0.20); stroke-dasharray: 7 8; }
+    .radial-grid { stroke: rgba(87, 77, 55, 0.12); stroke-width: 1; }
+    .period-arc { fill: none; stroke-linecap: butt; opacity: .55; }
+    .period-label { font-size: 10px; fill: rgba(47, 43, 34, .70); letter-spacing: 1px; }
+    .year-label { fill: rgba(40,36,30,.74); font-size: 8px; font-weight: 600; text-anchor: middle; }
+    .rank-label { fill: rgba(40,36,30,.62); font-size: 8px; dominant-baseline: middle; }
+    .flow-line { fill: none; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; opacity: .82; filter: drop-shadow(0 2px 2px rgba(90,70,38,.10)); }
+    .flow-line.muted { opacity: .08; }
+    .flow-line.active { stroke-width: 4.2; opacity: 1; }
+    .node { stroke: rgba(245,238,220,.95); stroke-width: 1.4; cursor: pointer; }
+    .node-label { font-size: 8px; fill: rgba(38,34,28,.75); dominant-baseline: middle; pointer-events: none; }
+    .center-title { text-anchor: middle; dominant-baseline: middle; fill: rgba(37,33,27,.84); font-size: 22px; letter-spacing: 5px; }
+    .center-subtitle { text-anchor: middle; dominant-baseline: middle; fill: rgba(57,51,40,.58); font-size: 9px; letter-spacing: 1px; }
+    .rank-note{position:absolute;left:12px;bottom:4px;width:84%;font-size:9px;line-height:1.55;color:var(--muted);z-index:5;pointer-events:none;}
+    .rank-legend{position:absolute;right:0;bottom:28px;z-index:7;width:118px;display:grid;grid-template-columns:1fr;gap:4px;font-size:9px;color:rgba(48,43,34,.72);}
+    .rank-legend-item{display:flex;align-items:center;gap:5px;min-width:0;cursor:pointer;}
+    .rank-legend-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(70,60,42,.18);flex:0 0 auto;}
+    .rank-legend-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+    .axis text{font-size:9px;fill:#605a4d}.axis path,.axis line{stroke:rgba(70,62,45,.28)}
+    .muted-text{font-size:10px;fill:#746f61}.label{font-size:10px;fill:#292722}.tiny{font-size:8px;fill:#605a4d}
+    .fade{opacity:.12!important}.highlight{opacity:1!important;stroke-opacity:1!important;fill-opacity:1!important}
+    .poet-arc{cursor:pointer;transition:opacity .18s ease;}
+    .poet-label{font-size:8px;fill:rgba(70,62,48,.78);dominant-baseline:middle;pointer-events:none;}
+    .poet-imagery-link{fill:none;stroke-linecap:round;stroke-linejoin:round;mix-blend-mode:multiply;pointer-events:stroke;transition:opacity .16s ease, stroke-width .16s ease, filter .16s ease;}
+    .poet-imagery-link.fade{opacity:.012!important;}
+    .poet-imagery-link.active{opacity:.96!important;stroke-width:3.2!important;filter:drop-shadow(0 2px 3px rgba(42,32,18,.22));}
+    .poet-imagery-hit{fill:none;stroke:transparent;stroke-width:12;pointer-events:stroke;}
+
+    .semantic-flow-desc-compact{
+      left:auto !important;
+      right:10px !important;
+      bottom:18px !important;
+      width:285px !important;
+      display:block !important;
+      grid-template-columns:none !important;
+      padding:8px 10px;
+      border-radius:10px;
+      background:rgba(246,239,221,.68);
+      border:1px solid rgba(110,96,70,.12);
+      box-shadow:0 4px 14px rgba(70,55,32,.06);
+      font-size:10px !important;
+      line-height:1.65 !important;
+      color:rgba(72,65,54,.76) !important;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="paper">
+    <div class="grid">
+      <section class="title-block">
+        <h1>唐代诗词中的<br/>意象统计</h1>
+        <p>以一千首唐诗为样本，统计诗歌中的自然、空间、人为与情感意象，并展示它们在诗作中的共现关系、语义母题与时间演化。</p>
+      </section>
+
+      <section class="mini-intro">
+        <div class="mini-card"><div class="mini-icon">🌙</div><div><b>天象水文</b><span>月、云、风、雨、水、雪</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🌿</div><div><b>草木鸟兽</b><span>草、柳、梅、竹、雁、猿</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🏯</div><div><b>空间行旅</b><span>长亭、关山、江南、天涯</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🍶</div><div><b>器物雅事</b><span>酒、琴、剑、亭台</span></div></div>
+        <div class="mini-card"><div class="mini-icon">💭</div><div><b>情感典故</b><span>愁、相思、思乡、青鸟</span></div></div>
+        <div class="mini-card"><div class="mini-icon">🧭</div><div><b>峰值时期</b><span>弧末色点表示初盛中晚唐</span></div></div>
+      </section>
+
+      <section class="right-title">
+        <h2>诗词中意象方式的统计</h2>
+        <p>右侧以气泡图呈现不同类别意象的出现规模，并以时间流线展示意象从初唐到晚唐的变化。</p>
+      </section>
+
+      <section id="chordPanel">
+        <div class="panel-title">诗词意象共现方式</div>
+        <svg id="chordSvg"></svg>
+        <div class="small-note">弦图中，外圈为高频意象，内部连线表示两个意象在同一首诗中共同出现的强度。</div>
+      </section>
+
+      <section id="seasonPanel"></section>
+
+      <section id="bubblePanel">
+        <svg id="bubbleSvg"></svg>
+      </section>
+
+      <section id="timelinePanel">
+        <div class="panel-title">意象数量排名</div>
+        <svg id="rankSvg"></svg>
+        <div class="rank-note">时间轴由线性排列改为环形排列。每一圈代表一个排名层级，越靠近中心排名越高；角度表示每 30 年一个时间段。</div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const FILES = {
+  poems: "poem_time_visual.json",
+  co: "co_occurrence.json",
+  category: "yixiang.csv",
+  rank: "timeline_year_imagery_long.json"
+};
+
+const categoryColor = new Map([
+  ["自然意象", "#6f9e8b"],
+  ["空间意象", "#c39a48"],
+  ["人为意象", "#b77d58"],
+  ["情感意象", "#bd6a74"],
+  ["品格象征", "#8c7ab8"],
+  ["战争边塞", "#8a7761"],
+  ["典故文化", "#6f9eaa"],
+  ["未分类", "#9a988c"]
+]);
+
+// 诗人外环：value 是你给出的 1000 首样本中各诗人的诗歌数量
+const poetRingData = [
+  { name: "白居易", value: 179 },
+  { name: "李白", value: 86 },
+  { name: "杜甫", value: 69 },
+  { name: "杜牧", value: 63 },
+  { name: "刘禹锡", value: 60 },
+  { name: "温庭筠", value: 54 },
+  { name: "元稹", value: 48 },
+  { name: "李商隐", value: 45 },
+  { name: "王昌龄", value: 39 },
+  { name: "贾岛", value: 33 },
+  { name: "王维", value: 30 },
+  { name: "韦应物", value: 30 },
+  { name: "杜荀鹤", value: 29 },
+  { name: "岑参", value: 26 },
+  { name: "孟郊", value: 25 },
+  { name: "李贺", value: 21 },
+  { name: "皮日休", value: 19 },
+  { name: "罗隐", value: 18 },
+  { name: "王勃", value: 15 },
+  { name: "卢照邻", value: 14 },
+  { name: "高适", value: 14 },
+  { name: "孟浩然", value: 13 },
+  { name: "陈子昂", value: 10 },
+  { name: "韩愈", value: 10 },
+  { name: "骆宾王", value: 10 },
+  { name: "柳宗元", value: 10 },
+  { name: "杨炯", value: 10 },
+  { name: "贺知章", value: 10 },
+  { name: "王之涣", value: 7 },
+  { name: "张若虚", value: 3 }
+];
+
+const periodDotColor = {
+  "初唐": "#d6b86a",
+  "盛唐": "#d9734f",
+  "中唐": "#6d9c86",
+  "晚唐": "#6f8798",
+  "未知": "#aaa396"
+};
+
+const periodOrderForMotif = ["初唐", "盛唐", "中唐", "晚唐", "未知"];
+
+const semanticMotifConfig = [
+  {
+    key: "sky_water",
+    name: "天象水文",
+    short: "天",
+    color: "#c97872",
+    words: ["月", "云", "风", "雨", "水", "雪"],
+    icons: [],
+    desc: "月、云、风、雨、水、雪共同构成唐诗中最稳定的自然感知系统。"
+  },
+  {
+    key: "plant_animal",
+    name: "草木鸟兽",
+    short: "物",
+    color: "#7f9a6e",
+    words: ["草", "柳", "梅", "竹", "雁", "猿"],
+    icons: [],
+    desc: "草木与鸟兽承载季节、离别、隐逸与生命感，是诗歌感物传统的重要媒介。"
+  },
+  {
+    key: "space_travel",
+    name: "空间行旅",
+    short: "境",
+    color: "#c99744",
+    words: ["长亭", "关山", "江南", "天涯", "酒", "琴"],
+    icons: [],
+    desc: "空间与器物连接送别、边塞、远游和宴饮，展示诗人移动中的情感经验。"
+  },
+  {
+    key: "emotion_allusion",
+    name: "情感典故",
+    short: "情",
+    color: "#6f9eaa",
+    words: ["愁", "相思", "思乡", "青鸟", "精卫", "鸿鹄"],
+    icons: [],
+    desc: "情感词与典故符号将个人经验转化为文化记忆，体现唐诗的象征系统。"
+  }
+];
+
+const periodOrder = ["初唐", "盛唐", "中唐", "晚唐", "未知"];
+const $tip = d3.select("#tooltip");
+
+function showTip(event, html){
+  $tip.html(html).style("left", event.clientX + "px").style("top", event.clientY + "px").transition().duration(120).style("opacity", 1);
+}
+function hideTip(){ $tip.transition().duration(120).style("opacity", 0); }
+
+function getCol(row, names, fallback=""){
+  for(const n of names){ if(row[n] !== undefined && row[n] !== null && String(row[n]).trim() !== "") return String(row[n]).trim(); }
+  return fallback;
+}
+
+function normalizeName(name, categoryMap){
+  const item = categoryMap.get(name);
+  return item?.normalize_to || item?.normalize || name;
+}
+
+function aggregateData(poems, coData, yixiangRows){
+  const categoryMap = new Map();
+  yixiangRows.forEach(r => {
+    const imagery = getCol(r, ["imagery", "意象", "name", "名称"]);
+    if(!imagery) return;
+    categoryMap.set(imagery, {
+      imagery,
+      category: getCol(r, ["category", "一级分类", "顶级分类", "类别"], "未分类"),
+      subcategory: getCol(r, ["subcategory", "二级分类", "子类"], "未分类"),
+      season: getCol(r, ["season", "季节"], ""),
+      normalize_to: getCol(r, ["normalize_to", "归一化", "标准意象"], imagery)
+    });
+  });
+
+  const poemImagery = poems.map(p => {
+    const arr = Array.isArray(p.matched_imagery) ? p.matched_imagery : [];
+    return {...p, imagery_norm: [...new Set(arr.map(d => normalizeName(d, categoryMap)).filter(Boolean))]};
+  });
+
+  const freq = d3.rollup(
+    poemImagery.flatMap(p => p.imagery_norm.map(name => ({name, p}))),
+    v => v.length,
+    d => d.name
+  );
+
+  const categoryStats = Array.from(freq, ([name, value]) => {
+    const info = categoryMap.get(name) || categoryMap.get([...categoryMap.keys()].find(k => categoryMap.get(k).normalize_to === name)) || {};
+    return {
+      name, value,
+      category: info.category || "未分类",
+      subcategory: info.subcategory || "未分类",
+      season: info.season || ""
+    };
+  }).sort((a,b)=>d3.descending(a.value,b.value));
+
+  const coNormCounter = new Map();
+  coData.forEach(d => {
+    const a = normalizeName(d.source, categoryMap), b = normalizeName(d.target, categoryMap);
+    if(!a || !b || a === b) return;
+    const key = [a,b].sort().join("||");
+    coNormCounter.set(key, (coNormCounter.get(key)||0) + (+d.value || 0));
+  });
+  const coNorm = Array.from(coNormCounter, ([key,value]) => {
+    const [source,target] = key.split("||");
+    return {source,target,value};
+  }).sort((a,b)=>d3.descending(a.value,b.value));
+
+  const timeline = [];
+  poemImagery.forEach(p => {
+    const period = p.tang_period || "未知";
+    p.imagery_norm.forEach(img => timeline.push({period, imagery: img, poem: p.title, author: p.author, year: p.estimated_year}));
+  });
+  const timelineStats = Array.from(d3.rollup(timeline, v => v.length, d => d.period, d => d.imagery), ([period, m]) =>
+    Array.from(m, ([imagery, value]) => ({period, imagery, value}))
+  ).flat();
+
+  return {poems: poemImagery, categoryMap, categoryStats, coNorm, timelineStats, freq};
+}
+
+function getPeriodForPoem(poem) {
+  if (poem.tang_period && poem.tang_period !== "未知") return poem.tang_period;
+  const year = Number(poem.estimated_year);
+  if (!Number.isFinite(year)) return "未知";
+  if (year <= 712) return "初唐";
+  if (year <= 765) return "盛唐";
+  if (year <= 835) return "中唐";
+  if (year <= 907) return "晚唐";
+  return "未知";
+}
+
+function normalizeForCore(word) {
+  const alias = {
+    "明月": "月", "月亮": "月", "婵娟": "月",
+    "白云": "云",
+    "流水": "水", "春水": "水", "江水": "水", "秋水": "水", "东流之水": "水",
+    "西风": "风", "秋雨": "雨", "细雨": "雨", "冰雪": "雪",
+    "杨柳": "柳", "梅花": "梅", "鸿雁": "雁", "猿啸": "猿", "猿鸣": "猿",
+    "离愁": "愁", "忧愁": "愁"
+  };
+  return alias[word] || word;
+}
+
+function buildMotifStats(poems) {
+  const allCoreWords = new Set(semanticMotifConfig.flatMap(d => d.words));
+  const statMap = new Map();
+
+  allCoreWords.forEach(word => {
+    statMap.set(word, {
+      name: word,
+      total: 0,
+      period: {"初唐": 0, "盛唐": 0, "中唐": 0, "晚唐": 0, "未知": 0}
+    });
+  });
+
+  poems.forEach(poem => {
+    const period = getPeriodForPoem(poem);
+    const words = poem.imagery_norm || poem.matched_imagery || [];
+    const normalized = Array.from(new Set(words.map(normalizeForCore)));
+
+    normalized.forEach(word => {
+      if (!allCoreWords.has(word)) return;
+      const item = statMap.get(word);
+      item.total += 1;
+      item.period[period] = (item.period[period] || 0) + 1;
+    });
+  });
+
+  statMap.forEach(item => {
+    const entries = periodOrderForMotif.map(p => ({ period: p, value: item.period[p] || 0 }));
+    const peak = entries.sort((a, b) => d3.descending(a.value, b.value))[0];
+    item.peakPeriod = peak && peak.value > 0 ? peak.period : "未知";
+
+    const values = periodOrderForMotif.filter(p => p !== "未知").map(p => item.period[p] || 0);
+    const totalKnown = d3.sum(values);
+    const maxKnown = d3.max(values) || 0;
+    item.concentration = totalKnown > 0 ? maxKnown / totalKnown : 0;
+  });
+
+  return statMap;
+}
+
+function drawSemanticMotifModules(poems, categoryStats) {
+  const panel = d3.select("#seasonPanel");
+  panel.selectAll("*").remove();
+
+  const statMap = buildMotifStats(poems);
+  const modules = semanticMotifConfig.map((cfg, idx) => {
+    const words = cfg.words
+      .map(word => statMap.get(word) || {
+        name: word,
+        total: 0,
+        peakPeriod: "未知",
+        concentration: 0,
+        period: {"初唐": 0, "盛唐": 0, "中唐": 0, "晚唐": 0, "未知": 0}
+      })
+      .sort((a, b) => d3.descending(a.total, b.total));
+    return {...cfg, index: idx, words, maxTotal: d3.max(words, d => d.total) || 1, total: d3.sum(words, d => d.total)};
+  });
+
+  const width = document.getElementById("seasonPanel").clientWidth || 900;
+  const height = document.getElementById("seasonPanel").clientHeight || 330;
+  const svg = panel.append("svg")
+    .attr("class", "semantic-flow-svg")
+    .attr("viewBox", [0, 0, width, height]);
+
+  // 四个模块改为四段连续半圆：上、下、上、下交替，拼成类 S 型。
+  const marginX = width * 0.055;
+  const usableW = width - marginX * 2;
+  const segW = usableW / modules.length;
+  const baseY = height * 0.50;
+  const arcH = Math.min(height * 0.31, segW * 0.48);
+  const directions = [-1, 1, -1, 1];
+
+  function pointOnHalfArc(moduleIndex, u) {
+    const dir = directions[moduleIndex] || 1;
+    const x0 = marginX + moduleIndex * segW;
+    const x = x0 + segW * u;
+    const y = baseY + dir * arcH * Math.sin(Math.PI * u);
+
+    const dx = segW;
+    const dy = dir * arcH * Math.PI * Math.cos(Math.PI * u);
+    const mag = Math.hypot(dx, dy) || 1;
+    return {
+      x, y,
+      tx: dx / mag,
+      ty: dy / mag,
+      nx: -dy / mag,
+      ny: dx / mag
+    };
+  }
+
+  function buildModuleArcPath(moduleIndex, u0, u1, offset) {
+    const pts = [];
+    const n = 72;
+    for (let i = 0; i <= n; i++) {
+      const t = i / n;
+      const u = u0 + (u1 - u0) * t;
+      const p = pointOnHalfArc(moduleIndex, u);
+      pts.push({x: p.x + p.nx * offset, y: p.y + p.ny * offset});
+    }
+    return d3.line()
+      .curve(d3.curveCatmullRom.alpha(0.65))
+      .x(d => d.x)
+      .y(d => d.y)(pts);
+  }
+
+  const tracks = d3.range(6).map(i => ({
+    index: i,
+    offset: (i - 2.5) * 11,
+    width: 6.5
+  }));
+
+  modules.forEach((module, moduleIndex) => {
+    tracks.forEach(track => {
+      svg.append("path")
+        .attr("class", "semantic-track-bg")
+        .attr("d", buildModuleArcPath(moduleIndex, 0.035, 0.965, track.offset))
+        .attr("stroke-width", track.width);
+    });
+  });
+
+  d3.range(1, modules.length).forEach(i => {
+    const p = pointOnHalfArc(i, 0);
+    svg.append("line")
+      .attr("class", "semantic-track-boundary")
+      .attr("x1", p.x)
+      .attr("y1", p.y - 48)
+      .attr("x2", p.x)
+      .attr("y2", p.y + 48);
+
+    d3.range(-42, 49, 12).forEach(o => {
+      svg.append("circle")
+        .attr("cx", p.x)
+        .attr("cy", p.y + o)
+        .attr("r", 3)
+        .attr("fill", "rgba(116,105,78,.25)")
+        .attr("stroke", "rgba(255,250,235,.7)")
+        .attr("stroke-width", 1);
+    });
+  });
+
+  modules.forEach((module, moduleIndex) => {
+    const angleScale = d3.scaleLinear()
+      .domain([0, module.maxTotal])
+      .range([0.18, 0.90]);
+    const opacityScale = d3.scaleLinear().domain([0, 1]).range([0.34, 0.95]);
+
+    module.words.slice(0, 6).forEach((w, i) => {
+      const track = tracks[i];
+      const startU = 0.06;
+      const endU = startU + 0.88 * angleScale(w.total);
+
+      svg.append("path")
+        .attr("class", "semantic-track-active")
+        .attr("d", buildModuleArcPath(moduleIndex, startU, Math.min(0.96, endU), track.offset))
+        .attr("stroke", module.color)
+        .attr("stroke-width", track.width + 1.2)
+        .attr("opacity", opacityScale(w.concentration))
+        .on("mousemove", event => {
+          showTip(event, `
+            <b>${module.name} / ${w.name}</b><br/>
+            总频次：${Math.round(w.total)}<br/>
+            峰值时期：${w.peakPeriod}<br/>
+            时间集中度：${w.concentration.toFixed(2)}<br/>
+            初唐 ${w.period["初唐"] || 0}｜盛唐 ${w.period["盛唐"] || 0}｜中唐 ${w.period["中唐"] || 0}｜晚唐 ${w.period["晚唐"] || 0}
+          `);
+        })
+        .on("mouseleave", hideTip);
+
+      const start = pointOnHalfArc(moduleIndex, startU);
+      const end = pointOnHalfArc(moduleIndex, Math.min(0.96, endU));
+      const sx = start.x + start.nx * track.offset;
+      const sy = start.y + start.ny * track.offset;
+      const ex = end.x + end.nx * track.offset;
+      const ey = end.y + end.ny * track.offset;
+
+      svg.append("text")
+        .attr("class", "semantic-track-label")
+        .attr("x", sx - 7)
+        .attr("y", sy)
+        .attr("text-anchor", "end")
+        .text(w.name);
+
+      svg.append("circle")
+        .attr("class", "semantic-track-dot")
+        .attr("cx", ex)
+        .attr("cy", ey)
+        .attr("r", 4.2)
+        .attr("fill", periodDotColor[w.peakPeriod] || periodDotColor["未知"])
+        .on("mousemove", event => showTip(event, `<b>${w.name}</b><br/>峰值时期：${w.peakPeriod}`))
+        .on("mouseleave", hideTip);
+    });
+
+    const mid = pointOnHalfArc(moduleIndex, 0.50);
+    const dir = directions[moduleIndex] || 1;
+    const titleY = mid.y + dir * 36;
+    svg.append("text")
+      .attr("class", "semantic-flow-title")
+      .attr("x", mid.x - 56)
+      .attr("y", titleY)
+      .attr("fill", module.color)
+      .text(module.short);
+    svg.append("text")
+      .attr("class", "semantic-flow-name")
+      .attr("x", mid.x - 12)
+      .attr("y", titleY + 2)
+      .text(module.name);
+  });
+
+  panel.append("div")
+    .attr("class", "semantic-flow-desc semantic-flow-desc-compact")
+    .html(`四组半圆分别对应天象水文、草木鸟兽、空间行旅与情感典故；每条细轨道代表一个核心意象，弧长表示频次规模，末端色点表示该意象在初唐、盛唐、中唐、晚唐中的峰值时期。`);
+
+  panel.append("div")
+    .attr("class", "semantic-period-legend")
+    .html(`
+      <span><i style="background:${periodDotColor["初唐"]}"></i>初唐</span>
+      <span><i style="background:${periodDotColor["盛唐"]}"></i>盛唐</span>
+      <span><i style="background:${periodDotColor["中唐"]}"></i>中唐</span>
+      <span><i style="background:${periodDotColor["晚唐"]}"></i>晚唐</span>
+    `);
+}
+
+function drawChord(poems, coNorm, categoryStats){
+  const panel = document.getElementById("chordPanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#chordSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  // 为了给外层 30 位诗人留出空间，内层意象数量不宜过多
+  const topNames = new Set(categoryStats.slice(0, 32).map(d => d.name));
+  const links = coNorm.filter(d => topNames.has(d.source) && topNames.has(d.target)).slice(0, 180);
+  const names = Array.from(new Set(links.flatMap(d => [d.source,d.target])));
+  const index = new Map(names.map((d,i)=>[d,i]));
+  const matrix = Array.from({length:names.length}, () => Array(names.length).fill(0));
+  links.forEach(d => {
+    const i=index.get(d.source), j=index.get(d.target);
+    matrix[i][j]+=d.value;
+    matrix[j][i]+=d.value;
+  });
+
+  // 如果某些高频意象没有进入共现边，也给它留一个极小扇区
+  categoryStats.slice(0, 32).forEach(d => {
+    if(!index.has(d.name)){
+      index.set(d.name, names.length);
+      names.push(d.name);
+      matrix.forEach(row => row.push(0));
+      matrix.push(Array(names.length).fill(0));
+    }
+  });
+  names.forEach((name, i) => {
+    const freq = categoryStats.find(d => d.name === name)?.value || 1;
+    matrix[i][i] += Math.max(1, freq * 0.08);
+  });
+
+  const cx = width * .50;
+  const cy = height * .49;
+  const minWH = Math.min(width, height);
+
+  const imageryOuterR = minWH * .305;
+  const imageryInnerR = imageryOuterR - 24;
+  const ribbonR = imageryInnerR - 6;
+
+  const poetOuterR = minWH * .445;
+  const poetInnerR = poetOuterR - 18;
+  const poetLabelR = poetOuterR + 10;
+
+  const g = svg.append("g").attr("transform", `translate(${cx},${cy})`);
+
+  const colorFor = (name) => {
+    const row = categoryStats.find(d=>d.name===name);
+    return categoryColor.get(row?.category || "未分类") || "#999";
+  };
+
+  function polarPoint(r, angle){
+    return [Math.cos(angle - Math.PI / 2) * r, Math.sin(angle - Math.PI / 2) * r];
+  }
+
+  g.append("circle")
+    .attr("r", poetOuterR + 20)
+    .attr("fill", "rgba(255,255,255,.12)")
+    .attr("stroke", "rgba(90,80,60,.16)");
+
+  // =========================
+  // 1. 内层：意象共现弦图
+  // =========================
+  const chord = d3.chord()
+    .padAngle(.018)
+    .sortSubgroups(d3.descending)(matrix);
+
+  const arc = d3.arc().innerRadius(imageryInnerR).outerRadius(imageryOuterR);
+  const ribbon = d3.ribbon().radius(ribbonR);
+
+  const ribbons = g.append("g").selectAll("path")
+    .data(chord)
+    .join("path")
+    .attr("d", ribbon)
+    .attr("fill", d => colorFor(names[d.source.index]))
+    .attr("fill-opacity", .22)
+    .attr("stroke", "rgba(255,255,255,.35)")
+    .attr("stroke-width", .3)
+    .on("mouseenter", (event,d) => {
+      const s = names[d.source.index], t = names[d.target.index];
+      showTip(event, `<b>${s} × ${t}</b><br/>共现强度：${matrix[d.source.index][d.target.index].toFixed(1)}`);
+      ribbons.classed("fade", x => x.source.index!==d.source.index && x.target.index!==d.source.index && x.source.index!==d.target.index && x.target.index!==d.target.index);
+      groups.classed("fade", x => x.index!==d.source.index && x.index!==d.target.index);
+      poetLinks.classed("fade", true);
+    })
+    .on("mouseleave", () => {
+      hideTip();
+      ribbons.classed("fade", false);
+      groups.classed("fade", false);
+      poetLinks.classed("fade", false).classed("active", false);
+    });
+
+  const groups = g.append("g").selectAll("g")
+    .data(chord.groups)
+    .join("g");
+
+  groups.append("path")
+    .attr("d", arc)
+    .attr("fill", d => colorFor(names[d.index]))
+    .attr("fill-opacity", .90)
+    .attr("stroke", "rgba(250,246,230,.96)")
+    .attr("stroke-width", 1)
+    .on("mouseenter", (event,d) => {
+      const name = names[d.index];
+      const total = d3.sum(matrix[d.index]);
+      const cat = categoryStats.find(x=>x.name===name)?.category || "未分类";
+      showTip(event, `<b>${name}</b><br/>类别：${cat}<br/>共现总量：${total.toFixed(1)}`);
+      ribbons.classed("fade", x => x.source.index!==d.index && x.target.index!==d.index);
+      const related = new Set([name]);
+      matrix[d.index].forEach((v, j) => { if(v > 0) related.add(names[j]); });
+      groups.classed("fade", x => !related.has(names[x.index]));
+      // 意象悬停时只高亮内部“意象 × 意象”关系，不再高亮诗人 → 意象连线，避免外圈大量连线同时变亮。
+    })
+    .on("mouseleave", () => {
+      hideTip();
+      ribbons.classed("fade", false);
+      groups.classed("fade", false);
+      // 意象悬停不再影响诗人 → 意象连线，因此这里不重置外圈连线。
+    });
+
+  groups.append("text")
+    .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
+    .attr("dy", ".32em")
+    .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${imageryOuterR + 10}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
+    .attr("text-anchor", d => d.angle > Math.PI ? "end" : "start")
+    .attr("font-size", 8.5)
+    .attr("fill", "#332f27")
+    .text(d => names[d.index]);
+
+  const imageryAngleMap = new Map();
+  chord.groups.forEach(d => {
+    imageryAngleMap.set(names[d.index], (d.startAngle + d.endAngle) / 2);
+  });
+
+  // =========================
+  // 2. 外层：诗人圆环
+  // =========================
+  const poetPie = d3.pie()
+    .sort(null)
+    .value(d => d.value)
+    .padAngle(.005);
+
+  const poetArc = d3.arc()
+    .innerRadius(poetInnerR)
+    .outerRadius(poetOuterR);
+
+  const poetArcs = poetPie(poetRingData);
+  const poetAngleMap = new Map();
+  poetArcs.forEach(d => poetAngleMap.set(d.data.name, (d.startAngle + d.endAngle) / 2));
+
+  const poetColor = d3.scaleLinear()
+    .domain(d3.extent(poetRingData, d => d.value))
+    .range(["#d6c8aa", "#967b55"]);
+
+  const poetGroups = g.append("g")
+    .selectAll("g")
+    .data(poetArcs)
+    .join("g");
+
+  poetGroups.append("path")
+    .attr("class", "poet-arc")
+    .attr("d", poetArc)
+    .attr("fill", d => poetColor(d.data.value))
+    .attr("stroke", "rgba(250,246,230,.96)")
+    .attr("stroke-width", .7)
+    .attr("opacity", .88)
+    .on("mouseenter", (event,d) => {
+      // 悬停诗人：只高亮相关连线，不弹出文字提示，避免遮挡视野。
+      hideTip();
+      const list = poetTopImageryMap.get(d.data.name) || [];
+      poetLinks.classed("fade", x => x.author !== d.data.name)
+        .classed("active", x => x.author === d.data.name);
+      poetHitLinks.classed("fade", x => x.author !== d.data.name)
+        .classed("active", x => x.author === d.data.name);
+      poetGroups.selectAll("path").attr("opacity", p => p.data.name === d.data.name ? 1 : .20);
+      groups.classed("fade", x => !list.some(y => y.imagery === names[x.index]));
+      ribbons.classed("fade", true);
+    })
+    .on("mouseleave", () => {
+      hideTip();
+      poetLinks.classed("fade", false).classed("active", false);
+      poetHitLinks.classed("fade", false).classed("active", false);
+      poetGroups.selectAll("path").attr("opacity", .88);
+      groups.classed("fade", false);
+      ribbons.classed("fade", false);
+    });
+
+  poetGroups.append("text")
+    .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
+    .attr("class", "poet-label")
+    .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${poetLabelR}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
+    .attr("text-anchor", d => d.angle > Math.PI ? "end" : "start")
+    .text(d => d.data.name);
+
+  // =========================
+  // 3. 诗人 → 意象 Top 5 细线
+  // =========================
+  const poetSet = new Set(poetRingData.map(d => d.name));
+  const imagerySet = new Set(names);
+  const authorImageryCounter = new Map();
+
+  poems.forEach(poem => {
+    const author = poem.author;
+    if(!poetSet.has(author)) return;
+
+    const arr = Array.isArray(poem.imagery_norm) ? poem.imagery_norm : (poem.matched_imagery || []);
+    const unique = [...new Set(arr)].filter(d => imagerySet.has(d));
+    unique.forEach(img => {
+      const key = `${author}||${img}`;
+      authorImageryCounter.set(key, (authorImageryCounter.get(key) || 0) + 1);
+    });
+  });
+
+  const byAuthor = d3.group(
+    Array.from(authorImageryCounter, ([key, value]) => {
+      const [author, imagery] = key.split("||");
+      return {author, imagery, value};
+    }),
+    d => d.author
+  );
+
+  const poetTopImageryMap = new Map();
+  let poetImageryLinks = [];
+  byAuthor.forEach((arr, author) => {
+    const top5 = arr.sort((a,b) => d3.descending(a.value, b.value)).slice(0, 5);
+    poetTopImageryMap.set(author, top5);
+    poetImageryLinks = poetImageryLinks.concat(top5);
+  });
+
+  // 给每条诗人-意象边分配分组编号、端点偏移与曲线车道。
+  // 默认状态只保留极淡关系纹理；悬停诗人/连线时再强高亮，减少大面积重叠造成的脏乱。
+  poetImageryLinks.sort((a, b) =>
+    d3.ascending(poetAngleMap.get(a.author) || 0, poetAngleMap.get(b.author) || 0) ||
+    d3.ascending(imageryAngleMap.get(a.imagery) || 0, imageryAngleMap.get(b.imagery) || 0)
+  );
+
+  d3.group(poetImageryLinks, d => d.author).forEach(arr => {
+    arr.forEach((d, i) => d.sourceOffset = (i - (arr.length - 1) / 2) * 0.020);
+  });
+  d3.group(poetImageryLinks, d => d.imagery).forEach(arr => {
+    arr.forEach((d, i) => d.targetOffset = (i - (arr.length - 1) / 2) * 0.016);
+  });
+
+  const linkWidth = d3.scaleLinear()
+    .domain(d3.extent(poetImageryLinks, d => d.value))
+    .range([.42, 1.45]);
+
+  const linkOpacity = d3.scaleLinear()
+    .domain(d3.extent(poetImageryLinks, d => d.value))
+    .range([.028, .11]);
+
+  // 按作者角度排序后连续分配车道，比简单取模更不容易重叠。
+  const routeGroups = Array.from(d3.group(poetImageryLinks, d => d.author), ([author, arr]) => ({
+    author,
+    baseAngle: poetAngleMap.get(author) || 0,
+    links: arr.sort((a, b) => d3.ascending(imageryAngleMap.get(a.imagery) || 0, imageryAngleMap.get(b.imagery) || 0))
+  })).sort((a, b) => d3.ascending(a.baseAngle, b.baseAngle));
+
+  let routeCursor = 0;
+  routeGroups.forEach(group => {
+    group.links.forEach((d, i) => {
+      d.routeLane = routeCursor;
+      d.localLane = i;
+    });
+    routeCursor += Math.max(1, group.links.length);
+  });
+  const totalRouteLanes = Math.max(1, routeCursor);
+
+  function normalizeAngle(a){
+    while(a > Math.PI) a -= Math.PI * 2;
+    while(a < -Math.PI) a += Math.PI * 2;
+    return a;
+  }
+
+  function polarObject(r, a){
+    const [x, y] = polarPoint(r, a);
+    return {x, y};
+  }
+
+  // 诗人 → 意象：三次贝塞尔曲线，不使用 L 直线段。
+  // 起点和终点都沿切向滑入/滑出，中段在外侧通道内绕行，不穿过内部弦图。
+  function circularOuterLinkPath(d){
+    const sourceBase = poetAngleMap.get(d.author);
+    const targetBase = imageryAngleMap.get(d.imagery);
+    if(sourceBase == null || targetBase == null) return null;
+
+    const sourceA = sourceBase + (d.sourceOffset || 0);
+    const targetA = targetBase + (d.targetOffset || 0);
+
+    const startR = poetInnerR - 4;
+    const endR = imageryOuterR + 5;
+    const channelInnerR = imageryOuterR + 15;
+    const channelOuterR = poetInnerR - 15;
+    const channelWidth = Math.max(14, channelOuterR - channelInnerR);
+
+    const laneT = (d.routeLane + 0.5) / totalRouteLanes;
+    const routeR = channelInnerR + channelWidth * laneT;
+
+    let delta = normalizeAngle(targetA - sourceA);
+    const sign = delta >= 0 ? 1 : -1;
+    const absDelta = Math.abs(delta);
+    const localShift = ((d.localLane || 0) - 2) * 0.011;
+    const lead = Math.min(0.48, Math.max(0.14, absDelta * 0.21));
+
+    const enterA = sourceA + sign * lead + localShift;
+    const midA = sourceA + delta * 0.50 + localShift * 0.5;
+    const exitA = targetA - sign * lead - localShift;
+
+    const p0 = polarObject(startR, sourceA);
+    const p2 = polarObject(routeR, enterA);
+    const p3 = polarObject(routeR, midA);
+    const p4 = polarObject(routeR, exitA);
+    const p6 = polarObject(endR, targetA);
+
+    const c01 = polarObject(startR + (routeR - startR) * .25, sourceA + sign * lead * .06);
+    const c02 = polarObject(startR + (routeR - startR) * .78, sourceA + sign * lead * .66);
+    const c23a = polarObject(routeR, enterA + normalizeAngle(midA - enterA) * .35);
+    const c23b = polarObject(routeR, enterA + normalizeAngle(midA - enterA) * .72);
+    const c34a = polarObject(routeR, midA + normalizeAngle(exitA - midA) * .28);
+    const c34b = polarObject(routeR, midA + normalizeAngle(exitA - midA) * .68);
+    const c56a = polarObject(endR + (routeR - endR) * .78, targetA - sign * lead * .66);
+    const c56b = polarObject(endR + (routeR - endR) * .25, targetA - sign * lead * .06);
+
+    return [
+      `M${p0.x},${p0.y}`,
+      `C${c01.x},${c01.y} ${c02.x},${c02.y} ${p2.x},${p2.y}`,
+      `C${c23a.x},${c23a.y} ${c23b.x},${c23b.y} ${p3.x},${p3.y}`,
+      `C${c34a.x},${c34a.y} ${c34b.x},${c34b.y} ${p4.x},${p4.y}`,
+      `C${c56a.x},${c56a.y} ${c56b.x},${c56b.y} ${p6.x},${p6.y}`
+    ].join(" ");
+  }
+
+  const linkLayer = g.append("g").attr("class", "poet-imagery-links");
+
+  const poetLinks = linkLayer
+    .selectAll("path.poet-imagery-link")
+    .data(poetImageryLinks)
+    .join("path")
+    .attr("class", "poet-imagery-link")
+    .attr("d", d => circularOuterLinkPath(d))
+    .attr("stroke", d => colorFor(d.imagery))
+    .attr("stroke-width", d => linkWidth(d.value))
+    .attr("opacity", d => linkOpacity(d.value));
+
+  // 透明粗线用于鼠标命中；视觉上不显示，悬停时高亮对应的真实曲线。
+  const poetHitLinks = linkLayer
+    .selectAll("path.poet-imagery-hit")
+    .data(poetImageryLinks)
+    .join("path")
+    .attr("class", "poet-imagery-hit")
+    .attr("d", d => circularOuterLinkPath(d))
+    .on("mouseenter", (event,d) => {
+      hideTip();
+      poetLinks.classed("fade", x => x !== d).classed("active", x => x === d);
+      poetHitLinks.classed("fade", x => x !== d).classed("active", x => x === d);
+      ribbons.classed("fade", true);
+      groups.classed("fade", x => names[x.index] !== d.imagery);
+      poetGroups.selectAll("path").attr("opacity", p => p.data.name === d.author ? 1 : .20);
+    })
+    .on("mouseleave", () => {
+      hideTip();
+      poetLinks.classed("fade", false).classed("active", false);
+      poetHitLinks.classed("fade", false).classed("active", false);
+      ribbons.classed("fade", false);
+      groups.classed("fade", false);
+      poetGroups.selectAll("path").attr("opacity", .88);
+    });
+
+  // 让诗人-意象细线位于诗人环和意象环之间，但不遮住内层 chord
+  poetLinks.lower();
+  ribbons.lower();
+
+  d3.select("#chordPanel").selectAll(".chord-legend").remove();
+  const legendData = Array.from(categoryColor.entries()).filter(([k]) => categoryStats.some(d=>d.category===k));
+  const legend = d3.select("#chordPanel").append("div").attr("class", "legend chord-legend");
+  legend.selectAll("div").data(legendData).join("div").attr("class", "legend-item")
+    .html(d => `<span class="dot" style="background:${d[1]}"></span>${d[0]}`);
+}
+
+function drawBubble(categoryStats){
+  const panel = document.getElementById("bubblePanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#bubbleSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  svg.append("text").attr("x", 12).attr("y", 20).attr("class", "label").attr("font-size", 13).text("高频意象与类别");
+  svg.append("text").attr("x", 12).attr("y", 43).attr("class", "muted-text").text("气泡大小表示出现诗作数量");
+
+  const data = categoryStats.slice(0, 42).map(d=>({...d, rValue: d.value}));
+  const root = d3.hierarchy({children:data}).sum(d=>d.rValue).sort((a,b)=>b.value-a.value);
+  d3.pack().size([width-20, height-76]).padding(5)(root);
+
+  const g = svg.append("g").attr("transform", "translate(10,58)");
+  const node = g.selectAll("g").data(root.leaves()).join("g").attr("transform", d=>`translate(${d.x},${d.y})`);
+  node.append("circle")
+    .attr("r", d=>d.r)
+    .attr("fill", d => categoryColor.get(d.data.category) || "#999")
+    .attr("fill-opacity", .66)
+    .attr("stroke", "rgba(90,70,50,.26)")
+    .on("mousemove", (event,d) => showTip(event, `<b>${d.data.name}</b><br/>类别：${d.data.category}<br/>出现：${d.data.value} 首`))
+    .on("mouseleave", hideTip);
+  node.filter(d=>d.r>13).append("text")
+    .attr("text-anchor", "middle")
+    .attr("dy", ".35em")
+    .attr("font-size", d=>Math.min(15, d.r*.55))
+    .attr("fill", "#302c23")
+    .text(d=>d.data.name);
+}
+
+const START_YEAR = 648;
+const END_YEAR = 907;
+const BIN_SIZE = 30;
+const TOP_K = 15;
+const MIN_CONSECUTIVE_STREAK = 2;
+
+const rankColors = [
+  "#4f87c7", "#3f8f53", "#df8c28", "#2d84a7", "#b99a44", "#d46a5c",
+  "#60aebd", "#8d79b8", "#c96f9d", "#84a96b", "#b67d4c", "#6c91a8",
+  "#debf44", "#a4512a", "#e07b91", "#6a4ca0", "#93b95f", "#8cb9c8"
+];
+
+const periodColors = {
+  "初唐": "#b99a44",
+  "盛唐": "#df8c28",
+  "中唐": "#5f8f78",
+  "晚唐": "#6f8fb0"
+};
+
+const tooltip = d3.select("#tooltip");
+
+function showTip(event, html) {
+  tooltip
+    .html(html)
+    .style("left", event.clientX + "px")
+    .style("top", event.clientY + "px")
+    .transition()
+    .duration(100)
+    .style("opacity", 1);
+}
+
+function hideTip() {
+  tooltip.transition().duration(120).style("opacity", 0);
+}
+
+function buildBins() {
+  const bins = [];
+  for (let start = START_YEAR; start <= END_YEAR; start += BIN_SIZE) {
+    const end = Math.min(start + BIN_SIZE - 1, END_YEAR);
+    bins.push({ start, end, label: `${start}-${end}`, mid: Math.round((start + end) / 2) });
+  }
+  return bins;
+}
+
+function getBinForYear(year, bins) {
+  return bins.find(b => year >= b.start && year <= b.end);
+}
+
+function getTangPeriod(year) {
+  if (year <= 712) return "初唐";
+  if (year <= 765) return "盛唐";
+  if (year <= 835) return "中唐";
+  return "晚唐";
+}
+
+function prepareRankData(rawData) {
+  const bins = buildBins();
+  const binIndex = new Map(bins.map((b, i) => [b.label, i]));
+  const counter = new Map();
+
+  rawData.forEach(d => {
+    const year = Number(d.year);
+    const imagery = d.imagery;
+    const value = Number(d.value);
+    if (!imagery || !Number.isFinite(year) || !Number.isFinite(value)) return;
+    if (year < START_YEAR || year > END_YEAR) return;
+    const bin = getBinForYear(year, bins);
+    if (!bin) return;
+    const key = `${bin.label}||${imagery}`;
+    counter.set(key, (counter.get(key) || 0) + value);
+  });
+
+  const rowsByBin = new Map();
+  bins.forEach(bin => {
+    const rows = [];
+    counter.forEach((value, key) => {
+      const [label, imagery] = key.split("||");
+      if (label !== bin.label) return;
+      rows.push({ bin: bin.label, start: bin.start, end: bin.end, mid: bin.mid, imagery, value });
+    });
+    rows.sort((a, b) => d3.descending(a.value, b.value));
+    rowsByBin.set(bin.label, rows);
+  });
+
+  const rankRows = [];
+  bins.forEach(bin => {
+    const rows = rowsByBin.get(bin.label) || [];
+    rows.slice(0, TOP_K).forEach((d, i) => rankRows.push({ ...d, rank: i + 1 }));
+  });
+
+  const allTopImagery = Array.from(new Set(rankRows.map(d => d.imagery)));
+  const totalByImagery = d3.rollup(rankRows, v => d3.sum(v, d => d.value), d => d.imagery);
+
+  const color = d3.scaleOrdinal()
+    .domain(allTopImagery.sort((a, b) => d3.descending(totalByImagery.get(a), totalByImagery.get(b))))
+    .range(rankColors);
+
+  const byImagery = d3.group(rankRows, d => d.imagery);
+
+  function splitConsecutiveRuns(rows) {
+    const sorted = [...rows].sort((a, b) => d3.ascending(a.start, b.start));
+    const runs = [];
+    let current = [];
+
+    function flushRun() {
+      if (current.length >= MIN_CONSECUTIVE_STREAK) runs.push([...current]);
+      current = [];
+    }
+
+    sorted.forEach(p => {
+      if (!current.length) { current = [p]; return; }
+      const prev = current[current.length - 1];
+      const prevIdx = binIndex.get(prev.bin);
+      const currIdx = binIndex.get(p.bin);
+      if (currIdx === prevIdx + 1) current.push(p);
+      else { flushRun(); current = [p]; }
+    });
+
+    flushRun();
+    return runs;
+  }
+
+  const series = Array.from(byImagery, ([imagery, rows]) => {
+    const sortedRows = [...rows].sort((a, b) => d3.ascending(a.start, b.start));
+    const runs = splitConsecutiveRuns(sortedRows);
+    return { imagery, total: d3.sum(sortedRows, d => d.value), color: color(imagery), points: sortedRows, runs };
+  })
+    .filter(s => s.runs.length > 0)
+    .sort((a, b) => d3.descending(a.total, b.total));
+
+  return { bins, rankRows, series, color };
+}
+
+function polarToCartesian(angle, radius) {
+  return [Math.cos(angle - Math.PI / 2) * radius, Math.sin(angle - Math.PI / 2) * radius];
+}
+
+function angleDiff(a, b) {
+  let d = b - a;
+  if (d < -Math.PI) d += Math.PI * 2;
+  if (d > Math.PI) d -= Math.PI * 2;
+  return d;
+}
+
+function circularPath(points, angle, radius) {
+  if (!points.length) return "";
+  const samples = [];
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i];
+    const b = points[i + 1];
+    const a0 = angle(a.bin);
+    let a1 = angle(b.bin);
+    const diff = angleDiff(a0, a1);
+    a1 = a0 + diff;
+
+    const r0 = radius(a.rank);
+    const r1 = radius(b.rank);
+    const steps = 26;
+
+    for (let j = 0; j <= steps; j++) {
+      if (i > 0 && j === 0) continue;
+      const t = j / steps;
+      const ease = t * t * (3 - 2 * t);
+      const aa = a0 + (a1 - a0) * t;
+      const rr = r0 + (r1 - r0) * ease;
+      const [x, y] = polarToCartesian(aa, rr);
+      samples.push([x, y]);
+    }
+  }
+
+  if (points.length === 1) {
+    const [x, y] = polarToCartesian(angle(points[0].bin), radius(points[0].rank));
+    samples.push([x, y]);
+  }
+
+  return d3.line().curve(d3.curveCatmullRom.alpha(0.6))(samples);
+}
+
+function drawCircularRankFlow(rawData) {
+  const container = document.getElementById("timelinePanel");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const svg = d3.select("#rankSvg").attr("viewBox", [0, 0, width, height]);
+  svg.selectAll("*").remove();
+
+  const { bins, rankRows, series } = prepareRankData(rawData);
+  const lineRuns = series.flatMap(s => s.runs.map((run, i) => ({ imagery: s.imagery, color: s.color, total: s.total, points: run, runId: `${s.imagery}-${i}` })));
+
+  const cx = width * 0.46;
+  const cy = height * 0.47;
+  const maxOuter = Math.min(width * 0.36, height * 0.38);
+  const innerR = maxOuter * 0.34;
+  const outerR = maxOuter;
+
+  const g = svg.append("g").attr("transform", `translate(${cx}, ${cy})`);
+
+  const angle = d3.scalePoint()
+    .domain(bins.map(d => d.label))
+    .range([-Math.PI * 0.72, Math.PI * 1.28])
+    .padding(0.2);
+
+  const radius = d3.scaleLinear()
+    .domain([1, TOP_K])
+    .range([innerR, outerR]);
+
+  const arcGen = d3.arc();
+
+  // 中央淡色圆与标题
+  g.append("circle").attr("r", innerR * .82).attr("fill", "rgba(225,199,151,.22)").attr("stroke", "rgba(80,70,50,.15)");
+  g.append("text").attr("class", "center-title").attr("y", -8).text("唐诗");
+  g.append("text").attr("class", "center-subtitle").attr("y", 28).text("意象排名流变");
+
+  // 排名同心圆
+  g.append("g")
+    .selectAll("circle")
+    .data(d3.range(1, TOP_K + 1))
+    .join("circle")
+    .attr("class", d => d === 1 ? "ring-bg main" : "ring-bg")
+    .attr("r", d => radius(d));
+
+  // 径向时间刻度线
+  g.append("g")
+    .selectAll("line")
+    .data(bins)
+    .join("line")
+    .attr("class", "radial-grid")
+    .attr("x1", d => polarToCartesian(angle(d.label), innerR * .9)[0])
+    .attr("y1", d => polarToCartesian(angle(d.label), innerR * .9)[1])
+    .attr("x2", d => polarToCartesian(angle(d.label), outerR * 1.04)[0])
+    .attr("y2", d => polarToCartesian(angle(d.label), outerR * 1.04)[1]);
+
+  // 唐代分期外圈弧带
+  const periodGroups = d3.groups(bins, d => getTangPeriod(d.mid)).map(([name, arr]) => ({
+    name,
+    startAngle: angle(arr[0].label) - 0.08,
+    endAngle: angle(arr[arr.length - 1].label) + 0.08,
+    color: periodColors[name] || "#999"
+  }));
+
+  const periodR = outerR * 1.12;
+  g.append("g")
+    .selectAll("path")
+    .data(periodGroups)
+    .join("path")
+    .attr("class", "period-arc")
+    .attr("d", d => arcGen({ innerRadius: periodR, outerRadius: periodR + 16, startAngle: d.startAngle, endAngle: d.endAngle }))
+    .attr("stroke", d => d.color)
+    .attr("stroke-width", 15);
+
+  g.append("g")
+    .selectAll("text")
+    .data(periodGroups)
+    .join("text")
+    .attr("class", "period-label")
+    .attr("text-anchor", "middle")
+    .attr("x", d => polarToCartesian((d.startAngle + d.endAngle) / 2, periodR + 28)[0])
+    .attr("y", d => polarToCartesian((d.startAngle + d.endAngle) / 2, periodR + 28)[1])
+    .text(d => d.name);
+
+  // 年份标签
+  g.append("g")
+    .selectAll("text")
+    .data(bins)
+    .join("text")
+    .attr("class", "year-label")
+    .attr("x", d => polarToCartesian(angle(d.label), outerR * 1.22)[0])
+    .attr("y", d => polarToCartesian(angle(d.label), outerR * 1.22)[1])
+    .attr("transform", d => {
+      const a = angle(d.label) * 180 / Math.PI;
+      const [x, y] = polarToCartesian(angle(d.label), outerR * 1.22);
+      return `rotate(${a}, ${x}, ${y})`;
+    })
+    .text(d => d.mid);
+
+  // 排名数字标签，放在左上侧
+  const rankAngle = -Math.PI * 0.64;
+  g.append("g")
+    .selectAll("text")
+    .data(d3.range(1, TOP_K + 1))
+    .join("text")
+    .attr("class", "rank-label")
+    .attr("x", d => polarToCartesian(rankAngle, radius(d))[0] - 6)
+    .attr("y", d => polarToCartesian(rankAngle, radius(d))[1])
+    .attr("text-anchor", "end")
+    .text(d => d);
+
+  // 曲线
+  const pathGroup = g.append("g").attr("class", "paths");
+
+  const paths = pathGroup
+    .selectAll("path")
+    .data(lineRuns)
+    .join("path")
+    .attr("class", "flow-line")
+    .attr("d", d => circularPath(d.points, angle, radius))
+    .attr("stroke", d => d.color)
+    .on("mouseenter", function(event, d) {
+      d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery);
+      d3.select(this).classed("active", true);
+      const best = d3.min(d.points, p => p.rank);
+      const latest = d.points[d.points.length - 1];
+      showTip(event, `<b>${d.imagery}</b><br/>连续段长度：${d.points.length}<br/>最佳排名：第 ${best} 名<br/>最近时段：${latest.bin}，第 ${latest.rank} 名<br/>累计出现：${d.total.toFixed(2)}`);
+    })
+    .on("mouseleave", function() {
+      d3.selectAll(".flow-line").classed("muted", false);
+      d3.select(this).classed("active", false);
+      hideTip();
+    });
+
+  paths.each(function(d) {
+    const length = this.getTotalLength();
+    const startIdx = Math.max(0, bins.findIndex(b => b.label === d.points[0]?.bin));
+    d3.select(this)
+      .attr("stroke-dasharray", `${length} ${length}`)
+      .attr("stroke-dashoffset", length)
+      .transition()
+      .duration(3600)
+      .delay(startIdx * 220)
+      .ease(d3.easeCubicInOut)
+      .attr("stroke-dashoffset", 0);
+  });
+
+  // 节点，只显示进入连续线段的点
+  const displayPointKeys = new Set(lineRuns.flatMap(run => run.points.map(p => `${p.bin}||${p.imagery}`)));
+  const displayRows = rankRows.filter(d => displayPointKeys.has(`${d.bin}||${d.imagery}`));
+
+  g.append("g")
+    .selectAll("circle")
+    .data(displayRows)
+    .join("circle")
+    .attr("class", "node")
+    .attr("cx", d => polarToCartesian(angle(d.bin), radius(d.rank))[0])
+    .attr("cy", d => polarToCartesian(angle(d.bin), radius(d.rank))[1])
+    .attr("r", 3.9)
+    .attr("fill", d => {
+      const s = series.find(p => p.imagery === d.imagery);
+      return s ? s.color : "#999";
+    })
+    .on("mouseenter", function(event, d) {
+      d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery);
+      showTip(event, `<b>${d.imagery}</b><br/>时间段：${d.bin}<br/>排名：第 ${d.rank} 名<br/>出现次数：${d.value.toFixed(2)}`);
+    })
+    .on("mouseleave", function() {
+      d3.selectAll(".flow-line").classed("muted", false);
+      hideTip();
+    });
+
+  // 末端标签
+  const lastPoints = series.map(s => {
+    const latestRun = [...s.runs].sort((a, b) =>
+      d3.ascending(
+        bins.findIndex(bin => bin.label === a[a.length - 1].bin),
+        bins.findIndex(bin => bin.label === b[b.length - 1].bin)
+      )
+    )[s.runs.length - 1];
+    const p = latestRun[latestRun.length - 1];
+    return { imagery: s.imagery, color: s.color, total: s.total, ...p };
+  });
+
+  g.append("g")
+    .selectAll("text")
+    .data(lastPoints)
+    .join("text")
+    .attr("class", "node-label")
+    .attr("x", d => polarToCartesian(angle(d.bin), radius(d.rank) + 18)[0])
+    .attr("y", d => polarToCartesian(angle(d.bin), radius(d.rank) + 18)[1])
+    .attr("text-anchor", d => {
+      const a = angle(d.bin);
+      return Math.cos(a - Math.PI / 2) >= 0 ? "start" : "end";
+    })
+    .attr("fill", d => d.color)
+    .text(d => `${d.imagery} ${d.rank}`);
+
+  // 右侧图例
+  d3.select("#timelinePanel .rank-legend").remove();
+  const legend = d3.select("#timelinePanel").append("div").attr("class", "rank-legend");
+  const legendData = series.slice(0, 16);
+  legend.selectAll(".legend-item")
+    .data(legendData)
+    .join("div")
+    .attr("class", "rank-legend-item")
+    .html(d => `<span class="rank-legend-dot" style="background:${d.color}"></span><span class="rank-legend-name">${d.imagery}</span>`)
+    .on("mouseenter", (event, d) => d3.selectAll(".flow-line").classed("muted", p => p.imagery !== d.imagery).classed("active", p => p.imagery === d.imagery))
+    .on("mouseleave", () => d3.selectAll(".flow-line").classed("muted", false).classed("active", false));
+
+  svg.append("text")
+    .attr("x", width * .06)
+    .attr("y", height - 8)
+    .attr("font-size", 8)
+    .attr("fill", "rgba(50,45,35,.62)")
+    .text(`统计方式：每 ${BIN_SIZE} 年汇总一次，每个时段最多取前 ${TOP_K} 名，仅保留连续≥${MIN_CONSECUTIVE_STREAK}个时段进入榜单的意象。`);
+}
+
+
+function drawTimeline(timelineStats, categoryStats){
+  const panel = document.getElementById("timelinePanel");
+  const width = panel.clientWidth, height = panel.clientHeight;
+  const svg = d3.select("#timelineSvg").attr("viewBox", [0,0,width,height]);
+  svg.selectAll("*").remove();
+
+  svg.append("text").attr("x", 10).attr("y", 18).attr("class", "label").attr("font-size", 13).text("意象时间演化");
+  svg.append("text").attr("x", 10).attr("y", 40).attr("class", "muted-text").text("从初唐到晚唐，高频意象的流动变化");
+
+  const top = new Set(categoryStats.slice(0, 16).map(d=>d.name));
+  const rows = timelineStats.filter(d => top.has(d.imagery));
+  const periods = periodOrder.filter(p => rows.some(d=>d.period===p));
+  const names = Array.from(top).filter(n => rows.some(d=>d.imagery===n)).slice(0, 14);
+
+  const margin = {top:58,right:14,bottom:24,left:44};
+  const x = d3.scalePoint().domain(periods).range([margin.left, width-margin.right]).padding(.45);
+  const y = d3.scalePoint().domain(names).range([margin.top, height-margin.bottom]).padding(.3);
+  const maxV = d3.max(rows, d=>d.value) || 1;
+  const stroke = d3.scaleLinear().domain([1,maxV]).range([.4,5]);
+
+  svg.append("g").attr("class","axis").attr("transform",`translate(0,${height-margin.bottom})`).call(d3.axisBottom(x).tickSize(0));
+  svg.selectAll(".y-label").data(names).join("text")
+    .attr("x", margin.left-8).attr("y", d=>y(d)+3).attr("text-anchor","end").attr("class","tiny").text(d=>d);
+
+  const cell = new Map(rows.map(d=>[`${d.period}||${d.imagery}`, d.value]));
+  const line = d3.line().curve(d3.curveMonotoneX).x(d=>x(d.period)).y(d=>y(d.imagery));
+
+  const paths = [];
+  names.forEach(name => {
+    const pts = periods.map(p => ({period:p, imagery:name, value:cell.get(`${p}||${name}`)||0})).filter(d=>d.value>0);
+    for(let i=0;i<pts.length-1;i++) paths.push({imagery:name, a:pts[i], b:pts[i+1], value:(pts[i].value+pts[i+1].value)/2});
+  });
+
+  svg.append("g").selectAll("path")
+    .data(paths)
+    .join("path")
+    .attr("d", d => line([d.a,d.b]))
+    .attr("fill", "none")
+    .attr("stroke", d => categoryColor.get(categoryStats.find(x=>x.name===d.imagery)?.category || "未分类") || "#7aa")
+    .attr("stroke-width", d => stroke(d.value))
+    .attr("stroke-opacity", .38);
+
+  svg.append("g").selectAll("circle")
+    .data(rows.filter(d=>names.includes(d.imagery) && periods.includes(d.period)))
+    .join("circle")
+    .attr("cx", d=>x(d.period)).attr("cy", d=>y(d.imagery))
+    .attr("r", d=>Math.sqrt(d.value)*1.2+1.5)
+    .attr("fill", d => categoryColor.get(categoryStats.find(x=>x.name===d.imagery)?.category || "未分类") || "#7aa")
+    .attr("fill-opacity", .72)
+    .attr("stroke", "rgba(90,70,50,.3)")
+    .on("mousemove", (event,d)=>showTip(event, `<b>${d.imagery}</b><br/>时期：${d.period}<br/>出现：${d.value} 首`))
+    .on("mouseleave", hideTip);
+}
+
+async function init(){
+  try{
+    const [poems, co, yixiang, rankRaw] = await Promise.all([
+      d3.json(FILES.poems),
+      d3.json(FILES.co),
+      d3.csv(FILES.category),
+      d3.json(FILES.rank)
+    ]);
+
+    const data = aggregateData(poems, co, yixiang);
+    drawChord(data.poems, data.coNorm, data.categoryStats);
+    drawSemanticMotifModules(data.poems, data.categoryStats);
+    drawBubble(data.categoryStats);
+    drawCircularRankFlow(rankRaw);
+  }catch(err){
+    console.error(err);
+    d3.select(".paper").append("div")
+      .style("position","absolute").style("left","40px").style("top","40px").style("z-index",10)
+      .style("background","rgba(255,250,235,.95)").style("padding","18px 22px").style("border","1px solid rgba(90,70,50,.2)")
+      .style("line-height","1.8").html(`数据加载失败：<br><b>${err.message}</b><br>请确认 poem_time_visual.json、co_occurrence.json、yixiang.csv、timeline_year_imagery_long.json 与本 HTML 在同一目录，并用本地服务器打开。`);
+  }
+}
+
+window.addEventListener("resize", () => location.reload());
+init();
+</script>
+</body>
+</html>
