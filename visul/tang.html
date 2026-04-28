@@ -86,7 +86,7 @@
     }
 
     .title-block{grid-column:1;grid-row:1;position:relative;padding-left:4px;}
-    .title-block h1{margin:0;font-size:29px;letter-spacing:5px;font-weight:600;line-height:1.38;}
+    .title-block h1{margin:0;font-size:32px;letter-spacing:5px;font-weight:600;line-height:1.38;}
     .title-block p{max-width:650px;font-size:10.2px;line-height:1.58;color:#4d493d;margin:8px 0 0;}
     .poetic-preface{
       color:rgba(70,61,48,.72);
@@ -608,11 +608,133 @@
       top:48px !important;
     }
 
+  
+
+    /* ===== 背景图与顶部筛选、四半圆说明、筛选联动最终补丁 ===== */
+    html,body{
+      background:#e8e3d4 url("beijing.png") center center / cover no-repeat fixed !important;
+    }
+    #app::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:rgba(232,227,212,.50);
+      z-index:0;
+    }
+    .paper{
+      background:
+        linear-gradient(115deg, rgba(255,250,232,.42), rgba(239,229,202,.38)),
+        url("beijing.png") center center / cover no-repeat !important;
+    }
+    .top-filter-panel{
+      position:absolute;
+      right:44px;
+      top:16px;
+      z-index:30;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 9px;
+      border-radius:14px;
+      background:rgba(246,239,221,.52);
+      border:1px solid rgba(110,92,62,.16);
+      box-shadow:0 6px 18px rgba(76,58,32,.08);
+      backdrop-filter:blur(3px);
+      -webkit-backdrop-filter:blur(3px);
+      font-family:"FangSong","STKaiti","KaiTi","Noto Serif SC",serif;
+    }
+    .top-filter-panel label{
+      display:flex;
+      align-items:center;
+      gap:5px;
+      font-size:11px;
+      color:rgba(48,42,34,.78);
+      letter-spacing:1px;
+      white-space:nowrap;
+    }
+    .top-filter-panel input{
+      width:112px;
+      height:24px;
+      border:1px solid rgba(102,86,58,.22);
+      border-radius:10px;
+      padding:2px 8px;
+      background:rgba(255,252,238,.54);
+      color:rgba(36,32,25,.88);
+      font-size:11px;
+      outline:none;
+    }
+    .top-filter-panel input:focus{
+      border-color:rgba(98,123,99,.46);
+      box-shadow:0 0 0 2px rgba(98,123,99,.10);
+      background:rgba(255,252,238,.72);
+    }
+    .top-filter-panel button{
+      height:24px;
+      border:1px solid rgba(102,86,58,.18);
+      border-radius:10px;
+      padding:0 9px;
+      background:rgba(255,250,232,.48);
+      color:rgba(65,56,43,.76);
+      font-size:11px;
+      cursor:pointer;
+    }
+    .motif-panel-note{
+      position:absolute;
+      left:155px;
+      right:300px;
+      top:0;
+      z-index:9;
+      font-size:9.2px;
+      line-height:1.45;
+      color:rgba(77,68,54,.63);
+      letter-spacing:.4px;
+      pointer-events:none;
+      font-family:"FangSong","STKaiti","KaiTi","Noto Serif SC",serif;
+      background:linear-gradient(90deg, rgba(246,239,221,.38), rgba(246,239,221,.08), transparent);
+      border-radius:10px;
+      padding:3px 8px;
+    }
+    .poet-arc.filter-muted,
+    .poet-label.filter-muted,
+    .poet-imagery-link.filter-muted,
+    .poet-imagery-hit.filter-muted{
+      opacity:.16!important;
+    }
+    .poet-arc.filter-active{
+      opacity:1!important;
+      stroke:rgba(47,39,28,.72)!important;
+      stroke-width:1.6!important;
+    }
+    .poet-label.filter-active{
+      opacity:1!important;
+      fill:rgba(35,30,24,.95)!important;
+      font-weight:600;
+    }
+    .poet-imagery-link.filter-active{
+      opacity:.88!important;
+      stroke-width:2.7!important;
+      filter:drop-shadow(0 2px 3px rgba(42,32,18,.18));
+    }
+    .tooltip.poet-tip{
+      background:rgba(255,252,240,.42)!important;
+      border-color:rgba(90,78,55,.12)!important;
+      backdrop-filter:blur(2.5px);
+      -webkit-backdrop-filter:blur(2.5px);
+    }
+
   </style>
 </head>
 <body>
 <div id="app">
   <div class="paper">
+    <div class="top-filter-panel">
+      <label>诗人<input id="poetFilterInput" list="poetOptions" placeholder="输入或选择诗人" autocomplete="off"></label>
+      <datalist id="poetOptions"></datalist>
+      <label>意象<input id="imageryFilterInput" list="imageryOptions" placeholder="输入或选择意象" autocomplete="off"></label>
+      <datalist id="imageryOptions"></datalist>
+      <button id="clearFilterBtn" type="button">清空</button>
+    </div>
     <div class="flow-bridge bridge-1"><svg viewBox="0 0 200 120"><path d="M4,96 C54,18 126,104 196,20"/><circle class="petal" cx="44" cy="46" r="2.6"/><circle class="petal" cx="112" cy="76" r="2.1"/><circle class="petal" cx="162" cy="42" r="2.4"/></svg></div>
     <div class="flow-bridge bridge-2"><svg viewBox="0 0 180 110"><path d="M6,88 C58,8 114,104 174,26"/><circle class="petal" cx="61" cy="35" r="2.2"/><circle class="petal" cx="132" cy="73" r="2"/></svg></div>
     <div class="grid">
@@ -759,6 +881,7 @@ function hideTip(){ $tip.transition().duration(120).style("opacity", 0); }
 
 let poemCloudPoems = [];
 let poemCloudDefault = [];
+let activeGlobalFilter = { poet: "", imagery: "" };
 
 function hashCode(str){
   return Array.from(String(str || "")).reduce((sum, ch) => ((sum << 5) - sum + ch.charCodeAt(0)) | 0, 0);
@@ -961,10 +1084,97 @@ function clearGlobalImageryFocus(){
     .classed("global-imagery-active", false);
 }
 
-function resetPoemCloud(){ clearGlobalImageryFocus(); drawPoemCloud(null); }
+function renderPoemCloudForActiveFilter(){
+  const poet = activeGlobalFilter.poet;
+  const imagery = activeGlobalFilter.imagery;
+  if(poet && imagery) drawPoemCloud({type:"poetImagery", author:poet, imagery});
+  else if(poet) drawPoemCloud({type:"poet", name:poet});
+  else if(imagery) drawPoemCloud({type:"imagery", name:imagery});
+  else drawPoemCloud(null);
+}
+
+function resetPoemCloud(){
+  if(activeGlobalFilter.poet || activeGlobalFilter.imagery){
+    applyGlobalFilters(false);
+  }else{
+    clearGlobalImageryFocus();
+    clearPoetFocus();
+    drawPoemCloud(null);
+  }
+}
 function updatePoemCloudByImagery(name){ setGlobalImageryFocus(name); drawPoemCloud({type:"imagery", name}); }
 function updatePoemCloudByPoet(name){ drawPoemCloud({type:"poet", name}); }
 function updatePoemCloudByPoetImagery(author, imagery){ drawPoemCloud({type:"poetImagery", author, imagery}); }
+
+function clearPoetFocus(){
+  d3.selectAll(".cross-view-poet,.poet-imagery-link,.poet-imagery-hit")
+    .classed("filter-muted", false)
+    .classed("filter-active", false);
+}
+
+function setPoetFocus(author){
+  const target = String(author || "").trim();
+  clearPoetFocus();
+  if(!target) return;
+  d3.selectAll(".cross-view-poet")
+    .classed("filter-muted", function(){ return this.getAttribute("data-author") !== target; })
+    .classed("filter-active", function(){ return this.getAttribute("data-author") === target; });
+  d3.selectAll(".poet-imagery-link,.poet-imagery-hit")
+    .classed("filter-muted", function(){ return this.getAttribute("data-author") !== target; })
+    .classed("filter-active", function(){ return this.getAttribute("data-author") === target; });
+}
+
+function applyGlobalFilters(syncInputs=true){
+  const poetInput = document.getElementById("poetFilterInput");
+  const imageryInput = document.getElementById("imageryFilterInput");
+  const poet = (poetInput?.value || activeGlobalFilter.poet || "").trim();
+  const imagery = (imageryInput?.value || activeGlobalFilter.imagery || "").trim();
+  activeGlobalFilter = { poet, imagery };
+  if(syncInputs){
+    if(poetInput) poetInput.value = poet;
+    if(imageryInput) imageryInput.value = imagery;
+  }
+  clearGlobalImageryFocus();
+  clearPoetFocus();
+  if(imagery) setGlobalImageryFocus(imagery);
+  if(poet) setPoetFocus(poet);
+  renderPoemCloudForActiveFilter();
+}
+
+function initGlobalFilters(data){
+  const poetInput = document.getElementById("poetFilterInput");
+  const imageryInput = document.getElementById("imageryFilterInput");
+  const poetOptions = document.getElementById("poetOptions");
+  const imageryOptions = document.getElementById("imageryOptions");
+  const clearBtn = document.getElementById("clearFilterBtn");
+  if(!poetInput || !imageryInput || !poetOptions || !imageryOptions) return;
+
+  const poets = Array.from(new Set([
+    ...poetRingData.map(d => d.name),
+    ...(data.poems || []).map(d => d.author).filter(Boolean),
+    ...(poemCloudPoems || []).map(d => d.author).filter(Boolean)
+  ])).sort((a,b) => a.localeCompare(b, "zh-Hans-CN"));
+
+  const imagery = Array.from(new Set([
+    ...(data.categoryStats || []).map(d => d.name),
+    ...(poemCloudPoems || []).flatMap(d => d.imagery_norm || [])
+  ])).filter(Boolean).sort((a,b) => a.localeCompare(b, "zh-Hans-CN"));
+
+  poetOptions.innerHTML = poets.map(d => `<option value="${String(d).replace(/"/g,'&quot;')}"></option>`).join("");
+  imageryOptions.innerHTML = imagery.map(d => `<option value="${String(d).replace(/"/g,'&quot;')}"></option>`).join("");
+
+  const onInput = () => applyGlobalFilters(true);
+  poetInput.addEventListener("input", onInput);
+  poetInput.addEventListener("change", onInput);
+  imageryInput.addEventListener("input", onInput);
+  imageryInput.addEventListener("change", onInput);
+  clearBtn?.addEventListener("click", () => {
+    activeGlobalFilter = {poet:"", imagery:""};
+    poetInput.value = "";
+    imageryInput.value = "";
+    applyGlobalFilters(true);
+  });
+}
 
 
 function getCol(row, names, fallback=""){
@@ -1104,6 +1314,9 @@ function drawSemanticMotifModules(poems, categoryStats) {
   panel.append("div")
     .attr("class", "motif-panel-title")
     .text("意象语义流变");
+  panel.append("div")
+    .attr("class", "motif-panel-note")
+    .text("彩色弧线表示意象规模，末端色点提示其在唐代分期中的峰值。");
 
   const statMap = buildMotifStats(poems);
   const modules = semanticMotifConfig.map((cfg, idx) => {
@@ -1448,6 +1661,7 @@ function drawChord(poems, coNorm, categoryStats){
       poetLinks.classed("fade", true);
     })
     .on("mouseleave", () => {
+      d3.select("#tooltip").classed("poet-tip", false);
       hideTip();
       ribbons.classed("fade", false);
       groups.classed("fade", false);
@@ -1530,17 +1744,19 @@ function drawChord(poems, coNorm, categoryStats){
     .join("g");
 
   poetGroups.append("path")
-    .attr("class", "poet-arc")
+    .attr("class", "poet-arc cross-view-poet")
+    .attr("data-author", d => d.data.name)
     .attr("d", poetArc)
     .attr("fill", d => poetColor(d.data.value))
     .attr("stroke", "rgba(250,246,230,.96)")
     .attr("stroke-width", .7)
     .attr("opacity", .88)
     .on("mouseenter", (event,d) => {
-      // 悬停诗人：只高亮相关连线，不弹出文字提示，避免遮挡视野。
-      hideTip();
       updatePoemCloudByPoet(d.data.name);
       const list = poetTopImageryMap.get(d.data.name) || [];
+      const topText = list.length ? list.map(x => `${x.imagery}(${x.value})`).join("、") : "暂无";
+      d3.select("#tooltip").classed("poet-tip", true);
+      showTip(event, `<b>${d.data.name}</b><br/>样本诗数：${d.data.value}<br/>高频意象：${topText}`);
       poetLinks.classed("fade", x => x.author !== d.data.name)
         .classed("active", x => x.author === d.data.name);
       poetHitLinks.classed("fade", x => x.author !== d.data.name)
@@ -1548,6 +1764,12 @@ function drawChord(poems, coNorm, categoryStats){
       poetGroups.selectAll("path").attr("opacity", p => p.data.name === d.data.name ? 1 : .20);
       groups.classed("fade", x => !list.some(y => y.imagery === names[x.index]));
       ribbons.classed("fade", true);
+    })
+    .on("mousemove", (event,d) => {
+      const list = poetTopImageryMap.get(d.data.name) || [];
+      const topText = list.length ? list.map(x => `${x.imagery}(${x.value})`).join("、") : "暂无";
+      d3.select("#tooltip").classed("poet-tip", true);
+      showTip(event, `<b>${d.data.name}</b><br/>样本诗数：${d.data.value}<br/>高频意象：${topText}`);
     })
     .on("mouseleave", () => {
       hideTip();
@@ -1561,7 +1783,8 @@ function drawChord(poems, coNorm, categoryStats){
 
   poetGroups.append("text")
     .each(d => d.angle = (d.startAngle + d.endAngle) / 2)
-    .attr("class", "poet-label")
+    .attr("class", "poet-label cross-view-poet")
+    .attr("data-author", d => d.data.name)
     .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${poetLabelR}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
     .attr("text-anchor", d => d.angle > Math.PI ? "end" : "start")
     .text(d => d.data.name);
@@ -1711,6 +1934,8 @@ function drawChord(poems, coNorm, categoryStats){
     .data(poetImageryLinks)
     .join("path")
     .attr("class", "poet-imagery-link")
+    .attr("data-author", d => d.author)
+    .attr("data-imagery", d => d.imagery)
     .attr("d", d => circularOuterLinkPath(d))
     .attr("stroke", d => colorFor(d.imagery))
     .attr("stroke-width", d => linkWidth(d.value))
@@ -1722,6 +1947,8 @@ function drawChord(poems, coNorm, categoryStats){
     .data(poetImageryLinks)
     .join("path")
     .attr("class", "poet-imagery-hit")
+    .attr("data-author", d => d.author)
+    .attr("data-imagery", d => d.imagery)
     .attr("d", d => circularOuterLinkPath(d))
     .on("mouseenter", (event,d) => {
       hideTip();
@@ -2258,6 +2485,7 @@ async function init(){
     drawSemanticMotifModules(data.poems, data.categoryStats);
     drawBubble(data.categoryStats);
     drawCircularRankFlow(rankRaw);
+    initGlobalFilters(data);
   }catch(err){
     console.error(err);
     d3.select(".paper").append("div")
