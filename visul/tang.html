@@ -81,13 +81,26 @@
       padding:36px 42px 30px 42px;
       display:grid;
       grid-template-columns: 40% 30% 30%;
-      grid-template-rows: 14% 39% 47%;
+      grid-template-rows: 18% 36% 46%;
       gap:8px 22px;
     }
 
     .title-block{grid-column:1;grid-row:1;position:relative;padding-left:4px;}
-    .title-block h1{margin:0;font-size:30px;letter-spacing:5px;font-weight:600;line-height:1.52;}
-    .title-block p{max-width:640px;font-size:12px;line-height:1.72;color:#4d493d;margin:18px 0 0;}
+    .title-block h1{margin:0;font-size:29px;letter-spacing:5px;font-weight:600;line-height:1.38;}
+    .title-block p{max-width:650px;font-size:10.2px;line-height:1.58;color:#4d493d;margin:8px 0 0;}
+    .poetic-preface{
+      color:rgba(70,61,48,.72);
+      letter-spacing:.5px;
+      text-align:justify;
+    }
+    .poetic-preface .lead{
+      display:block;
+      margin-bottom:4px;
+      color:rgba(46,40,32,.82);
+      font-size:11px;
+      letter-spacing:1.2px;
+      font-family:"STKaiti","KaiTi","FangSong","Noto Serif SC",serif;
+    }
 
     .mini-intro{display:none;}
     .mini-card{display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;min-width:0;}
@@ -95,24 +108,48 @@
     .mini-card b{font-size:12px;font-weight:600;display:block;margin-bottom:3px;}
     .mini-card span{font-size:10px;color:var(--muted);line-height:1.35;display:block;}
 
-    .right-title{grid-column:2 / 4;grid-row:1;padding-top:6px;text-align:right;}
+    .right-title{display:none;}
     .right-title h2{margin:0;font-size:18px;letter-spacing:3px;font-weight:600;text-align:right;}
     .right-title p{font-size:10.5px;line-height:1.55;color:var(--muted);margin:8px 0 0 auto;max-width:610px;}
 
     #chordPanel{grid-column:1;grid-row:2 / 4;position:relative;}
     #seasonPanel{
       grid-column:2 / 4;
-      grid-row:2;
+      grid-row:1 / 3;
       position:relative;
       display:block;
       overflow:visible;
+      padding-top:26px;
     }
     #bubblePanel{grid-column:2;grid-row:3;position:relative;overflow:hidden;padding-top:28px;}
     #timelinePanel{grid-column:3;grid-row:3;position:relative;}
 
-    .panel-title{position:absolute;left:8px;top:0;font-size:14px;letter-spacing:3px;color:#2f2d26;z-index:5;}
+    .panel-title{position:absolute;left:8px;top:0;font-size:18px;letter-spacing:3px;color:#2f2d26;z-index:5;}
     .small-note{position:absolute;left:12px;bottom:4px;width:70%;font-size:10px;line-height:1.7;color:var(--muted);}
     svg{display:block;width:100%;height:100%;overflow:visible;}
+
+    .motif-panel-title{
+      position:absolute;
+      left:10px;
+      top:0;
+      z-index:8;
+      font-family:"STKaiti","KaiTi","Noto Serif SC","Songti SC",serif;
+      font-size:17px;
+      letter-spacing:4px;
+      font-weight:600;
+      color:rgba(43,38,30,.86);
+      pointer-events:none;
+    }
+    .motif-panel-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:-10px;
+      bottom:-6px;
+      height:1px;
+      background:linear-gradient(90deg, rgba(120,100,70,.26), transparent);
+    }
+
 
     .season-card{position:relative;overflow:hidden;}
     .season-title{position:absolute;left:22px;top:2px;font-size:46px;font-weight:600;line-height:1;z-index:2;font-family:"STKaiti","KaiTi","Noto Serif SC",serif;}
@@ -243,7 +280,7 @@
 
 
     /* 环形意象数量排名图 */
-    #rankSvg{display:block;width:100%;height:100%;overflow:visible;}
+    #rankSvg{position:absolute;left:0;right:104px;top:42px;bottom:8px;width:calc(100% - 104px);height:calc(100% - 50px);display:block;overflow:visible;}
     .ring-bg { fill: none; stroke: rgba(89, 79, 59, 0.10); stroke-width: 1; }
     .ring-bg.main { stroke: rgba(89, 79, 59, 0.20); stroke-dasharray: 7 8; }
     .radial-grid { stroke: rgba(87, 77, 55, 0.12); stroke-width: 1; }
@@ -260,24 +297,24 @@
     .center-subtitle { text-anchor: middle; dominant-baseline: middle; fill: rgba(57,51,40,.58); font-size: 9px; letter-spacing: 1px; }
     .rank-note{
       position:absolute;
-      left:auto;
-      right:126px;
-      top:24px;
+      left:126px;
+      right:108px;
+      top:2px;
       bottom:auto;
-      width:min(300px, calc(100% - 145px));
-      text-align:right;
-      font-size:8.2px;
-      line-height:1.4;
-      color:rgba(82,75,62,.58);
+      width:auto;
+      text-align:left;
+      font-size:7.8px;
+      line-height:1.35;
+      color:rgba(82,75,62,.54);
       z-index:5;
       pointer-events:none;
-      background:rgba(246,239,221,.16);
+      background:rgba(246,239,221,.10);
       border-radius:8px;
       padding:2px 5px;
     }
-    .rank-legend{position:absolute;right:0;bottom:28px;z-index:7;width:118px;display:grid;grid-template-columns:1fr;gap:4px;font-size:9px;color:rgba(48,43,34,.72);}
+    .rank-legend{position:absolute;right:0;top:58px;bottom:auto;z-index:7;width:96px;display:grid;grid-template-columns:1fr;gap:3px;font-size:8.3px;color:rgba(48,43,34,.72);}
     .rank-legend-item{display:flex;align-items:center;gap:5px;min-width:0;cursor:pointer;}
-    .rank-legend-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(70,60,42,.18);flex:0 0 auto;}
+    .rank-legend-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(70,60,42,.18);flex:0 0 auto;}
     .rank-legend-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
 
@@ -291,9 +328,9 @@
     .poem-cloud-head{position:relative;z-index:2;display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px;color:rgba(45,40,32,.78);}
     .poem-cloud-head b{font-size:12px;letter-spacing:2px;font-weight:600;}
     .poem-cloud-head span{font-size:9px;color:rgba(92,83,67,.64);white-space:nowrap;}
-    .poem-cloud-words{position:relative;z-index:1;height:calc(100% - 20px);display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 9px;padding:2px 2px 6px;}
-    .poem-cloud-word{display:inline-block;max-width:95%;color:rgba(49,45,36,.78);line-height:1.2;white-space:nowrap;text-shadow:0 1px 0 rgba(255,252,240,.82);transition:opacity .18s ease, transform .18s ease;}
-    .poem-cloud-word:hover{opacity:1!important;transform:scale(1.08) rotate(0deg)!important;}
+    .poem-cloud-words{position:relative;z-index:1;height:calc(100% - 24px);display:block;padding:4px 4px 8px;overflow:hidden;}
+    .poem-cloud-word{position:absolute;display:block;max-width:92%;color:rgba(43,38,29,.96);line-height:1.2;white-space:nowrap;text-shadow:0 1px 0 rgba(255,252,240,.78);transition:opacity .18s ease, transform .18s ease;transform-origin:center center;}
+    .poem-cloud-word:hover{opacity:1!important;transform:translate(-50%,-50%) scale(1.05) rotate(0deg)!important;}
     .poem-cloud-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.8;color:rgba(92,83,67,.62);padding:18px;}
 
     .axis text{font-size:9px;fill:#605a4d}.axis path,.axis line{stroke:rgba(70,62,45,.28)}
@@ -410,19 +447,45 @@
     .semantic-track-active{opacity:.72;}
     .semantic-track-bg{stroke:rgba(116,104,76,.075);}
     .semantic-track-dot{stroke-width:1.1;}
+    html,body{
+      background:#e8e3d4 !important;
+    }
+    .paper{
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,252,242,.36), transparent 30%),
+        radial-gradient(circle at 78% 74%, rgba(171,146,97,.06), transparent 36%),
+        rgba(244,238,221,.92) !important;
+      box-shadow:0 18px 52px rgba(75,62,42,.18), inset 0 0 42px rgba(139,110,62,.035);
+    }
+    .semantic-center-photo-frame{
+      fill:rgba(255,250,240,.72);
+      stroke:rgba(116,98,70,.22);
+      stroke-width:1.4;
+      filter:drop-shadow(0 3px 8px rgba(60,48,30,.14));
+    }
+    .semantic-center-photo-image{
+      opacity:.97;
+    }
+    .semantic-center-photo-ring{
+      fill:none;
+      stroke:rgba(255,252,244,.92);
+      stroke-width:2.2;
+      pointer-events:none;
+    }
+
     .poem-cloud-panel{
       border:1px solid rgba(122,104,72,.105);
       background:
-        radial-gradient(circle at 12% 18%, rgba(255,252,237,.38), transparent 34%),
-        radial-gradient(circle at 86% 70%, rgba(113,142,119,.055), transparent 30%),
-        rgba(250,245,228,.14);
+        radial-gradient(circle at 12% 18%, rgba(255,252,237,.46), transparent 34%),
+        radial-gradient(circle at 86% 70%, rgba(113,142,119,.075), transparent 30%),
+        rgba(250,245,228,.22);
       box-shadow:inset 0 0 24px rgba(132,106,64,.035);
     }
     .poem-cloud-words{display:block!important;position:relative!important;height:calc(100% - 22px)!important;padding:0!important;}
     .poem-cloud-word{
       position:absolute;max-width:none;white-space:nowrap;transform-origin:center center;
       font-family:"FangSong","STKaiti","KaiTi","Noto Serif SC",serif;letter-spacing:.5px;
-      text-shadow:0 1px 0 rgba(255,253,241,.58);
+      text-shadow:0 1px 0 rgba(255,253,241,.72), 0 2px 5px rgba(68,52,30,.10);
       transition:opacity .18s ease, transform .18s ease, filter .18s ease;
     }
     .poem-cloud-word:hover{filter:drop-shadow(0 2px 3px rgba(72,54,30,.16));}
@@ -432,6 +495,118 @@
     .poet-imagery-link{opacity:.34;}
     .ring-bg{stroke:rgba(89,79,59,.085)!important;}
     .flow-line{opacity:.72;}
+
+
+
+    /* 底部两块整体上移，避免词云和环形排名超出下边界 */
+    #bubblePanel,
+    #timelinePanel{
+      transform:translateY(-22px);
+    }
+    #bubblePanel{padding-top:22px;}
+    #timelinePanel{padding-top:0;}
+
+    /* 相关诗句改为卷轴式上下排列，不再散点词云 */
+    .poem-cloud-panel{
+      top:34px !important;
+      bottom:20px !important;
+      padding:10px 14px 14px !important;
+    }
+    .poem-cloud-words{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:flex-start !important;
+      gap:7px !important;
+      height:calc(100% - 24px) !important;
+      padding:6px 8px 12px !important;
+      overflow:hidden !important;
+    }
+    .poem-cloud-word{
+      position:relative !important;
+      left:auto !important;
+      top:auto !important;
+      display:block !important;
+      max-width:96% !important;
+      white-space:nowrap !important;
+      text-align:center !important;
+      line-height:1.35 !important;
+      transform:none !important;
+    }
+    .poem-cloud-word:hover{
+      transform:scale(1.035) !important;
+    }
+
+    /* 环形排名图上移并压缩底部留白，防止底部被裁切 */
+    #rankSvg{
+      top:30px !important;
+      bottom:24px !important;
+      height:calc(100% - 54px) !important;
+    }
+    .rank-legend{top:46px !important;}
+
+  
+
+    /* ===== 最终微调：分期图例归入上方语义流变；底部两图整体上移；诗句改为竖排卷轴 ===== */
+    .semantic-period-legend{
+      top:30px !important;
+      bottom:auto !important;
+      left:16px !important;
+      z-index:12 !important;
+      background:rgba(246,239,221,.18);
+      border-radius:10px;
+      padding:2px 6px;
+      backdrop-filter:blur(1px);
+      -webkit-backdrop-filter:blur(1px);
+    }
+    #bubblePanel,
+    #timelinePanel{
+      transform:translateY(-34px) !important;
+    }
+    #bubblePanel{padding-top:18px !important;}
+    #timelinePanel{padding-top:0 !important;}
+    .poem-cloud-panel{
+      top:32px !important;
+      bottom:34px !important;
+      padding:10px 14px 12px !important;
+    }
+    .poem-cloud-words{
+      display:flex !important;
+      flex-direction:row-reverse !important;
+      align-items:flex-start !important;
+      justify-content:center !important;
+      gap:10px !important;
+      height:calc(100% - 24px) !important;
+      padding:8px 10px 8px !important;
+      overflow:hidden !important;
+    }
+    .poem-cloud-word{
+      position:relative !important;
+      left:auto !important;
+      top:auto !important;
+      display:block !important;
+      writing-mode:vertical-rl !important;
+      text-orientation:upright !important;
+      white-space:normal !important;
+      max-height:96% !important;
+      max-width:1.9em !important;
+      line-height:1.22 !important;
+      text-align:start !important;
+      transform:none !important;
+      letter-spacing:.08em !important;
+      padding:0 1px !important;
+    }
+    .poem-cloud-word:hover{
+      transform:translateY(-2px) scale(1.035) !important;
+    }
+    #rankSvg{
+      top:24px !important;
+      bottom:34px !important;
+      height:calc(100% - 58px) !important;
+    }
+    .rank-legend{
+      top:48px !important;
+    }
 
   </style>
 </head>
@@ -443,31 +618,23 @@
     <div class="grid">
       <section class="title-block">
         <h1>唐代诗词中的<br/>意象统计</h1>
-        <p>以一千首唐诗为样本，统计诗歌中的自然、空间、人为与情感意象，并展示它们在诗作中的共现关系、语义母题与时间演化。</p>
+        <p class="poetic-preface"><span class="lead">唐诗之意象，乃天地造化与文人风骨之结晶。</span>其境也，或雄浑如大漠孤烟、长河落日，尽显盛世之气象与慷慨；或幽微如明月松间、清泉石上，独具文心之空灵与旷达。唐人以山川入酒，将草木赋灵，寄沧桑于尺幅，融万象于胸襟。这一枚枚凝炼的意象，不仅是情景交融的绝妙载体，更是跨越千载岁月的璀璨星汉，至今仍流淌着极度浪漫又深沉的东方诗韵。</p>
       </section>
 
-      <section class="right-title">
-        <h2>诗词中意象方式的统计</h2>
-        <p>上方以四段半圆展示“天、物、境、情”的语义流变；下方以气泡与环形排名补充呈现意象规模和时间变化。</p>
-      </section>
+      <section class="right-title"></section>
 
       <section id="chordPanel">
-        <div class="panel-title">诗词意象共现方式</div>
         <svg id="chordSvg"></svg>
-        <div class="small-note">弦图中，外圈为高频意象，内部连线表示两个意象在同一首诗中共同出现的强度。</div>
       </section>
 
       <section id="seasonPanel"></section>
 
       <section id="bubblePanel">
-        <div class="panel-title">相关诗句词云</div>
         <div id="poemCloudPanel" class="poem-cloud-panel"></div>
       </section>
 
       <section id="timelinePanel">
-        <div class="panel-title">意象数量排名</div>
         <svg id="rankSvg"></svg>
-        <div class="rank-note">时间轴由线性排列改为环形排列。每一圈代表一个排名层级，越靠近中心排名越高；角度表示每 30 年一个时间段。</div>
       </section>
     </div>
   </div>
@@ -720,48 +887,53 @@ function makePoemCloudItems(filter){
 }
 
 function drawPoemCloud(filter){
+  ensurePanelText('#bubblePanel', '相关诗句词云', '', 'small-note');
   const panel = d3.select("#poemCloudPanel");
   if(panel.empty()) return;
   panel.selectAll("*").remove();
+
   let label = "常见意象相关诗句";
   let sub = "悬停其他视图中的诗人或意象以更新";
   if(filter?.type === "poet") { label = `${filter.name}相关诗句`; sub = "按诗人筛选"; }
   if(filter?.type === "imagery") { label = `${filter.name}相关诗句`; sub = "按意象筛选"; }
   if(filter?.type === "poetImagery") { label = `${filter.author} × ${filter.imagery}`; sub = "诗人与意象交集"; }
 
-  panel.append("div").attr("class", "poem-cloud-head").html(`<b>${label}</b><span>${sub}</span>`);
+  panel.append("div")
+    .attr("class", "poem-cloud-head")
+    .html(`<b>${label}</b><span>${sub}</span>`);
+
   const items = makePoemCloudItems(filter);
   if(!items.length){
-    panel.append("div").attr("class", "poem-cloud-empty").html("没有找到可显示的诗句正文。<br/>请确认 sampled_1000_imagery_poems.json 中包含 paragraphs 字段，或 content、text、正文、诗文等诗文正文字段。");
+    panel.append("div")
+      .attr("class", "poem-cloud-empty")
+      .html("没有找到可显示的诗句正文。<br/>请确认 sampled_1000_imagery_poems.json 中包含 paragraphs 字段，或 content、text、正文、诗文等诗文正文字段。");
     return;
   }
+
+  // 卷轴式上下排列：每一句诗从上到下依次展开，避免散点词云造成底部溢出。
   const displayItems = items.slice(0, 18);
   const maxScore = d3.max(displayItems, d => d.score) || 1;
   const minScore = d3.min(displayItems, d => d.score) || 0;
-  const size = d3.scaleLinear().domain([minScore, maxScore]).range([10.5, 24]);
-  const opacity = d3.scaleLinear().domain([minScore, maxScore]).range([.38, .90]);
-  const colors = ["rgba(53,96,82,.78)", "rgba(128,83,62,.72)", "rgba(151,111,52,.76)", "rgba(91,86,72,.70)", "rgba(139,78,88,.72)"];
-  const cloud = panel.append("div").attr("class", "poem-cloud-words");
-  const layout = displayItems.map((d, i) => {
-    const n = Math.max(1, displayItems.length - 1);
-    const t = i / n;
-    const wave = Math.sin(t * Math.PI * 2.05 - Math.PI * .22);
-    const side = (i % 2 === 0 ? 1 : -1);
-    const x = 9 + t * 82 + ((Math.abs(hashCode(d.key)) % 9) - 4) * .55;
-    const y = 48 + wave * 30 + side * (8 + (i % 3) * 2.5);
-    const rot = wave * 7 + ((Math.abs(hashCode(d.text)) % 7) - 3) * .9;
-    return {...d, x: Math.max(3, Math.min(86, x)), y: Math.max(10, Math.min(86, y)), rot};
-  });
-  cloud.selectAll("span")
-    .data(layout, d => d.key)
-    .join("span")
+  const size = d3.scaleLinear().domain([minScore, maxScore]).range([12.5, 21]);
+  const opacity = d3.scaleLinear().domain([minScore, maxScore]).range([.70, .98]);
+  const colors = [
+    "rgba(34,79,67,.96)",
+    "rgba(114,63,45,.94)",
+    "rgba(147,98,33,.95)",
+    "rgba(58,53,44,.92)",
+    "rgba(126,57,72,.93)"
+  ];
+
+  const cloud = panel.append("div").attr("class", "poem-cloud-words poem-cloud-scroll");
+  cloud.selectAll("div")
+    .data(displayItems, d => d.key)
+    .join("div")
     .attr("class", "poem-cloud-word")
-    .style("left", d => `${d.x}%`)
-    .style("top", d => `${d.y}%`)
     .style("font-size", d => `${size(d.score)}px`)
     .style("opacity", d => opacity(d.score))
-    .style("transform", d => `translate(-50%,-50%) rotate(${d.rot}deg)`)
     .style("color", d => colors[Math.abs(hashCode(d.text)) % colors.length])
+    .style("margin-top", (d, i) => `${[0, 18, 7, 28, 12, 36, 4, 22, 14, 32, 6, 25, 10, 38, 2, 20, 16, 30][i % 18]}px`)
+    .style("font-weight", (d, i) => i < 4 ? 600 : 400)
     .attr("title", d => `${d.author || ""} ${d.title || ""}`)
     .text(d => d.text);
 }
@@ -929,6 +1101,9 @@ function buildMotifStats(poems) {
 function drawSemanticMotifModules(poems, categoryStats) {
   const panel = d3.select("#seasonPanel");
   panel.selectAll("*").remove();
+  panel.append("div")
+    .attr("class", "motif-panel-title")
+    .text("意象语义流变");
 
   const statMap = buildMotifStats(poems);
   const modules = semanticMotifConfig.map((cfg, idx) => {
@@ -1009,6 +1184,57 @@ function drawSemanticMotifModules(poems, categoryStats) {
     offset: (i - 2.5) * 8.8,
     width: 6.2
   }));
+
+  const motifImageFiles = ["moon.jpg", "grass.jpg", "jiangnan.jpg", "xiangsi.jpg"];
+  // 圆形插图放在每个半圆的“圆心”空白处：
+  // 原来放在半圆拱内部，容易压住轨道；现在统一移到半圆几何圆心附近，
+  // 并适度放大，使其成为视觉锚点但不遮挡彩色轨道。
+  const photoRadius = Math.min(segW * 0.28, height * 0.24);
+  const photoGap = Math.max(34, height * 0.105);
+  const photoCenters = modules.map((module, moduleIndex) => {
+    const dir = directions[moduleIndex] || 1;
+    const apexY = baseY + dir * arcH;
+    return {
+      x: marginX + segW * (moduleIndex + 0.5),
+      y: dir < 0
+        ? (apexY + photoRadius + photoGap)
+        : (apexY - photoRadius - photoGap)
+    };
+  });
+
+  const defs = svg.append("defs");
+  photoCenters.forEach((c, i) => {
+    defs.append("clipPath")
+      .attr("id", `motif-photo-clip-${i}`)
+      .append("circle")
+      .attr("cx", c.x)
+      .attr("cy", c.y)
+      .attr("r", photoRadius);
+  });
+
+  photoCenters.forEach((c, i) => {
+    svg.append("circle")
+      .attr("class", "semantic-center-photo-frame")
+      .attr("cx", c.x)
+      .attr("cy", c.y)
+      .attr("r", photoRadius + 6);
+
+    svg.append("image")
+      .attr("class", "semantic-center-photo-image")
+      .attr("href", motifImageFiles[i])
+      .attr("x", c.x - photoRadius)
+      .attr("y", c.y - photoRadius)
+      .attr("width", photoRadius * 2)
+      .attr("height", photoRadius * 2)
+      .attr("preserveAspectRatio", "xMidYMid slice")
+      .attr("clip-path", `url(#motif-photo-clip-${i})`);
+
+    svg.append("circle")
+      .attr("class", "semantic-center-photo-ring")
+      .attr("cx", c.x)
+      .attr("cy", c.y)
+      .attr("r", photoRadius + 2.5);
+  });
 
   modules.forEach((module, moduleIndex) => {
     tracks.forEach(track => {
@@ -1119,9 +1345,7 @@ function drawSemanticMotifModules(poems, categoryStats) {
       .text(iconMarks[moduleIndex] || "✦");
   });
 
-  panel.append("div")
-    .attr("class", "semantic-flow-desc semantic-flow-desc-compact")
-    .html(`四组半圆对应天象水文、草木鸟兽、空间行旅与情感典故；弧长表示频次规模，末端色点表示峰值时期。`);
+  // 说明文字已移除，避免与四半圆视图发生遮挡。
 
   panel.append("div")
     .attr("class", "semantic-period-legend")
@@ -1134,6 +1358,7 @@ function drawSemanticMotifModules(poems, categoryStats) {
 }
 
 function drawChord(poems, coNorm, categoryStats){
+  ensurePanelText('#chordPanel', '诗词意象共现方式', '弦图中，外圈为高频意象，内部连线表示两个意象在同一首诗中共同出现的强度。', 'small-note');
   const panel = document.getElementById("chordPanel");
   const width = panel.clientWidth, height = panel.clientHeight;
   const svg = d3.select("#chordSvg").attr("viewBox", [0,0,width,height]);
@@ -1554,6 +1779,23 @@ const periodColors = {
 
 const tooltip = d3.select("#tooltip");
 
+function ensurePanelText(panelSelector, titleText, noteText, noteClass="small-note") {
+  const panel = d3.select(panelSelector);
+  if(panel.empty()) return;
+  panel.selectAll('.panel-title.dynamic-panel-title').remove();
+  panel.selectAll(`.${noteClass}.dynamic-panel-note`).remove();
+  if(titleText){
+    panel.append('div')
+      .attr('class', 'panel-title dynamic-panel-title')
+      .text(titleText);
+  }
+  if(noteText){
+    panel.append('div')
+      .attr('class', `${noteClass} dynamic-panel-note`)
+      .html(noteText);
+  }
+}
+
 function showTip(event, html) {
   tooltip
     .interrupt()
@@ -1714,9 +1956,11 @@ function circularPath(points, angle, radius) {
 }
 
 function drawCircularRankFlow(rawData) {
+  ensurePanelText('#timelinePanel', '意象数量排名', '时间轴由线性排列改为环形排列。每一圈代表一个排名层级，越靠近中心排名越高；角度表示每 30 年一个时间段。', 'rank-note');
   const container = document.getElementById("timelinePanel");
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+  const svgNode = document.getElementById("rankSvg");
+  const width = svgNode.clientWidth || Math.max(260, container.clientWidth - 104);
+  const height = svgNode.clientHeight || Math.max(220, container.clientHeight - 50);
 
   const svg = d3.select("#rankSvg").attr("viewBox", [0, 0, width, height]);
   svg.selectAll("*").remove();
@@ -1724,9 +1968,9 @@ function drawCircularRankFlow(rawData) {
   const { bins, rankRows, series } = prepareRankData(rawData);
   const lineRuns = series.flatMap(s => s.runs.map((run, i) => ({ imagery: s.imagery, color: s.color, total: s.total, points: run, runId: `${s.imagery}-${i}` })));
 
-  const cx = width * 0.46;
-  const cy = height * 0.47;
-  const maxOuter = Math.min(width * 0.36, height * 0.38);
+  const cx = width * 0.50;
+  const cy = height * 0.54;
+  const maxOuter = Math.min(width * 0.39, height * 0.40);
   const innerR = maxOuter * 0.34;
   const outerR = maxOuter;
 
@@ -1932,9 +2176,9 @@ function drawCircularRankFlow(rawData) {
   svg.append("text")
     .attr("x", width * .06)
     .attr("y", height - 8)
-    .attr("font-size", 8)
+    .attr("font-size", 12)
     .attr("fill", "rgba(50,45,35,.62)")
-    .text(`统计方式：每 ${BIN_SIZE} 年汇总一次，每个时段最多取前 ${TOP_K} 名，仅保留连续≥${MIN_CONSECUTIVE_STREAK}个时段进入榜单的意象。`);
+    
 }
 
 
